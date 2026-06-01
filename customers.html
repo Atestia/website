@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Customers — Atestia</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+</style>
+</head>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+    <nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+      <a href="platform.html" class="hover:text-accent transition">Platform</a>
+      <a href="solutions/banks.html" class="hover:text-accent transition">Solutions</a>
+      <a href="pricing.html" class="hover:text-accent transition">Pricing</a>
+      <a href="tier4/index.html" class="hover:text-accent transition">Tier-4 spec</a>
+      <a href="customers.html" class="text-accent font-semibold">Customers</a>
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
+    </nav>
+    <a href="contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent transition">Book a demo</a>
+  </div>
+</header>
+
+<section class="border-b border-stone-200 py-16">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Customers</p>
+    <h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Founding partners and early adopters.</h1>
+    <p class="text-xl text-stone-700 leading-relaxed max-w-3xl mx-auto">The Tier-4 Compliance Working Group launched June 2, 2026. Charter Member institutions are committing now. Atestia open-source has shipped to npm. First production pilots are being scoped.</p>
+  </div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-20">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <p class="text-xs text-stone-500 uppercase tracking-widest mb-6 font-semibold">As of launch</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div>
+        <p class="font-serif text-5xl font-bold text-accent">v0.2.0</p>
+        <p class="text-sm text-stone-600 mt-2">npm package live</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl font-bold text-accent">74/74</p>
+        <p class="text-sm text-stone-600 mt-2">test assertions passing</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl font-bold text-accent">10</p>
+        <p class="text-sm text-stone-600 mt-2">MCP tools shipped</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl font-bold text-accent">4</p>
+        <p class="text-sm text-stone-600 mt-2">regulations covered</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="border-b border-stone-200 py-20">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-4xl mb-12 text-center">Conformant Implementations Registry</h2>
+    <div class="bg-white border border-stone-200 rounded-lg p-8">
+      <p class="text-xs text-stone-500 uppercase tracking-widest mb-4 font-semibold">Implementer level</p>
+      <div class="border-l-4 border-accent pl-4 mb-6">
+        <p class="font-semibold text-lg">@atestia/tier4-mcp-server v0.2.0</p>
+        <p class="text-sm text-stone-600 mt-1">Reference implementation. MPL-2.0 license. TypeScript / Node 20+.</p>
+        <p class="text-xs text-stone-500 mt-2">Maintained by Atestia in coordination with the Tier-4 Compliance Working Group.</p>
+        <a href="https://github.com/Atestia/tier4-mcp-server" class="text-accent text-sm font-semibold hover:underline mt-2 inline-block">github.com/Atestia/tier4-mcp-server</a>
+      </div>
+      <p class="text-xs text-stone-500 uppercase tracking-widest mb-4 font-semibold">Conformant level</p>
+      <p class="text-sm italic text-stone-500 mb-6">No implementations have yet completed the Conformance Test Suite. Implementations expected Q4 2026.</p>
+      <p class="text-xs text-stone-500 uppercase tracking-widest mb-4 font-semibold">Certified level</p>
+      <p class="text-sm italic text-stone-500">First annual certification cycle begins Q1 2027.</p>
+    </div>
+    <div class="mt-8 text-center">
+      <a href="tier4/registry.html" class="text-accent font-semibold hover:underline">See the full Registry →</a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-20">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="font-serif text-4xl mb-4">Be a founding Charter Member</h2>
+    <p class="text-stone-700 max-w-2xl mx-auto mb-8">The first 10 institutions to join the Tier-4 Compliance Working Group as Class I Charter Members receive a Steering Committee seat, 3× voting weight on spec ratification, and named-in-perpetuity placement in the spec preamble.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="tier4/charter.html" class="px-6 py-3 bg-ink text-white font-semibold rounded hover:bg-accent transition">Read the Charter</a>
+      <a href="mailto:charter@atestia.ai" class="px-6 py-3 border-2 border-ink text-ink font-semibold rounded hover:bg-ink hover:text-white transition">Apply</a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+  <div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+    <p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

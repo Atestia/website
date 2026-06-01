@@ -2,121 +2,335 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Tier-4 — Open standard for vendor model attestation, risk data lineage, and reasoning capture in regulated AI</title>
-<meta name="description" content="Tier-4 is the open reference architecture and standards framework for runtime vendor model lineage at US-supervised banks. SR 26-2 + OCC 2013-29 + BCBS 239." />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta property="og:title" content="Tier-4 — Open standard for vendor model attestation, risk data lineage, and reasoning capture in regulated AI" />
-<meta property="og:description" content="The bank-side analog to Comply's broker-dealer MCP server. OCC / Fed / FDIC supervised institutions." />
+<title>Atestia — The runtime evidence layer for regulated AI</title>
+<meta name="description" content="Atestia captures every vendor model invocation, every risk data lineage event, and every agent reasoning chain at runtime. Built on Anthropic MCP. OpenLineage compatible. MPL-2.0 reference implementation governed by the Tier-4 Compliance Working Group." />
+<meta property="og:title" content="Atestia — The runtime evidence layer for regulated AI" />
+<meta property="og:description" content="One MCP server. Ten tools. Four regulations. The open standard for vendor model attestation, risk data lineage, and reasoning capture in regulated AI." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://atestia.ai" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
 <style>
-body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif}
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#1c1917;background:#fafaf9}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+.font-mono{font-family:'JetBrains Mono','Menlo','Monaco',monospace}
+.cta-arrow::after{content:" →";font-weight:normal}
+.shimmer{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.4) 50%,transparent 100%);background-size:200% 100%;animation:shimmer 3s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.dot-grid{background-image:radial-gradient(circle at 1px 1px,rgba(28,25,23,0.08) 1px,transparent 0);background-size:24px 24px}
 </style>
 </head>
-<body class="bg-stone-50 text-stone-900">
-<header class="border-b border-stone-200 bg-white">
-  <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="font-bold text-lg">Tier-4</div>
-    <nav class="text-sm text-stone-600 space-x-6">
-      <a href="spec.html" class="hover:text-stone-900">Specification</a>
-      <a href="charter.html" class="hover:text-stone-900">Working Group</a>
-      <a href="registry.html" class="hover:text-stone-900">Registry</a>
-      <a href="methodology.html" class="hover:text-stone-900">Index methodology</a>
-      <a href="https://github.com/atestia/tier4-mcp-server" class="hover:text-stone-900">GitHub</a>
+<body>
+
+<div id="banner" class="bg-stone-900 text-white text-center py-2 text-sm relative">
+  <a href="https://www.npmjs.com/package/@atestia/tier4-mcp-server" class="hover:underline">
+    <span class="font-semibold">Atestia Tier-4 v0.2.0 is live</span>
+    <span class="text-stone-300 ml-2">10 MCP tools across vendor model attestation, BCBS 239 lineage, ECOA Reg B, and agent reasoning capture →</span>
+  </a>
+  <button onclick="document.getElementById('banner').style.display='none'" class="absolute right-4 top-2 text-stone-400 hover:text-white" aria-label="Dismiss">✕</button>
+</div>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+    <nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+      <a href="platform.html" class="hover:text-accent transition">Platform</a>
+      <a href="solutions/banks.html" class="hover:text-accent transition">Solutions</a>
+      <a href="pricing.html" class="hover:text-accent transition">Pricing</a>
+      <a href="tier4/index.html" class="hover:text-accent transition">Tier-4 spec</a>
+      <a href="customers.html" class="hover:text-accent transition">Customers</a>
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
     </nav>
+    <div class="flex space-x-3 items-center">
+      <a href="contact.html" class="text-sm text-stone-700 hover:text-accent hidden md:inline">Sign in</a>
+      <a href="contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent transition">Book a demo</a>
+    </div>
   </div>
 </header>
 
-<main class="max-w-3xl mx-auto px-6 py-16">
-
-<section class="mb-16">
-  <p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Open Reference Architecture v1.1</p>
-  <h1 class="font-serif text-5xl leading-tight mb-6 text-stone-900">The open standard for vendor model attestation in regulated AI.</h1>
-  <p class="text-xl text-stone-700 leading-relaxed mb-6">Tier-4 is the open specification, reference implementation, and standards body for capturing vendor model lineage at the moment of invocation by US-bank agentic AI platforms. It is published under CC-BY-4.0. The reference implementation is MPL-2.0.</p>
-  <div class="flex gap-3 mt-8">
-    <a href="spec.html" class="px-5 py-3 bg-stone-900 text-white text-sm font-semibold rounded">Read the spec v1.1</a>
-    <a href="https://github.com/atestia/tier4-mcp-server" class="px-5 py-3 border border-stone-300 text-sm font-semibold rounded hover:bg-white">View reference implementation</a>
-  </div>
-</section>
-
-<section class="mb-16">
-  <h2 class="font-serif text-3xl mb-4 text-stone-900">Why this exists</h2>
-  <p class="text-stone-700 leading-relaxed mb-4">SR 26-2 was issued by the Federal Reserve, OCC, and FDIC on April 17, 2026. Paragraph II.B explicitly carves out generative AI and agentic AI from definitional model scope. Paragraph III.A holds institutions accountable for every vendor model their agents call under "existing model risk management principles."</p>
-  <p class="text-stone-700 leading-relaxed mb-4">The first SR 26-2 examination cycle is Q1 2027. At Citi Arc, JPMorgan Chase Index AI, Goldman Athena Commercial, and similar agentic banking platforms, vendor models are invoked at rates of millions per day. Manual reconstruction of vendor evidence at examination time is not operationally feasible at that cardinality.</p>
-  <p class="text-stone-700 leading-relaxed mb-4">Tier-4 provides the technical specification for capturing this evidence at invocation time, in a format common across vendors and institutions, machine-readable for downstream tooling, and examiner-defensible for regulatory review.</p>
-  <p class="text-stone-700 leading-relaxed">Comply Inc. shipped the broker-dealer analog (ComplyAI MCP Server, April 22, 2026) for SEC and FINRA regulated institutions. Tier-4 is the bank-side analog for OCC, Federal Reserve, and FDIC supervised institutions. The two are complementary, not competitive.</p>
-</section>
-
-<section class="mb-16">
-  <h2 class="font-serif text-3xl mb-4 text-stone-900">What's in v1.1</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Section 4</p>
-      <h3 class="font-semibold mb-1">Lineage record schema</h3>
-      <p class="text-sm text-stone-600">JSON Schema 2020-12 canonical schema with required fields, PII handling, immutability rules, and field-stability guarantees.</p>
+<section class="border-b border-stone-200 dot-grid">
+  <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-5">The universal evidence layer for regulated AI</p>
+      <h1 class="font-serif text-5xl md:text-6xl leading-[0.95] mb-6">Capture every vendor model call. Generate examiner-ready packets in seconds.</h1>
+      <p class="text-xl text-stone-700 mb-8 max-w-xl leading-relaxed">Atestia is the open standard and reference runtime for vendor model attestation, risk data lineage, and agentic AI reasoning. Banks today. Capital markets, insurance, healthcare next.</p>
+      <div class="flex flex-wrap gap-4 mb-6">
+        <a href="contact.html" class="px-6 py-3 bg-ink text-white font-semibold rounded hover:bg-accent transition">Book a demo</a>
+        <a href="https://github.com/Atestia/tier4-mcp-server" class="px-6 py-3 border-2 border-ink text-ink font-semibold rounded hover:bg-ink hover:text-white transition">Open-source on GitHub</a>
+      </div>
+      <p class="text-xs text-stone-500">No credit card required. <a href="platform.html" class="underline hover:text-accent">See how it works</a></p>
     </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Section 5</p>
-      <h3 class="font-semibold mb-1">OCC 2013-29 packet format</h3>
-      <p class="text-sm text-stone-600">47 fields organized into 7 sections. Materialized on-demand in under 15 seconds. JSON + PDF output.</p>
-    </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Section 6</p>
-      <h3 class="font-semibold mb-1">SR 26-2 attestation pack</h3>
-      <p class="text-sm text-stone-600">5-artifact bundle: model card v1.0, OCC questionnaire, lineage trail sample, monitoring spec, SOC 2 control matrix.</p>
-    </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Section 7</p>
-      <h3 class="font-semibold mb-1">BCBS 239 aggregation reference</h3>
-      <p class="text-sm text-stone-600">Explicit mapping to all 14 BCBS 239 principles across the four sections (governance, aggregation, reporting, supervisory review).</p>
-    </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Section 8</p>
-      <h3 class="font-semibold mb-1">Retention model</h3>
-      <p class="text-sm text-stone-600">7-year retention horizon. Customer-held KMS keys. AES-256-GCM at rest. Migration rights preserved.</p>
-    </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Section 9</p>
-      <h3 class="font-semibold mb-1">Conformance levels</h3>
-      <p class="text-sm text-stone-600">Three levels: Implementer (free, self-declared), Conformant (test-suite passing), Certified (annual third-party audit).</p>
+    <div class="relative">
+      <div class="bg-white border-2 border-stone-900 rounded-lg shadow-2xl overflow-hidden">
+        <div class="bg-ink text-white px-4 py-2 flex items-center gap-2 text-xs font-mono">
+          <span class="w-3 h-3 rounded-full bg-red-500"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500"></span>
+          <span class="ml-3 text-stone-400">tier4-mcp-server · live capture</span>
+        </div>
+        <div class="p-6 font-mono text-sm space-y-3 bg-stone-50">
+          <div class="flex items-start gap-3"><span class="text-accent font-bold">→</span><div><div class="text-stone-700">Citi Arc agent invokes Experian credit check</div><div class="text-xs text-stone-500">vendorModelId: experian-business-credit-v3.2</div></div></div>
+          <div class="flex items-start gap-3"><span class="text-emerald-700 font-bold">✓</span><div><div class="text-stone-700">Lineage record written</div><div class="text-xs text-stone-500">tier4-ln-eCVNqVHlyh9bub-ENNsLvg</div></div></div>
+          <div class="flex items-start gap-3"><span class="text-emerald-700 font-bold">✓</span><div><div class="text-stone-700">Reasoning chain captured (4 steps)</div><div class="text-xs text-stone-500">confidence: 0.92 · human-in-loop: approved</div></div></div>
+          <div class="flex items-start gap-3"><span class="text-emerald-700 font-bold">✓</span><div><div class="text-stone-700">ECOA Reg B notice ready</div><div class="text-xs text-stone-500">25-month retention · CFPB enforcement contact embedded</div></div></div>
+          <div class="flex items-start gap-3"><span class="text-emerald-700 font-bold">✓</span><div><div class="text-stone-700">OpenLineage event exported to Marquez</div><div class="text-xs text-stone-500">tier4.tenant.citi-arc-mrm-tenant</div></div></div>
+          <div class="border-t border-stone-200 pt-3 text-xs text-stone-600 flex justify-between"><span>4.9 KB attestation pack · examiner-ready</span><span class="text-emerald-700 font-semibold">SR 26-2 ✓</span></div>
+        </div>
+      </div>
+      <div class="absolute -bottom-6 -right-4 bg-emerald-700 text-white text-xs font-semibold px-3 py-2 rounded-full shadow-lg">LIVE · 74/74 tests passing</div>
     </div>
   </div>
 </section>
 
-<section class="mb-16">
-  <h2 class="font-serif text-3xl mb-4 text-stone-900">Get started</h2>
-  <div class="space-y-4">
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">For developers</p>
-      <pre class="bg-stone-900 text-cyan-100 rounded p-3 text-sm overflow-x-auto"><code>npm install @atestia/tier4-mcp-server
-npx tier4-mcp-server</code></pre>
-      <p class="text-sm text-stone-600 mt-3">Then add to Claude Desktop, Bedrock AgentCore, OpenAI Assistants, or any MCP-compatible AI runtime. See the <a href="https://github.com/atestia/tier4-mcp-server" class="text-cyan-700 underline">README</a> for examples.</p>
+<section class="bg-white border-b border-stone-200 py-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="text-xs text-stone-500 uppercase tracking-widest text-center mb-6">Built on open standards and used by</p>
+    <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 items-center opacity-80">
+      <span class="font-mono text-sm font-semibold">Anthropic MCP</span>
+      <span class="text-stone-300">·</span>
+      <span class="font-mono text-sm font-semibold">OpenLineage</span>
+      <span class="text-stone-300">·</span>
+      <span class="font-mono text-sm font-semibold">MPL-2.0</span>
+      <span class="text-stone-300">·</span>
+      <span class="font-mono text-sm font-semibold">CC-BY-4.0 spec</span>
+      <span class="text-stone-300">·</span>
+      <span class="font-mono text-sm font-semibold">@atestia/tier4-mcp-server</span>
     </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">For bank MRM teams</p>
-      <p class="text-sm text-stone-700">Pull the spec at <a href="spec.html" class="text-cyan-700 underline">tier4.org/spec/v1.1</a> and walk it through your team. If you'd like to be a founding charter member of the Working Group, see the <a href="charter.html" class="text-cyan-700 underline">Charter</a>.</p>
+    <p class="text-xs text-stone-500 text-center mt-6 italic">First production-grade implementations deploying with Tier-1 US banks in 2026.</p>
+  </div>
+</section>
+
+<section class="border-b border-stone-200 py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">The challenge</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight">Banks have shipped agentic AI faster than they shipped the evidence layer.</h2>
     </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">For vendor LLM providers</p>
-      <p class="text-sm text-stone-700">Conform your evidence emit format to §4 of the spec. If you ship a Tier-4-Conformant adapter for Bedrock, Anthropic, OpenAI, Azure, or Vertex, list it in the <a href="registry.html" class="text-cyan-700 underline">Conformant Implementations Registry</a>.</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <p class="font-mono text-5xl font-bold text-accent mb-2">~250K</p>
+        <p class="font-semibold mb-1">JPMorgan LLM Suite seats</p>
+        <p class="text-sm text-stone-600">450+ production use cases invoking OpenAI and Anthropic vendor models.</p>
+      </div>
+      <div>
+        <p class="font-mono text-5xl font-bold text-accent mb-2">~215K</p>
+        <p class="font-semibold mb-1">Wells Fargo Agentspace</p>
+        <p class="text-sm text-stone-600">Google Gemini deployed across the workforce; MRM AI governance role open.</p>
+      </div>
+      <div>
+        <p class="font-mono text-5xl font-bold text-accent mb-2">46.5K</p>
+        <p class="font-semibold mb-1">Goldman GS AI Assistant</p>
+        <p class="text-sm text-stone-600">Multi-vendor (OpenAI, Anthropic, Google, Meta) with reactive controls.</p>
+      </div>
+    </div>
+    <p class="text-center text-stone-700 mt-10 max-w-3xl mx-auto">When the OCC examiner asks for evidence of the vendor model invocation on a specific credit decision six months ago, the bank has no runtime trail to point to. <strong>That is the gap.</strong></p>
+  </div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-12">
+      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">The platform</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight max-w-3xl">One MCP server. Ten tools. Four regulations at launch.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border border-stone-200 rounded-lg p-6 hover:shadow-lg transition bg-white">
+        <p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">Lineage capture</p>
+        <h3 class="font-serif text-2xl mb-3">Every vendor model call</h3>
+        <p class="text-stone-700 text-sm mb-4">SHA-256 input hash + vendor ID + agent ID + latency + decision context, persisted at invocation time.</p>
+        <ul class="text-sm space-y-1 font-mono text-stone-600">
+          <li>tier4.credit.evaluate</li>
+          <li>tier4.lineage.bcbs239</li>
+          <li>tier4.lineage.regb</li>
+          <li>tier4.lineage.fetch</li>
+        </ul>
+      </div>
+      <div class="border border-stone-200 rounded-lg p-6 hover:shadow-lg transition bg-white">
+        <p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">Reasoning capture</p>
+        <h3 class="font-serif text-2xl mb-3">Every agent decision</h3>
+        <p class="text-stone-700 text-sm mb-4">Observation → tool call → tool result → decision, with confidence + human-in-loop status. Required for ECOA, SEC IA-22, NAIC, FDA, EU AI Act Annex III.</p>
+        <ul class="text-sm space-y-1 font-mono text-stone-600">
+          <li>tier4.reasoning.capture</li>
+          <li>+ linked to lineage records</li>
+        </ul>
+      </div>
+      <div class="border border-stone-200 rounded-lg p-6 hover:shadow-lg transition bg-white">
+        <p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">Packet generation</p>
+        <h3 class="font-serif text-2xl mb-3">Examiner-ready on demand</h3>
+        <p class="text-stone-700 text-sm mb-4">OCC 2013-29 (47 fields), SR 26-2 attestation pack (5 artifacts), BCBS 239 aggregation, ECOA Reg B Adverse Action Notice — generated in seconds.</p>
+        <ul class="text-sm space-y-1 font-mono text-stone-600">
+          <li>tier4.packet.occ-2013-29</li>
+          <li>tier4.packet.sr-26-2</li>
+          <li>tier4.packet.bcbs-239</li>
+          <li>tier4.packet.regb-notice</li>
+          <li>tier4.openlineage.export</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <a href="platform.html" class="text-accent font-semibold hover:underline cta-arrow">See the full platform</a>
     </div>
   </div>
 </section>
 
-<section class="mb-16">
-  <h2 class="font-serif text-3xl mb-4 text-stone-900">Tier-4 Compliance Working Group</h2>
-  <p class="text-stone-700 leading-relaxed mb-4">The Working Group is a Delaware 501(c)(6) industry association filing in process Q3 2026. Three membership tiers: Charter Member (founding 10), General Member ($25K/yr), Implementer Member (free, listed in registry).</p>
-  <p class="text-stone-700 leading-relaxed mb-4">Steering Committee of seven seats. The Atestia Inc. designee holds a permanent non-voting seat in recognition of founding-sponsor role. All spec ratification is one-vote-per-Member.</p>
-  <a href="charter.html" class="text-cyan-700 underline">Read the Charter →</a>
+<section class="border-b border-stone-200 py-20">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+    <div>
+      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Install in 60 seconds</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">From npm to first lineage record.</h2>
+      <p class="text-stone-700 mb-6 leading-relaxed">Drop Atestia into your Claude Desktop, Cursor, Bedrock AgentCore, or LangChain agent configuration. Every vendor model invocation is captured to a Tier-4-conformant lineage record from the next tool call onward.</p>
+      <a href="platform.html" class="text-accent font-semibold cta-arrow hover:underline">Read the integration guide</a>
+    </div>
+    <div class="bg-ink text-white rounded-lg p-6 font-mono text-sm overflow-x-auto">
+      <p class="text-stone-500"># 1. Install</p>
+      <p class="text-emerald-400">npm install @atestia/tier4-mcp-server</p>
+      <p class="text-stone-500 mt-6"># 2. Add to Claude Desktop config</p>
+      <p>{</p>
+      <p class="pl-4 text-stone-300">"mcpServers": {</p>
+      <p class="pl-8 text-stone-300">"tier4": {</p>
+      <p class="pl-12 text-cyan-300">"command": "tier4-mcp-server",</p>
+      <p class="pl-12 text-cyan-300">"env": { "TIER4_TENANT_ID": "your-bank-tenant" }</p>
+      <p class="pl-8 text-stone-300">}</p>
+      <p class="pl-4 text-stone-300">}</p>
+      <p>}</p>
+      <p class="text-stone-500 mt-6"># 3. Your agent now has 10 tools available</p>
+      <p class="text-emerald-400">tier4.credit.evaluate</p>
+      <p class="text-emerald-400">tier4.reasoning.capture</p>
+      <p class="text-emerald-400">tier4.packet.sr-26-2</p>
+      <p class="text-stone-500">... and 7 more</p>
+    </div>
+  </div>
 </section>
 
-<footer class="mt-24 pt-8 border-t border-stone-200 text-sm text-stone-600">
-  <p class="mb-2">Tier-4 is maintained by the <a href="charter.html" class="text-cyan-700 underline">Tier-4 Compliance Working Group</a>, a 501(c)(6) Delaware industry association. Founding sponsor: <a href="https://lumiq.ai" class="text-cyan-700 underline">Atestia Inc.</a></p>
-  <p class="mb-2">Specification content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="text-cyan-700 underline">CC-BY-4.0</a>. Reference implementation licensed under <a href="https://www.mozilla.org/en-US/MPL/2.0/" class="text-cyan-700 underline">MPL-2.0</a>. Trademark policy at <a href="https://tier4.org/trademark" class="text-cyan-700 underline">trademark</a>.</p>
-  <p>Comments and contributions: <a href="mailto:hello@tier4.org" class="text-cyan-700 underline">hello@tier4.org</a> · RFC submissions: <a href="https://github.com/Atestia/tier4-mcp-server/issues">github.com/Atestia/tier4-mcp-server/issues</a></p>
+<section class="bg-white border-b border-stone-200 py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Solutions</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight">Built for regulated AI. Starting with banks.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <a href="solutions/banks.html" class="block border-2 border-stone-200 rounded-lg p-6 hover:border-accent hover:shadow-lg transition group">
+        <p class="text-xs text-emerald-700 font-semibold uppercase tracking-widest mb-2">Available now</p>
+        <h3 class="font-serif text-2xl mb-2 group-hover:text-accent transition">Banks</h3>
+        <p class="text-sm text-stone-600">Tier-1, regional, community. BCBS 239 + SR 26-2 + OCC 2013-29 + ECOA Reg B.</p>
+      </a>
+      <div class="block border-2 border-stone-200 rounded-lg p-6 opacity-70">
+        <p class="text-xs text-stone-500 font-semibold uppercase tracking-widest mb-2">Q4 2026</p>
+        <h3 class="font-serif text-2xl mb-2">Capital Markets</h3>
+        <p class="text-sm text-stone-600">SEC IA-22, FINRA AI, MAR. Broker-dealer + investment adviser scope.</p>
+      </div>
+      <div class="block border-2 border-stone-200 rounded-lg p-6 opacity-70">
+        <p class="text-xs text-stone-500 font-semibold uppercase tracking-widest mb-2">Q1 2027</p>
+        <h3 class="font-serif text-2xl mb-2">Insurance</h3>
+        <p class="text-sm text-stone-600">NAIC AI Bulletin, state model laws. Underwriting + claims AI.</p>
+      </div>
+      <div class="block border-2 border-stone-200 rounded-lg p-6 opacity-70">
+        <p class="text-xs text-stone-500 font-semibold uppercase tracking-widest mb-2">Q2 2027</p>
+        <h3 class="font-serif text-2xl mb-2">Healthcare</h3>
+        <p class="text-sm text-stone-600">HIPAA, FDA AI/ML SaMD, 21st Century Cures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="border-b border-stone-200 py-20 bg-gradient-to-br from-stone-50 to-stone-100">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Working Group</p>
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">No Tier-1 bank will adopt a vendor-controlled standard.</h2>
+        <p class="text-stone-700 leading-relaxed mb-6">That is why the Tier-4 specification is governed by a Delaware 501(c)(6) industry association. Atestia is the founding sponsor and holds a permanent non-voting seat on the Steering Committee. Banks ratify the standard their MRM teams will be examined against.</p>
+        <a href="tier4/charter.html" class="text-accent font-semibold cta-arrow hover:underline">Read the Charter</a>
+      </div>
+      <div class="bg-white border border-stone-200 rounded-lg p-8">
+        <p class="text-xs text-stone-500 uppercase tracking-widest mb-4 font-semibold">Founding membership opens</p>
+        <div class="space-y-4">
+          <div class="border-l-4 border-accent pl-4">
+            <p class="font-semibold">Class I — Charter Member</p>
+            <p class="text-sm text-stone-600">First 10 institutions. $25K/yr (waived first 12 months). Steering Committee seat. 3× vote on spec ratification.</p>
+          </div>
+          <div class="border-l-4 border-stone-300 pl-4">
+            <p class="font-semibold">Class II — General Member</p>
+            <p class="text-sm text-stone-600">$25K/yr. 1× vote. Embargo preview of spec drafts. Private Index access.</p>
+          </div>
+          <div class="border-l-4 border-stone-300 pl-4">
+            <p class="font-semibold">Class III — Implementer</p>
+            <p class="text-sm text-stone-600">No dues. Listed in the Conformant Implementations Registry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-ink text-white py-20">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-sm text-cyan-300 font-semibold uppercase tracking-widest mb-3">Get started</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">Two paths. Both free to start.</h2>
+      <p class="text-stone-300 leading-relaxed mb-8">Install the open-source reference today. Talk to us when you need 7-year retention, customer-held KMS, MRM analyst UI, indemnification, and a Tier-1 bank pilot.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="bg-white text-ink rounded-lg p-6 hover:scale-105 transition">
+        <p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">Engineers</p>
+        <p class="font-serif text-2xl mb-2">Try the OSS</p>
+        <p class="text-sm text-stone-600 mb-4">npm install @atestia/tier4-mcp-server. MPL-2.0. Unlimited calls. Local SQLite.</p>
+        <p class="text-accent font-semibold cta-arrow">GitHub</p>
+      </a>
+      <a href="contact.html" class="bg-accent text-white rounded-lg p-6 hover:scale-105 transition">
+        <p class="text-xs text-cyan-100 uppercase tracking-widest mb-2 font-semibold">Compliance leaders</p>
+        <p class="font-serif text-2xl mb-2">Book a demo</p>
+        <p class="text-sm text-cyan-100 mb-4">15-minute introduction. Live packet generation. Custom pilot scoping for your bank.</p>
+        <p class="text-white font-semibold cta-arrow">Talk to sales</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-5 gap-10">
+      <div class="md:col-span-2">
+        <p class="font-bold text-xl mb-3">Atestia</p>
+        <p class="text-sm text-stone-600 max-w-xs">The runtime evidence layer for regulated AI. Capture every vendor model call. Generate examiner-ready packets in seconds.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-sm mb-3">Product</p>
+        <ul class="space-y-2 text-sm text-stone-600">
+          <li><a href="platform.html" class="hover:text-accent">Platform</a></li>
+          <li><a href="pricing.html" class="hover:text-accent">Pricing</a></li>
+          <li><a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a></li>
+          <li><a href="https://www.npmjs.com/package/@atestia/tier4-mcp-server" class="hover:text-accent">npm package</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-sm mb-3">Tier-4 Standard</p>
+        <ul class="space-y-2 text-sm text-stone-600">
+          <li><a href="tier4/spec.html" class="hover:text-accent">Specification v1.2</a></li>
+          <li><a href="tier4/charter.html" class="hover:text-accent">Working Group</a></li>
+          <li><a href="tier4/registry.html" class="hover:text-accent">Registry</a></li>
+          <li><a href="tier4/methodology.html" class="hover:text-accent">Index methodology</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-sm mb-3">Company</p>
+        <ul class="space-y-2 text-sm text-stone-600">
+          <li><a href="customers.html" class="hover:text-accent">Customers</a></li>
+          <li><a href="contact.html" class="hover:text-accent">Contact</a></li>
+          <li><a href="mailto:hello@atestia.ai" class="hover:text-accent">hello@atestia.ai</a></li>
+          <li><a href="mailto:security@atestia.ai" class="hover:text-accent">security@atestia.ai</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-wrap justify-between items-center text-xs text-stone-500">
+      <p>Atestia is operated by FuteurCredX Inc., a Delaware corporation. Tier-4 specification published under CC-BY-4.0 by the Tier-4 Compliance Working Group, a Delaware 501(c)(6) industry association.</p>
+      <p class="mt-2 md:mt-0">© 2026 Atestia · <a href="#" class="hover:text-accent">Privacy</a> · <a href="#" class="hover:text-accent">Terms</a></p>
+    </div>
+  </div>
 </footer>
 
-</main>
 </body>
 </html>

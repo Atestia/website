@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Contact — Atestia</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+</style>
+</head>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+    <nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+      <a href="platform.html" class="hover:text-accent transition">Platform</a>
+      <a href="solutions/banks.html" class="hover:text-accent transition">Solutions</a>
+      <a href="pricing.html" class="hover:text-accent transition">Pricing</a>
+      <a href="tier4/index.html" class="hover:text-accent transition">Tier-4 spec</a>
+      <a href="customers.html" class="hover:text-accent transition">Customers</a>
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section class="border-b border-stone-200 py-16">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Talk to us.</h1>
+    <p class="text-xl text-stone-700 leading-relaxed">15-minute introduction. Live packet generation demo. Custom scoping for your bank or use case.</p>
+  </div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-20">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+    <div class="border border-stone-200 rounded-lg p-6 bg-white">
+      <p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">Banks (enterprise)</p>
+      <h2 class="font-serif text-2xl mb-3">Sales</h2>
+      <p class="text-sm text-stone-700 mb-4">Pilot scoping, MSA, InfoSec review, MRM integration, custom packet generators.</p>
+      <a href="mailto:enterprise@atestia.ai" class="text-accent font-semibold hover:underline">enterprise@atestia.ai</a>
+    </div>
+    <div class="border border-stone-200 rounded-lg p-6 bg-white">
+      <p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">Working Group</p>
+      <h2 class="font-serif text-2xl mb-3">Charter</h2>
+      <p class="text-sm text-stone-700 mb-4">Charter Member applications, spec RFC submissions, sub-committee proposals.</p>
+      <a href="mailto:charter@atestia.ai" class="text-accent font-semibold hover:underline">charter@atestia.ai</a>
+    </div>
+    <div class="border border-stone-200 rounded-lg p-6 bg-white">
+      <p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">Press</p>
+      <h2 class="font-serif text-2xl mb-3">Media</h2>
+      <p class="text-sm text-stone-700 mb-4">Interviews, embargoed announcements, conference coverage, regulator briefings.</p>
+      <a href="mailto:press@atestia.ai" class="text-accent font-semibold hover:underline">press@atestia.ai</a>
+    </div>
+  </div>
+</section>
+
+<section class="border-b border-stone-200 py-20">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-6">Other ways to reach us</h2>
+    <div class="space-y-3 text-sm text-stone-700">
+      <p><strong>General:</strong> <a href="mailto:hello@atestia.ai" class="text-accent underline">hello@atestia.ai</a></p>
+      <p><strong>Security:</strong> <a href="mailto:security@atestia.ai" class="text-accent underline">security@atestia.ai</a></p>
+      <p><strong>Code of conduct:</strong> <a href="mailto:conduct@atestia.ai" class="text-accent underline">conduct@atestia.ai</a></p>
+      <p><strong>Open source bug reports:</strong> <a href="https://github.com/Atestia/tier4-mcp-server/issues" class="text-accent underline">github.com/Atestia/tier4-mcp-server/issues</a></p>
+      <p><strong>Spec RFCs:</strong> via GitHub Issues on the Tier-4 spec repo.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+  <div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+    <p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
