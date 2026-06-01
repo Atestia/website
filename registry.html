@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tier-4 Conformant Implementations Registry</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif}
+</style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+<header class="border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="font-bold text-lg">Tier-4</a>
+    <nav class="text-sm text-stone-600 space-x-6">
+      <a href="/spec.html" class="hover:text-stone-900">Specification</a>
+      <a href="/charter.html" class="hover:text-stone-900">Working Group</a>
+      <a href="/registry.html" class="text-stone-900">Registry</a>
+      <a href="/methodology.html" class="hover:text-stone-900">Index methodology</a>
+      <a href="https://github.com/atestia/tier4-mcp-server" class="hover:text-stone-900">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-6 py-16">
+<p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Implementations Registry</p>
+<h1 class="font-serif text-4xl leading-tight mb-4">Tier-4 Conformant Implementations</h1>
+<p class="text-stone-700 mb-8">A public list of implementations that have declared conformance with Tier-4 v1.1 at the Implementer, Conformant, or Certified level. Listing is free for any party.</p>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Implementer level</h2>
+  <p class="text-stone-600 mb-6">Implementations that emit Tier-4-conformant Lineage records per §4 of the spec.</p>
+  <div class="space-y-3">
+    <div class="border border-stone-200 rounded p-4 bg-white flex items-center justify-between">
+      <div>
+        <p class="font-semibold">tier4-mcp-server (reference implementation)</p>
+        <p class="text-sm text-stone-600">@atestia/tier4-mcp-server v0.1.0-alpha · MPL-2.0 · TypeScript / Node 20+</p>
+      </div>
+      <a href="https://github.com/atestia/tier4-mcp-server" class="text-sm text-cyan-700 underline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Conformant level</h2>
+  <p class="text-stone-600 mb-6">Implementations that pass the Tier-4 Conformance Test Suite covering §4, §5, §6, §7, and §8 of the spec.</p>
+  <p class="text-stone-500 italic">No implementations have yet completed the Conformance Test Suite. Implementations expected: Q4 2026.</p>
+</section>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Certified level</h2>
+  <p class="text-stone-600 mb-6">Implementations that have undergone an annual third-party audit by a Working Group-approved auditor.</p>
+  <p class="text-stone-500 italic">No implementations have yet been certified. Certification cycle begins Q1 2027.</p>
+</section>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Submit your implementation</h2>
+  <p class="text-stone-700 leading-relaxed mb-4">If you have built a Tier-4-conformant implementation, submit it to the registry by emailing <a href="mailto:registry@tier4.org" class="text-cyan-700 underline">registry@tier4.org</a> with:</p>
+  <ul class="text-stone-700 list-disc pl-6 space-y-1">
+    <li>Implementation name and version</li>
+    <li>Source URL (GitHub, GitLab, or equivalent)</li>
+    <li>License declaration</li>
+    <li>Spec version it conforms to (v1.0 or v1.1)</li>
+    <li>Declared conformance level (Implementer / Conformant / Certified)</li>
+    <li>If claiming Conformant level: link to passing Conformance Test Suite results</li>
+    <li>If claiming Certified level: link to current Certificate of Tier-4 v1.1 Certification</li>
+  </ul>
+</section>
+
+<footer class="mt-24 pt-8 border-t border-stone-200 text-sm text-stone-600">
+  <p>Listings are maintained by the Tier-4 Compliance Working Group. Misrepresentations of conformance level may result in removal.</p>
+</footer>
+
+</main>
+</body>
+</html>

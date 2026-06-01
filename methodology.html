@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tier-4 Bank MRM Readiness Index — Methodology v1.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif}
+</style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+<header class="border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="font-bold text-lg">Tier-4</a>
+    <nav class="text-sm text-stone-600 space-x-6">
+      <a href="/spec.html" class="hover:text-stone-900">Specification</a>
+      <a href="/charter.html" class="hover:text-stone-900">Working Group</a>
+      <a href="/registry.html" class="hover:text-stone-900">Registry</a>
+      <a href="/methodology.html" class="text-stone-900">Index methodology</a>
+      <a href="https://github.com/atestia/tier4-mcp-server" class="hover:text-stone-900">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-6 py-16">
+<p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Methodology v1.0</p>
+<h1 class="font-serif text-4xl leading-tight mb-4">Tier-4 Bank MRM Readiness Index</h1>
+<p class="text-stone-700 mb-8">A quarterly published score, 0-100, measuring US bank readiness for the SR 26-2 examination cycle on eight sub-dimensions. v0 (Q3 2026) published from public-record signals only. v1.0 (Q4 2026) introduces private-mode subscriber scoring with live platform-emitted evidence.</p>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">The 8 sub-dimensions</h2>
+  <ol class="list-decimal pl-6 text-stone-700 space-y-2">
+    <li><strong>Vendor model inventory coverage</strong> — does the bank have a documented, current registry of every vendor model invoked by its agents?</li>
+    <li><strong>Agentic AI lineage substrate</strong> — is there runtime evidence capture at vendor model invocation time, or only retrospective reconstruction?</li>
+    <li><strong>SR 26-2 packet generation capability</strong> — can the bank produce an examination-ready packet within 30 seconds on demand?</li>
+    <li><strong>ECOA Reg B adverse-action defensibility</strong> — for agentic credit decisions, is the reasoning chain reconstructible and the Adverse Action Notice compliant?</li>
+    <li><strong>Banker prompt compliance controls</strong> — is there real-time scanning of banker LLM prompts for PII / Reg FD / MNPI / fair-lending breaches?</li>
+    <li><strong>BCBS 239 column-level lineage</strong> — does risk-data aggregation include column-level provenance for AI/ML model contributions?</li>
+    <li><strong>Cross-business-unit AI governance</strong> — does the Chief AI Officer have visibility into vendor models across all business lines?</li>
+    <li><strong>MCP server attestation coverage</strong> — has the bank certified the MCP servers its AI platforms plug into?</li>
+  </ol>
+</section>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Scoring sources (v0 — public record only)</h2>
+  <p class="text-stone-700 leading-relaxed mb-4">The v0 Index, published Q3 2026, scores banks on the basis of public-record signals only. No private data is used. The methodology is fully transparent and reproducible.</p>
+  <ul class="text-stone-700 list-disc pl-6 space-y-2">
+    <li>10-K model risk disclosures (Form 10-K Item 1A Risk Factors + supplementary MRM commentary)</li>
+    <li>Public OCC, Federal Reserve, FDIC enforcement actions and consent decrees</li>
+    <li>Public CFPB consumer complaint database</li>
+    <li>MRM team size from public LinkedIn employment data</li>
+    <li>Public AI announcements (Citi Arc, JPM Index AI, etc.) with vendor model counts where disclosed</li>
+    <li>BCBS 239 compliance language in annual reports</li>
+    <li>Public conference appearances by CRO, CCO, and Head of MRM</li>
+  </ul>
+</section>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Private-mode scoring (v1.0 — subscribers)</h2>
+  <p class="text-stone-700 leading-relaxed mb-4">v1.0 introduces a private-mode subscriber score that uses live evidence from the bank's Tier-4-conformant implementation. Private-mode scores incorporate runtime evidence freshness, packet generation latency, and conformance test suite passing levels.</p>
+  <p class="text-stone-700 leading-relaxed">Subscribed banks always score higher in private mode than they would in public mode, because private mode has richer data.</p>
+</section>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Distribution</h2>
+  <p class="text-stone-700 leading-relaxed mb-4">v0 published Q3 2026 with American Banker as the founding research distribution partner. Subsequent quarterly editions distributed via the same channel.</p>
+</section>
+
+<section class="mb-12">
+  <h2 class="font-serif text-2xl mb-4">Methodology document</h2>
+  <p class="text-stone-700 leading-relaxed mb-4">The full methodology document, including scoring formulae, weighting, signal-source attribution, and quality assurance procedures, is published under CC-BY-4.0.</p>
+  <a href="https://github.com/atestia/tier4-mcp-server/blob/main/docs/INDEX-METHODOLOGY.md" class="text-cyan-700 underline">Read full methodology (coming Mon 6/1)</a>
+</section>
+
+<footer class="mt-24 pt-8 border-t border-stone-200 text-sm text-stone-600">
+  <p>The Index is published by the Tier-4 Compliance Working Group. v0 publication: Q3 2026.</p>
+</footer>
+
+</main>
+</body>
+</html>
