@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Atestia — The runtime evidence layer for AI-powered banks</title>
+<meta name="description" content="Atestia builds the universal evidence layer for regulated AI. Atestia is the founding sponsor of the Tier-4 Compliance Working Group and ships the commercial enterprise tier of the open Tier-4 specification." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif}
+</style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+
+<header class="border-b border-stone-200 bg-white sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-bold text-lg">Atestia</a>
+    <nav class="text-sm text-stone-700 space-x-6 hidden md:flex">
+      <a href="#product" class="hover:text-cyan-700">Product</a>
+      <a href="#pricing" class="hover:text-cyan-700">Pricing</a>
+      <a href="../spec.html" class="hover:text-cyan-700">Tier-4 spec</a>
+      <a href="../charter.html" class="hover:text-cyan-700">Working Group</a>
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-cyan-700">GitHub</a>
+      <a href="https://www.npmjs.com/package/@atestia/tier4-mcp-server" class="hover:text-cyan-700">npm</a>
+    </nav>
+    <a href="#contact" class="text-sm font-semibold bg-stone-900 text-white px-4 py-2 rounded hover:bg-cyan-700">Contact</a>
+  </div>
+</header>
+
+<main>
+
+<section class="max-w-5xl mx-auto px-6 pt-20 pb-16">
+  <p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">The universal evidence layer for regulated AI</p>
+  <h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">The runtime evidence layer for AI-powered banks.</h1>
+  <p class="text-xl text-stone-700 mb-8 max-w-3xl">Atestia captures every vendor model invocation, every risk data lineage event, and every agent reasoning chain at runtime, in production, examiner-ready. Banks today. Capital markets, insurance, healthcare next.</p>
+  <div class="flex flex-wrap gap-4">
+    <a href="#product" class="px-6 py-3 bg-stone-900 text-white font-semibold rounded hover:bg-cyan-700">See the product</a>
+    <a href="https://github.com/Atestia/tier4-mcp-server" class="px-6 py-3 border-2 border-stone-900 text-stone-900 font-semibold rounded hover:bg-stone-900 hover:text-white">Open-source on GitHub</a>
+  </div>
+  <p class="text-sm text-stone-500 mt-6">Built on Anthropic MCP. OpenLineage compatible. MPL-2.0. Governed by the <a href="../charter.html" class="text-cyan-700 underline">Tier-4 Compliance Working Group</a> (501(c)(6)).</p>
+</section>
+
+<section id="product" class="bg-white border-y border-stone-200">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Product</p>
+    <h2 class="font-serif text-4xl mb-8">One MCP server. Ten tools. Three regulations at launch.</h2>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      <div class="border-l-4 border-cyan-700 pl-4">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-widest mb-2">Lineage capture</p>
+        <p class="font-semibold text-stone-900">Every vendor model call</p>
+        <p class="text-stone-700 text-sm mt-2">SHA-256 input hash + vendor ID + agent ID + latency + decision context, persisted at invocation time.</p>
+      </div>
+      <div class="border-l-4 border-cyan-700 pl-4">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-widest mb-2">Reasoning capture</p>
+        <p class="font-semibold text-stone-900">Every agent decision</p>
+        <p class="text-stone-700 text-sm mt-2">Observation → tool call → tool result → decision, with confidence + human-in-loop status.</p>
+      </div>
+      <div class="border-l-4 border-cyan-700 pl-4">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-widest mb-2">Packet generation</p>
+        <p class="font-semibold text-stone-900">Examiner-ready on demand</p>
+        <p class="text-stone-700 text-sm mt-2">OCC 2013-29, SR 26-2, BCBS 239, ECOA Reg B Adverse Action — generated in seconds.</p>
+      </div>
+    </div>
+
+    <h3 class="font-serif text-2xl mb-4">Regulations covered at launch</h3>
+    <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="text-left bg-stone-100">
+        <tr>
+          <th class="px-4 py-3 font-semibold">Regulation</th>
+          <th class="px-4 py-3 font-semibold">Type</th>
+          <th class="px-4 py-3 font-semibold">Atestia tool</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-stone-200">
+        <tr><td class="px-4 py-3"><strong>BCBS 239</strong> (Basel risk data lineage)</td><td class="px-4 py-3">Binding</td><td class="px-4 py-3 font-mono text-xs">tier4.lineage.bcbs239</td></tr>
+        <tr><td class="px-4 py-3"><strong>ECOA Reg B</strong> (fair-lending adverse action)</td><td class="px-4 py-3">Binding statute</td><td class="px-4 py-3 font-mono text-xs">tier4.packet.regb-notice</td></tr>
+        <tr><td class="px-4 py-3"><strong>SR 26-2</strong> (Fed supervisory)</td><td class="px-4 py-3">Guidance</td><td class="px-4 py-3 font-mono text-xs">tier4.packet.sr-26-2</td></tr>
+        <tr><td class="px-4 py-3"><strong>OCC 2013-29</strong> (vendor questionnaire)</td><td class="px-4 py-3">Long-standing</td><td class="px-4 py-3 font-mono text-xs">tier4.packet.occ-2013-29</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="font-serif text-2xl mt-12 mb-4">Roadmap</h3>
+    <div class="grid md:grid-cols-2 gap-4 text-sm text-stone-700">
+      <div class="border border-stone-200 rounded p-4 bg-stone-50"><strong>Q4 2026.</strong> CCAR/DFAST stress test lineage. OFAC sanctions screening lineage. HMDA mortgage lending lineage. Multi-cloud audit consolidation (AWS Bedrock + Azure OpenAI + GCP Vertex).</div>
+      <div class="border border-stone-200 rounded p-4 bg-stone-50"><strong>Q1-Q2 2027.</strong> EU AI Act Annex III. NAIC AI Bulletin (insurance). SEC IA-22 + FINRA (capital markets). HIPAA + FDA AI/ML SaMD (healthcare).</div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="max-w-5xl mx-auto px-6 py-16">
+  <p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Pricing</p>
+  <h2 class="font-serif text-4xl mb-3">Self-serve developer tier. Enterprise sales-led.</h2>
+  <p class="text-stone-700 mb-8">Bank platform pricing is sales-led with custom scope. Developer / vendor / audit firm / insurance carrier subscriptions are self-serve below.</p>
+  <div class="grid md:grid-cols-4 gap-4">
+    <div class="border border-stone-200 rounded p-6 bg-white">
+      <p class="text-xs font-semibold text-stone-500 uppercase tracking-widest mb-2">Free OSS</p>
+      <p class="font-serif text-3xl mb-2">$0</p>
+      <p class="text-xs text-stone-500 mb-4">Self-hosted</p>
+      <ul class="text-sm text-stone-700 space-y-1">
+        <li>Local SQLite</li>
+        <li>Unlimited calls</li>
+        <li>Community support</li>
+      </ul>
+    </div>
+    <div class="border border-stone-200 rounded p-6 bg-white">
+      <p class="text-xs font-semibold text-stone-500 uppercase tracking-widest mb-2">Starter</p>
+      <p class="font-serif text-3xl mb-2">$99<span class="text-sm text-stone-500"> /mo</span></p>
+      <p class="text-xs text-stone-500 mb-4">$990/yr (16% off)</p>
+      <ul class="text-sm text-stone-700 space-y-1">
+        <li>10,000 calls/mo</li>
+        <li>30-day hosted lineage</li>
+        <li>Read-only dashboard</li>
+        <li>Email support</li>
+      </ul>
+    </div>
+    <div class="border-2 border-cyan-700 rounded p-6 bg-white relative">
+      <p class="absolute -top-3 left-4 bg-cyan-700 text-white text-xs font-semibold px-2 py-1 rounded">Most popular</p>
+      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Pro</p>
+      <p class="font-serif text-3xl mb-2">$999<span class="text-sm text-stone-500"> /mo</span></p>
+      <p class="text-xs text-stone-500 mb-4">$9,990/yr</p>
+      <ul class="text-sm text-stone-700 space-y-1">
+        <li>100,000 calls/mo</li>
+        <li>90-day hosted + S3 export</li>
+        <li>Full MRM analyst UI</li>
+        <li>Slack channel + 24h SLA</li>
+      </ul>
+    </div>
+    <div class="border border-stone-200 rounded p-6 bg-white">
+      <p class="text-xs font-semibold text-stone-500 uppercase tracking-widest mb-2">Scale</p>
+      <p class="font-serif text-3xl mb-2">$4,999<span class="text-sm text-stone-500"> /mo</span></p>
+      <p class="text-xs text-stone-500 mb-4">$49,990/yr</p>
+      <ul class="text-sm text-stone-700 space-y-1">
+        <li>1,000,000 calls/mo</li>
+        <li>Customer KMS</li>
+        <li>Custom retention</li>
+        <li>Dedicated SE + 4h SLA</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-6 border-l-4 border-stone-900 pl-4 py-4 bg-white">
+    <p class="text-stone-900 font-semibold">Enterprise (banks)</p>
+    <p class="text-stone-700 text-sm mt-1">Custom pricing $50K-$3M ACV based on AUM, vendor model count, retention requirements. Includes 7-year SR 26-2-compliant retention, customer-held KMS, MRM analyst UI, indemnification, 24-7 SLA. <a href="#contact" class="text-cyan-700 underline">Contact sales</a>.</p>
+  </div>
+</section>
+
+<section class="bg-stone-900 text-white">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <p class="text-sm text-cyan-300 font-semibold uppercase tracking-widest mb-4">Get started</p>
+    <h2 class="font-serif text-4xl mb-8">Install in 60 seconds.</h2>
+    <div class="bg-stone-800 rounded p-6 font-mono text-sm overflow-x-auto">
+      <p class="text-stone-400"># Install</p>
+      <p class="text-white">npm install @atestia/tier4-mcp-server</p>
+      <p class="text-stone-400 mt-4"># Configure Claude Desktop / Cursor / Bedrock AgentCore</p>
+      <p class="text-white">{</p>
+      <p class="text-white pl-4">"mcpServers": {</p>
+      <p class="text-white pl-8">"tier4": {</p>
+      <p class="text-white pl-12">"command": "tier4-mcp-server",</p>
+      <p class="text-white pl-12">"env": { "TIER4_TENANT_ID": "your-bank-tenant" }</p>
+      <p class="text-white pl-8">}</p>
+      <p class="text-white pl-4">}</p>
+      <p class="text-white">}</p>
+    </div>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="px-6 py-3 bg-white text-stone-900 font-semibold rounded hover:bg-cyan-300">Open the GitHub repo</a>
+      <a href="https://www.npmjs.com/package/@atestia/tier4-mcp-server" class="px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-stone-900">npm package</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="max-w-5xl mx-auto px-6 py-16">
+  <p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Contact</p>
+  <h2 class="font-serif text-4xl mb-6">Talk to us.</h2>
+  <div class="grid md:grid-cols-3 gap-6 text-sm">
+    <div class="border border-stone-200 rounded p-6 bg-white">
+      <p class="font-semibold mb-2">Banks (enterprise)</p>
+      <p class="text-stone-700 mb-3">Pilot scoping, MSA, InfoSec review, MRM integration.</p>
+      <a href="mailto:enterprise@atestia.ai" class="text-cyan-700 underline">enterprise@atestia.ai</a>
+    </div>
+    <div class="border border-stone-200 rounded p-6 bg-white">
+      <p class="font-semibold mb-2">Working Group</p>
+      <p class="text-stone-700 mb-3">Charter Member applications, spec RFC, sub-committee proposals.</p>
+      <a href="mailto:charter@atestia.ai" class="text-cyan-700 underline">charter@atestia.ai</a>
+    </div>
+    <div class="border border-stone-200 rounded p-6 bg-white">
+      <p class="font-semibold mb-2">Press</p>
+      <p class="text-stone-700 mb-3">Interviews, embargoed announcements, conference coverage.</p>
+      <a href="mailto:press@atestia.ai" class="text-cyan-700 underline">press@atestia.ai</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-stone-200 mt-16">
+  <div class="max-w-5xl mx-auto px-6 py-12 text-sm text-stone-600">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div>
+        <p class="font-bold text-stone-900 mb-3">Atestia</p>
+        <p>The universal evidence layer for regulated AI.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-stone-900 mb-3">Product</p>
+        <a href="#product" class="block hover:text-cyan-700">Tier-4 MCP server</a>
+        <a href="#pricing" class="block hover:text-cyan-700">Pricing</a>
+        <a href="https://github.com/Atestia/tier4-mcp-server" class="block hover:text-cyan-700">GitHub</a>
+        <a href="https://www.npmjs.com/package/@atestia/tier4-mcp-server" class="block hover:text-cyan-700">npm</a>
+      </div>
+      <div>
+        <p class="font-semibold text-stone-900 mb-3">Standards</p>
+        <a href="../spec.html" class="block hover:text-cyan-700">Tier-4 v1.2 spec</a>
+        <a href="../charter.html" class="block hover:text-cyan-700">Working Group</a>
+        <a href="../registry.html" class="block hover:text-cyan-700">Registry</a>
+        <a href="../methodology.html" class="block hover:text-cyan-700">Index methodology</a>
+      </div>
+      <div>
+        <p class="font-semibold text-stone-900 mb-3">Company</p>
+        <a href="mailto:hello@atestia.ai" class="block hover:text-cyan-700">hello@atestia.ai</a>
+        <a href="mailto:security@atestia.ai" class="block hover:text-cyan-700">security@atestia.ai</a>
+      </div>
+    </div>
+    <p class="mt-12 text-xs text-stone-500">Atestia is operated by FuteurCredX Inc., a Delaware corporation. Tier-4 specification is published under CC-BY-4.0 by the Tier-4 Compliance Working Group, a Delaware 501(c)(6) industry association.</p>
+  </div>
+</footer>
+
+</body>
+</html>
