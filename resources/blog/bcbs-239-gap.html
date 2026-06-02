@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The BCBS 239 lineage gap nobody is solving — Atestia</title>
+<meta name="description" content="Twelve years after publication, the Basel risk data aggregation principles remain partially implemented. The runtime lineage layer is what's missing. Here is the architecture." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}article p{line-height:1.7;color:#44403c;margin-bottom:1em}article h2{font-family:'Iowan Old Style','Charter','Georgia',serif;font-size:2rem;margin-top:3rem;margin-bottom:1rem;letter-spacing:-0.02em}article h3{font-weight:600;font-size:1.25rem;margin-top:2rem;margin-bottom:0.5rem}article ul{list-style:disc;padding-left:1.5rem;margin-bottom:1em}article li{margin-bottom:0.5rem;color:#44403c}article a{color:#0e7490;text-decoration:underline}article blockquote{border-left:4px solid #0e7490;padding-left:1.5rem;font-style:italic;color:#57534e;margin:1.5rem 0}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../../platform.html" class="hover:text-accent">Platform</a>
+<a href="../../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../index.html" class="text-accent font-semibold">Resources</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<article class="max-w-3xl mx-auto px-6 py-16">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">REGULATORY · 6 min read</p>
+<h1 class="font-serif text-4xl md:text-5xl leading-tight mb-6">The BCBS 239 lineage gap nobody is solving.</h1>
+<p class="text-stone-500 text-sm mb-12">Sean Kuesia · Published 2026-06-02</p>
+
+<p>The Basel Committee on Banking Supervision published BCBS 239 in January 2013. The document — formally titled "Principles for effective risk data aggregation and risk reporting" — establishes fourteen principles that globally systemically important banks (G-SIBs) and domestic systemically important banks (D-SIBs) must implement. The original compliance deadline for G-SIBs was January 2016. Ten years later, most banks remain partially compliant.</p>
+
+<p>The reason is mostly architectural. BCBS 239 demands end-to-end lineage from source system to risk report. Banks have spent the last decade buying data catalogs — Collibra, Alation, Informatica — that document data assets but do not capture lineage events at runtime. The catalog approach works for stable schemas where lineage can be documented once and updated quarterly. It does not work for the modern AI-augmented data pipeline where transformations are spawned dynamically by Spark jobs, dbt models, and agentic workflows.</p>
+
+<h2>The fourteen principles, summarized</h2>
+
+<p>BCBS 239's principles fall into three tiers. The first tier is governance and infrastructure: a bank's data architecture and IT infrastructure must support effective risk data aggregation, with strong governance and clear ownership. The second tier is data aggregation capabilities: accuracy and integrity, completeness, timeliness, adaptability. The third tier is reporting practices: accuracy, comprehensiveness, clarity, frequency, and distribution.</p>
+
+<p>Every principle assumes the bank can answer "where did this number come from?" — for any number that appears in a regulatory report, the bank must be able to trace the data back to source systems, document the transformations, and prove the lineage held under audit.</p>
+
+<p>This is the lineage requirement. It is the foundation under everything else BCBS 239 asks for.</p>
+
+<h2>What the data catalog approach captures and misses</h2>
+
+<p>A modern data catalog records the static structure of the data estate: which tables exist, which columns they contain, what types, which downstream tables they feed. Modern catalogs use automated parsers (Atlan's reverse SQL, Alation's Compose, Collibra's dataLineage) to extract column-level lineage from SQL statements. This is genuinely useful for impact analysis, data discovery, and basic compliance attestation.</p>
+
+<p>It misses three things.</p>
+
+<p><strong>One: dynamic transformations.</strong> A Spark job that joins two tables and writes a third does not necessarily appear in the catalog until the next scan. If the scan runs nightly and the job ran six hours ago to populate a risk report, the catalog's lineage view is incorrect.</p>
+
+<p><strong>Two: agentic invocations.</strong> When a bank's risk data pipeline now includes calls to vendor LLM models — for example, an agent that classifies counterparty relationships, summarizes news, or produces narrative explanations for risk reports — the catalog cannot represent that. The catalog has no concept of "an LLM saw this data and produced this output."</p>
+
+<p><strong>Three: temporal lineage.</strong> When an examiner asks "what was the lineage of this CCAR number as of June 30, 2026," the catalog's current view does not answer the question. Banks need point-in-time lineage, not catalog state.</p>
+
+<h2>The runtime lineage layer</h2>
+
+<p>The architectural answer is to capture lineage events at the point where data flows happen — runtime — rather than reconstructing lineage from static structure. Every Spark job emits an event. Every dbt run emits an event. Every Airflow DAG execution emits an event. Every agentic LLM invocation emits an event. These events are persisted with timestamps and form an append-only log of what actually happened.</p>
+
+<p>The OpenLineage specification, maintained by the Linux Foundation AI &amp; Data Foundation, defines the canonical event format. It is implemented natively by Airflow, dbt, Snowflake (via Horizon), and Databricks (via Unity Catalog). Apache Spark has an OpenLineage integration. Marquez is the open-source reference implementation of the OpenLineage backend.</p>
+
+<p>This is the missing layer in most banks' BCBS 239 implementations. Banks have catalogs. Banks have lineage parsers. Banks do not have OpenLineage emission at runtime across their data estate.</p>
+
+<h2>Where Atestia fits</h2>
+
+<p>The Atestia Tier-4 MCP server adds two things to the OpenLineage runtime lineage story.</p>
+
+<p>First, it adds vendor model invocations as a first-class lineage event type. When a bank's agentic AI calls Experian for a credit check, calls Plaid for an account lookup, or calls Claude for narrative generation, that call becomes a Tier-4 lineage record. The lineage record links to upstream OpenLineage data lineage events (the source tables the agent read from) and downstream OpenLineage events (the tables the agent wrote to). Vendor model invocations become navigable nodes in the lineage graph.</p>
+
+<p>Second, it adds the BCBS 239 packet generator. Given a target regulatory report — CCAR Y-14A schedule, DFAST submission, Y-15 quarterly call — the packet generator walks backwards through the lineage graph and produces a BCBS 239-conformant aggregation reference document. The document maps every data element in the report back through the transformation chain to source systems, with timestamps, transformation rationale, and validation links.</p>
+
+<h2>The reverse pattern</h2>
+
+<p>The pattern also runs in reverse. When an OCC examiner walks into a bank's MRM team and asks "show me the BCBS 239 evidence for this CCAR number that was reported nine months ago," the MRM team can issue a query against the Atestia lineage substrate. The substrate returns the lineage graph as of the report submission date. The graph identifies every source system, every transformation, every vendor model invocation, and every validation event that contributed to the number. The team produces a packet.</p>
+
+<p>This is the workflow banks have wanted since 2013 but could not build with catalog tools alone. The runtime lineage layer is what makes it possible.</p>
+
+<h2>If you already have OpenLineage emission</h2>
+
+<p>Most banks that have invested in OpenLineage emission did so to feed Marquez or to integrate with Snowflake Horizon. The Atestia MCP server consumes the same OpenLineage event stream and joins it to vendor model invocation events that OpenLineage cannot represent natively. The integration is additive, not replacement. You keep your existing OpenLineage backend.</p>
+
+<p>If you have not invested in OpenLineage emission yet, starting with the Atestia MCP server gives you the vendor-model side of the lineage graph immediately, and you can backfill data-side OpenLineage emission incrementally — Spark today, dbt next quarter, Airflow when convenient.</p>
+
+<h2>What to do this week</h2>
+
+<p>If you are running BCBS 239 for a G-SIB or D-SIB and you have not yet stood up runtime lineage capture, the practical path is:</p>
+
+<ul>
+<li>Inventory your existing OpenLineage emission. Most banks have more than they realize. Snowflake Horizon, Databricks Unity Catalog, Airflow on EKS, and most dbt deployments emit OpenLineage by default.</li>
+<li>Install <code>@atestia/tier4-mcp-server</code> in a sandbox. Configure it as an MCP server in your AI agent stack. Capture vendor model invocations for one workflow.</li>
+<li>Try <code>tier4.packet.bcbs-239</code> for a target regulatory report. Compare the generated packet to what your team manually assembles today.</li>
+<li>Decide whether the gap closes a real workflow problem for your team. If yes, talk to us about the commercial tier.</li>
+</ul>
+
+<p>The full <a href="https://github.com/Atestia/tier4-mcp-server/blob/main/docs/SPEC.md">Tier-4 v1.2 specification</a> describes the BCBS 239 packet format in section 7. The reference implementation passes 74 of 74 conformance tests for the spec.</p>
+
+<div class="border-t border-stone-200 mt-12 pt-8">
+<p class="text-xs text-stone-500">Sean Kuesia is the founder of Atestia. Atestia is sponsor of the Tier-4 Compliance Working Group.</p>
+</div>
+
+</article>
+
+<section class="bg-ink text-white py-16">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<h2 class="font-serif text-3xl mb-4">Implementing BCBS 239 at your bank?</h2>
+<a href="../../contact.html" class="inline-block px-6 py-3 bg-white text-ink font-semibold rounded hover:bg-stone-200">Book a demo</a>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+<script src="../../assets/shared.js" defer></script>
+</body>
+</html>

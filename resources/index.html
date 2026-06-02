@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Resources — Atestia</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../platform.html" class="hover:text-accent">Platform</a>
+<a href="../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="index.html" class="text-accent font-semibold">Resources</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-5xl mx-auto px-6">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Resources</p>
+<h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Read, learn, build.</h1>
+<p class="text-xl text-stone-700 max-w-3xl">Long-form research, integration guides, regulatory explainers, and the public Tier-4 Bank MRM Readiness Index.</p>
+</div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-20">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-serif text-3xl mb-8">Recent articles</h2>
+<div class="space-y-6">
+<a href="blog/sr-26-2-changes-everything.html" class="block bg-white border border-stone-200 rounded-lg p-8 hover:border-accent hover:shadow-lg transition">
+<p class="text-xs text-accent font-semibold uppercase tracking-widest mb-2">REGULATORY · 8 min read</p>
+<h3 class="font-serif text-2xl mb-2">Why SR 26-2 changes everything for bank AI</h3>
+<p class="text-stone-700">The April 2026 joint Fed/OCC/FDIC interagency statement deliberately excluded generative and agentic AI from definitional model scope, while holding banks fully accountable for every vendor model their agents invoke. Here is what that actually means for your MRM team.</p>
+<p class="text-xs text-stone-500 mt-4">Published 2026-06-02 · Sean Kuesia</p>
+</a>
+<a href="blog/bcbs-239-gap.html" class="block bg-white border border-stone-200 rounded-lg p-8 hover:border-accent hover:shadow-lg transition">
+<p class="text-xs text-accent font-semibold uppercase tracking-widest mb-2">REGULATORY · 6 min read</p>
+<h3 class="font-serif text-2xl mb-2">The BCBS 239 lineage gap nobody is solving</h3>
+<p class="text-stone-700">Twelve years after publication, the Basel Committee's risk data aggregation principles remain unimplemented at most banks because the runtime lineage layer never existed. Here is the architecture that closes the gap.</p>
+<p class="text-xs text-stone-500 mt-4">Published 2026-06-02 · Sean Kuesia</p>
+</a>
+<a href="blog/inside-a-tier4-packet.html" class="block bg-white border border-stone-200 rounded-lg p-8 hover:border-accent hover:shadow-lg transition">
+<p class="text-xs text-accent font-semibold uppercase tracking-widest mb-2">TECHNICAL · 10 min read</p>
+<h3 class="font-serif text-2xl mb-2">What is actually inside a Tier-4 attestation packet</h3>
+<p class="text-stone-700">A line-by-line walk through the SR 26-2 attestation pack, OCC 2013-29 questionnaire, BCBS 239 aggregation reference, and ECOA Reg B Adverse Action Notice that the Atestia Tier-4 MCP server generates.</p>
+<p class="text-xs text-stone-500 mt-4">Published 2026-06-02 · Sean Kuesia</p>
+</a>
+</div>
+</div>
+</section>
+
+<section class="border-b border-stone-200 py-20">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-serif text-3xl mb-8">Reference material</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<a href="../tier4/spec.html" class="block bg-white border border-stone-200 rounded p-6 hover:border-accent transition">
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">SPEC</p>
+<h3 class="font-serif text-xl mb-2">Tier-4 v1.2 Specification</h3>
+<p class="text-sm text-stone-600">CC-BY-4.0 open specification governed by the Working Group.</p>
+</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="block bg-white border border-stone-200 rounded p-6 hover:border-accent transition">
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">CODE</p>
+<h3 class="font-serif text-xl mb-2">Reference implementation</h3>
+<p class="text-sm text-stone-600">MPL-2.0 TypeScript reference on GitHub. 74/74 tests passing.</p>
+</a>
+<a href="../tier4/methodology.html" class="block bg-white border border-stone-200 rounded p-6 hover:border-accent transition">
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">INDEX</p>
+<h3 class="font-serif text-xl mb-2">Bank MRM Readiness Index</h3>
+<p class="text-sm text-stone-600">Quarterly published score. v0 Q3 2026 via American Banker.</p>
+</a>
+</div>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+<script src="../assets/shared.js" defer></script>
+</body>
+</html>

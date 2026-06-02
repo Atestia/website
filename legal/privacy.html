@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Privacy Policy — Atestia</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../platform.html" class="hover:text-accent">Platform</a>
+<a href="../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../customers.html" class="hover:text-accent">Customers</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-3xl mx-auto px-6">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Legal</p>
+<h1 class="font-serif text-5xl leading-tight mb-4">Privacy Policy</h1>
+<p class="text-sm text-stone-500">Effective 2026-06-02. Last updated 2026-06-02.</p>
+</div>
+</section>
+
+<section class="py-16">
+<div class="max-w-3xl mx-auto px-6 prose prose-stone max-w-none">
+
+<p class="text-lg text-stone-700 leading-relaxed mb-8">Atestia is operated by <strong>FuteurCredX Inc.</strong>, a Delaware corporation ("Atestia," "we," "us"). This Privacy Policy explains what personal data we collect, how we use it, and the rights you have under GDPR, CCPA/CPRA, and other applicable privacy laws.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">1. What we collect</h2>
+<h3 class="font-semibold mt-6 mb-2">1.1 Information you provide</h3>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li><strong>Contact information</strong> when you book a demo, apply to the Working Group, or email us: name, email, company, role, phone if provided.</li>
+<li><strong>Account information</strong> if you subscribe to Atestia Pro: email, billing address, payment method (processed by Stripe; we never store card numbers).</li>
+<li><strong>Communications</strong> you send us (support requests, sales inquiries, Working Group correspondence).</li>
+</ul>
+
+<h3 class="font-semibold mt-6 mb-2">1.2 Information collected automatically</h3>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li><strong>Website analytics</strong>: page views, referrer, browser type, IP-derived region. Only after you accept cookies.</li>
+<li><strong>Atestia Pro usage</strong>: API call counts, tool invocations, error rates. Used for billing and platform reliability.</li>
+</ul>
+
+<h3 class="font-semibold mt-6 mb-2">1.3 What we explicitly do NOT collect</h3>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li><strong>Customer payload data.</strong> The Atestia Tier-4 MCP server captures <em>hashes</em> of vendor model inputs, never raw inputs. Bank customer records, transaction details, and PII never reach Atestia infrastructure.</li>
+<li><strong>Vendor model outputs</strong> are not stored. Only metadata (vendor ID, agent ID, latency, success/failure) is captured.</li>
+<li><strong>Banker LLM prompts</strong> are not collected. The reasoning capture tool stores agent-supplied summaries only.</li>
+</ul>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">2. How we use information</h2>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li>Deliver and operate the Atestia Platform and Atestia Pro service.</li>
+<li>Respond to sales inquiries, schedule demos, and process Working Group applications.</li>
+<li>Bill subscriptions and process refunds.</li>
+<li>Improve the product and the open-source reference implementation.</li>
+<li>Comply with legal obligations (tax records, regulatory inquiries, court orders).</li>
+<li>Detect and prevent fraud or abuse of our services.</li>
+</ul>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">3. Legal bases (GDPR)</h2>
+<p class="text-stone-700 mb-2">We process your data under the following legal bases:</p>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li><strong>Contract</strong>: to provide services you signed up for.</li>
+<li><strong>Legitimate interests</strong>: to run our business, prevent fraud, and improve products.</li>
+<li><strong>Consent</strong>: for non-essential cookies and marketing communications.</li>
+<li><strong>Legal obligation</strong>: where required by law.</li>
+</ul>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">4. Who we share data with</h2>
+<p class="text-stone-700 mb-2">We share limited personal data only with:</p>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li><strong>Service providers</strong> under data processing agreements: AWS (US-East-1 cloud), Stripe (billing), Cloudflare (DNS+email), Vercel (web hosting), Vanta or Drata (SOC 2 control automation).</li>
+<li><strong>Professional advisors</strong>: legal counsel, accountants, auditors under confidentiality.</li>
+<li><strong>Authorities</strong>: when required by binding legal process or to protect rights, safety, or property.</li>
+<li><strong>In connection with corporate transactions</strong>: merger, acquisition, or asset sale, with customary protections.</li>
+</ul>
+<p class="text-stone-700 mb-4">We never sell personal data and have never received money or other valuable consideration for personal information.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">5. Your rights</h2>
+<p class="text-stone-700 mb-2">Depending on your jurisdiction, you may have the right to:</p>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li>Access the personal data we hold about you.</li>
+<li>Correct inaccurate or incomplete data.</li>
+<li>Delete your data (right to erasure / right to be forgotten).</li>
+<li>Restrict or object to certain processing.</li>
+<li>Receive a portable copy of your data.</li>
+<li>Opt out of "sale" or "sharing" (CCPA/CPRA — we do not sell, but you may still opt out).</li>
+<li>Withdraw consent (where processing is based on consent).</li>
+<li>Lodge a complaint with a supervisory authority.</li>
+</ul>
+<p class="text-stone-700 mb-4">Submit requests to <a href="mailto:privacy@atestia.ai" class="text-accent underline">privacy@atestia.ai</a>. We will respond within 30 days (45 days for CCPA, extendable once with notice).</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">6. International transfers</h2>
+<p class="text-stone-700 mb-4">Our primary infrastructure runs in AWS US-East-1 (Virginia). If you access our services from outside the United States, your data will be transferred to and processed in the US. We rely on Standard Contractual Clauses (SCCs) for EU/UK data transfers and supplementary measures as required by the EU GDPR and UK GDPR.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">7. Retention</h2>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li><strong>Contact form submissions</strong>: 2 years from last interaction.</li>
+<li><strong>Atestia Pro account data</strong>: for the duration of your subscription plus 7 years for financial records.</li>
+<li><strong>Atestia Platform tenant lineage data</strong>: customer-controlled. Default retention 7 years per SR 26-2 examination requirements; customer may instruct earlier deletion subject to retention obligations.</li>
+<li><strong>Marketing analytics</strong>: 26 months maximum.</li>
+<li><strong>Working Group membership records</strong>: while membership active plus 3 years (IRS recordkeeping for 501(c)(6)).</li>
+</ul>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">8. Cookies</h2>
+<p class="text-stone-700 mb-4">We use a minimal set of cookies. The banner you saw on first visit lets you accept or reject non-essential cookies. Strictly necessary cookies (session, security, language preference) are set without consent and cannot be disabled.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">9. Children</h2>
+<p class="text-stone-700 mb-4">Our services are not directed to individuals under 16. We do not knowingly collect data from children. If you believe a child has provided us with information, please contact <a href="mailto:privacy@atestia.ai" class="text-accent underline">privacy@atestia.ai</a> and we will delete it.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">10. Security</h2>
+<p class="text-stone-700 mb-4">We use encryption in transit (TLS 1.2+) and at rest (AES-256 with AWS KMS). Production access is logged. Multi-factor authentication is required for administrative actions. We will pursue SOC 2 Type 1 in 2026 and SOC 2 Type 2 in 2027. Report suspected vulnerabilities to <a href="mailto:security@atestia.ai" class="text-accent underline">security@atestia.ai</a>.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">11. Changes to this policy</h2>
+<p class="text-stone-700 mb-4">We may update this policy. Material changes will be announced via the home page banner or by email to active subscribers at least 30 days before taking effect.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">12. Contact</h2>
+<p class="text-stone-700 mb-2"><strong>Atestia (FuteurCredX Inc.)</strong></p>
+<p class="text-stone-700 mb-2">Delaware, United States</p>
+<p class="text-stone-700 mb-2">Email: <a href="mailto:privacy@atestia.ai" class="text-accent underline">privacy@atestia.ai</a></p>
+<p class="text-stone-700 mb-2">EU representative: to be appointed Q3 2026</p>
+<p class="text-stone-700 mb-2">UK representative: to be appointed Q3 2026</p>
+
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+<script src="../assets/shared.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>For RegTech vendors — Atestia</title>
+<meta name="description" content="Embed Atestia Tier-4 lineage capture into your RegTech product. Sell bank-ready, examiner-defensible features to your bank customers without rebuilding the runtime evidence layer from scratch." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../platform.html" class="hover:text-accent">Platform</a>
+<a href="banks.html" class="text-accent font-semibold">Solutions</a>
+<a href="../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../customers.html" class="hover:text-accent">Customers</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-5xl mx-auto px-6">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Solutions — RegTech vendors</p>
+<h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Ship bank-ready features without rebuilding the evidence layer.</h1>
+<p class="text-xl text-stone-700 leading-relaxed max-w-3xl">If you sell RegTech, compliance automation, MRM tooling, or AI agent platforms to US banks, your customers will start asking for SR 26-2, BCBS 239, and ECOA Reg B evidence. Embed Atestia and ship in days, not months.</p>
+</div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-20">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-serif text-4xl mb-12 text-center">Who this is for</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-emerald-700 font-semibold uppercase tracking-widest mb-2">PERSONA</p>
+<h3 class="font-serif text-2xl mb-3">Compliance SaaS vendors</h3>
+<p class="text-sm text-stone-700">Hummingbird. Alloy. Vital4. Quantifind. Verafin. Already sell to bank compliance teams. Add SR 26-2 + BCBS 239 packet generation as a feature.</p>
+</div>
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-emerald-700 font-semibold uppercase tracking-widest mb-2">PERSONA</p>
+<h3 class="font-serif text-2xl mb-3">AI agent platforms</h3>
+<p class="text-sm text-stone-700">LangChain. CrewAI. AutoGen. Bedrock AgentCore. If banks deploy your platform, they need Tier-4 evidence capture out of the box. White-label Atestia.</p>
+</div>
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-emerald-700 font-semibold uppercase tracking-widest mb-2">PERSONA</p>
+<h3 class="font-serif text-2xl mb-3">RegTech startups</h3>
+<p class="text-sm text-stone-700">Pre-Series-A startups selling AI compliance to banks. Use Atestia Pro for $999/mo and inherit bank-grade evidence capture without engineering investment.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="border-b border-stone-200 py-20">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-serif text-4xl mb-12 text-center">Three integration patterns</h2>
+<div class="space-y-6">
+<div class="bg-white border border-stone-200 rounded-lg p-8">
+<p class="text-xs text-accent font-semibold uppercase tracking-widest mb-2">PATTERN 1 · Embedded MCP</p>
+<h3 class="font-serif text-2xl mb-3">Bundle the open-source server inside your product</h3>
+<p class="text-stone-700 mb-3">Ship <code class="bg-stone-100 px-2 py-1 rounded text-sm font-mono">@atestia/tier4-mcp-server</code> as a dependency of your product. Atestia Pro Scale tier ($4,999/mo) includes white-label rights to remove the "Atestia" branding from the MCP server metadata.</p>
+<p class="text-xs text-stone-500">License: MPL-2.0. Your downstream product can be any license. White-label requires Scale or Enterprise tier.</p>
+</div>
+<div class="bg-white border border-stone-200 rounded-lg p-8">
+<p class="text-xs text-accent font-semibold uppercase tracking-widest mb-2">PATTERN 2 · Hosted backend</p>
+<h3 class="font-serif text-2xl mb-3">Use Atestia Pro as your evidence backend</h3>
+<p class="text-stone-700 mb-3">Your product calls the Atestia Pro hosted API. We handle lineage storage, packet generation, OpenLineage export, and retention compliance. You focus on your core differentiation.</p>
+<p class="text-xs text-stone-500">Best for: smaller RegTech vendors who don't want to build storage + KMS + retention. Atestia Pro pricing tiers cover up to 1M calls/month.</p>
+</div>
+<div class="bg-white border border-stone-200 rounded-lg p-8">
+<p class="text-xs text-accent font-semibold uppercase tracking-widest mb-2">PATTERN 3 · OpenLineage forwarding</p>
+<h3 class="font-serif text-2xl mb-3">Forward existing lineage events to Atestia</h3>
+<p class="text-stone-700 mb-3">If your product already emits OpenLineage events (Marquez integration, etc.), forward those events to Atestia for SR 26-2 + BCBS 239 packet generation. Minimal integration work.</p>
+<p class="text-xs text-stone-500">Best for: data platform vendors with established OpenLineage emission. Read more about <a href="https://github.com/Atestia/tier4-mcp-server/blob/main/docs/SPEC.md" class="text-accent underline">our OpenLineage adapter</a>.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-20">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="font-serif text-4xl mb-12 text-center">What you sell to your bank customer</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="border-l-4 border-accent pl-6"><h3 class="font-semibold text-lg mb-2">Before Atestia</h3><p class="text-stone-700 text-sm">"Our product helps your MRM team manage model risk." But every vendor model invocation still has no runtime evidence trail. Bank InfoSec asks: "How do we produce examiner packets?" You answer: "That's outside our scope."</p></div>
+<div class="border-l-4 border-emerald-700 pl-6"><h3 class="font-semibold text-lg mb-2">With Atestia embedded</h3><p class="text-stone-700 text-sm">"Our product manages model risk AND captures Tier-4-conformant lineage on every vendor model call. We generate SR 26-2 attestation packs, BCBS 239 aggregation references, and ECOA Reg B Adverse Action Notices on demand." Bank InfoSec checks the box. Deal closes.</p></div>
+</div>
+</div>
+</section>
+
+<section class="bg-ink text-white py-16">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<h2 class="font-serif text-4xl mb-4">Partner with us.</h2>
+<p class="text-stone-300 max-w-2xl mx-auto mb-8">Atestia is recruiting Class II General Members and channel partners for the Tier-4 Compliance Working Group. RegTech vendors that adopt Tier-4 receive listing in the Conformant Implementations Registry and may co-market with Atestia.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="../pricing.html" class="px-6 py-3 bg-white text-ink font-semibold rounded hover:bg-stone-200">See Atestia Pro pricing</a>
+<a href="mailto:partners@atestia.ai" class="px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-ink">Email partners@</a>
+</div>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+<script src="../assets/shared.js" defer></script>
+</body>
+</html>

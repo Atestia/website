@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Why SR 26-2 changes everything for bank AI — Atestia</title>
+<meta name="description" content="The April 2026 SR 26-2 interagency statement excluded GenAI and agentic AI from scope while preserving bank accountability for every vendor model. Here is what that means for your MRM team." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}article p{line-height:1.7;color:#44403c;margin-bottom:1em}article h2{font-family:'Iowan Old Style','Charter','Georgia',serif;font-size:2rem;margin-top:3rem;margin-bottom:1rem;letter-spacing:-0.02em}article h3{font-weight:600;font-size:1.25rem;margin-top:2rem;margin-bottom:0.5rem}article ul{list-style:disc;padding-left:1.5rem;margin-bottom:1em}article li{margin-bottom:0.5rem;color:#44403c}article a{color:#0e7490;text-decoration:underline}article blockquote{border-left:4px solid #0e7490;padding-left:1.5rem;font-style:italic;color:#57534e;margin:1.5rem 0}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../../platform.html" class="hover:text-accent">Platform</a>
+<a href="../../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../index.html" class="text-accent font-semibold">Resources</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<article class="max-w-3xl mx-auto px-6 py-16">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">REGULATORY · 8 min read</p>
+<h1 class="font-serif text-4xl md:text-5xl leading-tight mb-6">Why SR 26-2 changes everything for bank AI.</h1>
+<p class="text-stone-500 text-sm mb-12">Sean Kuesia · Published 2026-06-02 · Last updated 2026-06-02</p>
+
+<p>On April 17, 2026, the Federal Reserve, the OCC, and the FDIC jointly issued SR 26-2 — the revised interagency statement on model risk management. It superseded SR 11-7 for the vendor-model scope. It made one decision that has not yet been processed by most bank MRM teams: it deliberately excluded generative AI and agentic AI from definitional model scope, with a footnote explaining the classes are "novel and rapidly evolving."</p>
+
+<p>Then, in the same document, it preserved the bank's accountability for every vendor model their agents invoke.</p>
+
+<p>This is the largest single piece of unowned governance language in US banking. It defines a gap. Not a small gap. A foundational one. And it does so at exactly the moment every Tier-1 bank has shipped agentic AI in production.</p>
+
+<h2>What the document actually says</h2>
+
+<p>Three sentences from the joint statement are doing most of the work:</p>
+
+<blockquote>"Generative AI and agentic AI models are novel and rapidly evolving. As such, they are not within the scope of this guidance."</blockquote>
+
+<p>That is the carve-out. It exists for two reasons. First, the technology is changing faster than regulator processes can characterize. Second, the existing model risk management framework — built around statistical models with stable interfaces — does not map cleanly to LLM-powered agents that take multi-step actions across systems. Asking Tier-1 banks to apply SR 11-7 validation to a Claude 3.5 Sonnet invocation in the same way they would validate a logistic regression credit model would produce documents nobody can use.</p>
+
+<blockquote>"Outsourcing model development or using vendor products does not outsource model risk."</blockquote>
+
+<p>This is the accountability clause. Banks remain on the hook even when the model they invoke was built and trained by Anthropic, OpenAI, AWS, Google, or any other vendor. The bank's MRM team is responsible for understanding, validating, monitoring, and documenting every vendor model that participates in a bank decision.</p>
+
+<blockquote>"Common advice often treats SOC 2 reports or vendor attestations as sufficient coverage; they are not."</blockquote>
+
+<p>This is the technical clarification. The pattern banks have used since 2013 — accept a SOC 2 Type 2 report from the vendor and check the box — is now explicitly insufficient under the revised guidance.</p>
+
+<h2>Read the three sentences together</h2>
+
+<p>The three together describe a regime with the following properties:</p>
+
+<ul>
+<li>Banks are accountable for vendor models their agents invoke.</li>
+<li>The accountability extends to GenAI and agentic AI, even though those classes are formally out of scope for the supervisory framework that creates the accountability.</li>
+<li>The traditional vendor attestation evidence pattern is explicitly insufficient.</li>
+</ul>
+
+<p>So the bank's MRM team is responsible for producing evidence that the joint guidance does not specify how to produce. That is the gap.</p>
+
+<h2>What examiners will look for</h2>
+
+<p>SR 26-2 is guidance, not enforceable rule. Non-compliance with the guidance does not on its own result in supervisory criticism. However, multiple practitioner-side analyses from Sullivan &amp; Cromwell, Orrick, and KPMG in April-May 2026 converge on the same expected examiner behavior pattern: examiners will treat the model inventory as the primary baseline artifact, and gaps in inventory — especially for vendor and third-party models — will be the trigger for deeper examination.</p>
+
+<p>The Federal Reserve's Vice Chair Bowman, speaking at AI in Financial Services on May 1, 2026, made the supervisory expectation more concrete:</p>
+
+<blockquote>"We are also working to update and simplify our third-party risk-management guidance to reflect actual and future risk."</blockquote>
+
+<p>The signal: more is coming. Banks that build evidence capture infrastructure now will not be caught flat-footed by the next iteration.</p>
+
+<h2>What this means for the MRM team</h2>
+
+<p>Three practical implications.</p>
+
+<p><strong>One.</strong> Your model inventory needs to include vendor models. This is operationally difficult for banks running multi-cloud agentic stacks because Bedrock, Azure OpenAI, and Vertex AI all expose model invocations differently. The inventory needs to be unified across clouds.</p>
+
+<p><strong>Two.</strong> Your documentation needs to extend from validation-time to invocation-time. Pre-deployment validation documents — the SR 11-7-style model card and validation report — still matter. But examiners increasingly will ask for evidence of what the model actually did in production, not just what your validation team predicted it would do. That requires runtime lineage capture.</p>
+
+<p><strong>Three.</strong> Your packet generation needs to be on-demand, not annual. If an examiner asks for the vendor model attestation packet for the credit decision an agent made last September, the bank needs to produce that packet within hours, not weeks. Manual reconstruction from log files and email threads will not survive the cycle.</p>
+
+<h2>The architectural answer</h2>
+
+<p>The technical answer is to insert a runtime evidence capture layer between the agent platform (Bedrock AgentCore, Claude Desktop, custom MCP client) and the vendor model invocation. Every call goes through the capture layer. The capture layer writes a structured lineage record at invocation time, persists it with appropriate retention, and exposes a query interface for packet generation.</p>
+
+<p>This is what Atestia builds. The Tier-4 specification (v1.2) defines the record format, the packet generators, the retention model, and the conformance test suite. The reference implementation (<a href="https://github.com/Atestia/tier4-mcp-server"><code>@atestia/tier4-mcp-server</code></a>) is an MPL-2.0 npm package that any bank engineer can install and validate in an afternoon. The commercial enterprise tier hosts the multi-tenant production version with customer-held KMS keys, 7-year retention, and the indemnification banks need to sign procurement.</p>
+
+<h2>What the next 18 months look like</h2>
+
+<p>The first examination cycle under SR 26-2 will fall in 2027 for banks whose annual cycle runs in Q1-Q2. Most Tier-1 US banks fall in that window. Between now and then, three things will happen:</p>
+
+<ul>
+<li>The regulators will issue a follow-on Request for Information specifically on AI vendor models. The RFI will create the basis for the next interagency statement, which will likely be enforceable.</li>
+<li>The model inventory inquiries will arrive. Examiners doing routine cycles in 2026 will increasingly ask banks to enumerate their vendor model usage. Banks that have a complete inventory survive cleanly. Banks that don't generate MRAs.</li>
+<li>The audit firms will begin asking. KPMG, Deloitte, EY, and PwC are starting to advise their bank clients to invest in runtime governance tooling. Their engagement teams need a packet format to ingest. Whichever bank-vertical implementation produces the format auditors accept becomes the de facto standard.</li>
+</ul>
+
+<h2>The window</h2>
+
+<p>The category-creation window for the runtime evidence layer is 6 to 12 months. ValidMind, Yields, and Credo own adjacent territory. AWS Bedrock could bundle attestation into Guardrails. Anthropic could ship banking-specific MCP servers. None has shipped the integrated runtime-evidence-to-packet pipeline as a dedicated product.</p>
+
+<p>That is the gap Atestia exists to close. We open-sourced the spec under CC-BY-4.0 and the reference implementation under MPL-2.0 because no Tier-1 bank's vendor risk committee will accept a proprietary attestation packet format. The Working Group governance with a non-voting founder seat exists for the same reason. The commercial enterprise tier is the path to revenue.</p>
+
+<p>If you are at a US Tier-1, Tier-2, or community bank in MRM or vendor risk management, and your agentic AI platform does not yet have a runtime evidence layer, talk to us.</p>
+
+<div class="border-t border-stone-200 mt-12 pt-8">
+<p class="text-xs text-stone-500">Sean Kuesia is the founder of Atestia and the author of the Tier-4 v1.2 specification.</p>
+</div>
+
+</article>
+
+<section class="bg-ink text-white py-16">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<h2 class="font-serif text-3xl mb-4">Want to talk about your bank?</h2>
+<a href="../../contact.html" class="inline-block px-6 py-3 bg-white text-ink font-semibold rounded hover:bg-stone-200">Book a demo</a>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+<script src="../../assets/shared.js" defer></script>
+</body>
+</html>

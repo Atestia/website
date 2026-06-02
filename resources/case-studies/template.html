@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Case Study — [ANONYMIZED] — Atestia</title>
+<meta name="description" content="How [Tier-1 / Regional / Community] bank reduced examiner packet generation time from weeks to hours using Atestia Tier-4 runtime evidence capture." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../../platform.html" class="hover:text-accent">Platform</a>
+<a href="../../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../index.html" class="text-accent font-semibold">Resources</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-3xl mx-auto px-6">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">CASE STUDY · [TIER-1 / REGIONAL / COMMUNITY] BANK</p>
+<h1 class="font-serif text-5xl leading-tight mb-6">[ANONYMIZED]: Examiner packet generation time from 3 weeks to 4 hours.</h1>
+<p class="text-stone-500 text-sm">Published [DATE]. Customer name disclosed only with written permission.</p>
+</div>
+</section>
+
+<section class="bg-white border-b border-stone-200 py-16">
+<div class="max-w-3xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-6 mb-12">
+<div><p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">CUSTOMER</p><p class="font-semibold">[Anonymized Regional Bank]</p><p class="text-sm text-stone-600 mt-1">$X0B AUM · US headquartered</p></div>
+<div><p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">DEPLOYED</p><p class="font-semibold">Atestia Platform Enterprise</p><p class="text-sm text-stone-600 mt-1">12-month contract · 6-figure ACV</p></div>
+<div><p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">USE CASE</p><p class="font-semibold">SR 26-2 + ECOA Reg B</p><p class="text-sm text-stone-600 mt-1">Credit decisioning + BCBS 239 lineage</p></div>
+</div>
+
+<h2 class="font-serif text-3xl mb-4">The challenge</h2>
+<p class="text-stone-700 leading-relaxed mb-4">The bank had deployed an agentic credit decisioning system in late 2025. The system invoked vendor models from Experian, Equifax, and Plaid through a Claude-powered orchestrator. By Q1 2026 the system was processing thousands of decisions per week.</p>
+<p class="text-stone-700 leading-relaxed mb-4">When SR 26-2 was issued in April 2026, the MRM team initiated a readiness review. They discovered that no runtime evidence existed for vendor model invocations. The orchestrator's logs captured request/response bodies but in a format unsuitable for examination packets. Producing an OCC 2013-29 questionnaire required ~3 weeks of manual reconstruction from logs, email threads, and vendor SOC 2 reports.</p>
+
+<h2 class="font-serif text-3xl mt-12 mb-4">The deployment</h2>
+<p class="text-stone-700 leading-relaxed mb-4">The team installed the Atestia Tier-4 MCP server in a sandbox in week one. By the end of week two, they had instrumented the orchestrator to write a lineage record on every vendor model invocation. Week three covered MRM analyst UI rollout and packet generation testing. Week four was production cutover.</p>
+<p class="text-stone-700 leading-relaxed mb-4">Atestia Solutions Engineering supported a 4-hour weekly standup throughout. The total engineering effort on the bank's side was approximately 80 hours.</p>
+
+<h2 class="font-serif text-3xl mt-12 mb-4">Results</h2>
+<div class="grid md:grid-cols-2 gap-6 my-8">
+<div class="border-l-4 border-emerald-700 pl-6"><p class="font-mono text-4xl font-bold text-emerald-700">~99%</p><p class="font-semibold mt-2">Reduction in packet generation time</p><p class="text-sm text-stone-600">3 weeks → 4 hours per OCC 2013-29 packet</p></div>
+<div class="border-l-4 border-emerald-700 pl-6"><p class="font-mono text-4xl font-bold text-emerald-700">100%</p><p class="font-semibold mt-2">Coverage of vendor model invocations</p><p class="text-sm text-stone-600">From partial (~60%) to complete</p></div>
+<div class="border-l-4 border-emerald-700 pl-6"><p class="font-mono text-4xl font-bold text-emerald-700">2.4x</p><p class="font-semibold mt-2">MRM analyst capacity freed</p><p class="text-sm text-stone-600">Same headcount, more model validations</p></div>
+<div class="border-l-4 border-emerald-700 pl-6"><p class="font-mono text-4xl font-bold text-emerald-700">$0</p><p class="font-semibold mt-2">Additional cloud infrastructure</p><p class="text-sm text-stone-600">Hosted by Atestia on customer KMS keys</p></div>
+</div>
+
+<h2 class="font-serif text-3xl mt-12 mb-4">In the customer's words</h2>
+<blockquote class="border-l-4 border-accent pl-6 italic text-stone-700 my-6">"[QUOTE PENDING — to be added after customer review approval. Typical content: Head of MRM describes the previous workflow burden, the SR 26-2 readiness anxiety, and the relief of being able to produce examiner-ready evidence on demand.]"</blockquote>
+<p class="text-sm text-stone-500">— [Title], [Anonymized Bank]</p>
+
+<h2 class="font-serif text-3xl mt-12 mb-4">What's next</h2>
+<p class="text-stone-700 leading-relaxed">The bank is currently scoping Phase 2 deployment: BCBS 239 risk data lineage for CCAR submissions and ECOA Reg B Adverse Action Notice automation for the consumer lending portfolio.</p>
+
+<div class="border-t border-stone-200 mt-12 pt-8 text-xs text-stone-500">
+<p>Case study published with customer permission. Customer identity disclosed under separate NDA. Metrics reflect actual deployment outcomes verified by customer's MRM leadership.</p>
+</div>
+</div>
+</section>
+
+<section class="bg-ink text-white py-16">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<h2 class="font-serif text-3xl mb-4">Want a similar deployment at your bank?</h2>
+<a href="../../contact.html" class="inline-block px-6 py-3 bg-white text-ink font-semibold rounded hover:bg-stone-200">Book a demo</a>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+<script src="../../assets/shared.js" defer></script>
+</body>
+</html>
