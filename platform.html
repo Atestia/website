@@ -144,7 +144,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
     <div class="arch-wrap max-w-5xl mx-auto">
 
       <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold mb-3">Layer 1 · Agent platforms</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 items-start">
         <details class="arch-node">
           <summary><span class="icon">B</span><span class="font-semibold text-sm">Bedrock</span><span class="chev">▼</span></summary>
           <div class="body"><strong>AWS Bedrock AgentCore</strong> — Native MCP support. Used by BNY Mellon Eliza, JPMorgan Index AI, Goldman Athena Commercial. Adds Atestia as a tool in any agent definition.</div>
@@ -170,7 +170,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
         <summary><span class="icon">A</span><span class="font-semibold text-base">@atestia/tier4-mcp-server</span><span class="chev">▼</span></summary>
         <div class="body">
           <p class="mb-4">The reference implementation. MPL-2.0, on npm, ~140KB install. 10 MCP tools registered. Three capture pipelines feeding one canonical schema and five output formats.</p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4 items-start">
             <details class="arch-node bg-stone-800 border-stone-700">
               <summary><span class="icon">1</span><span class="font-semibold text-sm">Lineage capture</span><span class="chev">▼</span></summary>
               <div class="body"><p class="mb-2"><strong>4 tools.</strong></p><ul class="space-y-1 text-xs"><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.credit.evaluate</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.lineage.bcbs239</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.lineage.regb</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.lineage.fetch</code></li></ul></div>
@@ -204,7 +204,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
       <div class="arch-line h-12 mt-6"><span class="arch-line-label">Outputs</span></div>
 
       <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold mb-3 mt-6">Layer 3 · Outputs</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-start">
         <details class="arch-node">
           <summary><span class="icon">P</span><span class="font-semibold text-sm">Examiner packets</span><span class="chev">▼</span></summary>
           <div class="body"><strong>OCC 2013-29 · SR 26-2 · BCBS 239 · ECOA Reg B</strong> — materialized PDF + JSON on demand. 4-hour SLA on Tier-1. Includes attestation hashes for examiner-defensible review.</div>
