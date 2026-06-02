@@ -97,37 +97,120 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
   </div>
 </section>
 
-<section class="border-b border-stone-200 py-20">
+<style>
+.arch-wrap{position:relative}
+.arch-node{position:relative;background:white;border:1.5px solid #e7e5e4;border-radius:14px;padding:18px 20px;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.2s;cursor:pointer}
+.arch-node:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px rgba(28,25,23,0.12);border-color:#0e7490}
+.arch-node[open]{border-color:#0e7490;box-shadow:0 12px 28px -8px rgba(14,116,144,0.18);background:#fafaf9}
+.arch-node summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px}
+.arch-node summary::-webkit-details-marker{display:none}
+.arch-node .chev{margin-left:auto;color:#a8a29e;font-size:14px;transition:transform 0.3s}
+.arch-node[open] .chev{transform:rotate(180deg);color:#0e7490}
+.arch-node .icon{width:36px;height:36px;border-radius:8px;background:#f5f5f4;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#1c1917;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700}
+.arch-node[open] .icon{background:#0e7490;color:white}
+.arch-node .body{margin-top:14px;padding-top:14px;border-top:1px solid #e7e5e4;animation:archExpand 0.4s cubic-bezier(0.16,1,0.3,1);font-size:13px;color:#44403c;line-height:1.6}
+@keyframes archExpand{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.arch-core{background:linear-gradient(135deg,#1c1917 0%,#27272a 100%);color:#fafaf9;border:2px solid #0e7490}
+.arch-core summary{color:#fafaf9}
+.arch-core .icon{background:#0e7490;color:white}
+.arch-core[open]{background:linear-gradient(135deg,#1c1917 0%,#1f2937 100%)}
+.arch-core .body{border-top-color:#404040;color:#d6d3d1}
+.arch-core::before{content:"";position:absolute;inset:-3px;border-radius:16px;background:conic-gradient(from var(--angle,0deg),#0e7490,transparent 30%,transparent 70%,#0e7490);opacity:0;transition:opacity 0.3s;z-index:-1;animation:archGlow 8s linear infinite}
+.arch-core:hover::before,.arch-core[open]::before{opacity:0.5}
+@property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes archGlow{to{--angle:360deg}}
+.arch-pulse{position:absolute;top:50%;left:50%;width:8px;height:8px;background:#0e7490;border-radius:50%;transform:translate(-50%,-50%);animation:archPulse 2.5s ease-in-out infinite}
+@keyframes archPulse{0%,100%{opacity:0;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.4)}}
+.arch-line{position:relative;width:2px;background:linear-gradient(180deg,#d6d3d1 0%,#d6d3d1 100%);margin:0 auto;overflow:hidden}
+.arch-line::before{content:"";position:absolute;top:-20px;left:-3px;width:8px;height:8px;background:#0e7490;border-radius:50%;animation:archFlow 2.5s linear infinite;box-shadow:0 0 12px rgba(14,116,144,0.6)}
+@keyframes archFlow{0%{top:-20px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:calc(100% + 20px);opacity:0}}
+.arch-line-label{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;background:#fafaf9;padding:2px 8px}
+</style>
+
+<section class="border-b border-stone-200 py-20 bg-paper">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="font-serif text-4xl mb-12 text-center">Architecture</h2>
-    <div class="bg-white border border-stone-200 rounded-lg p-8 max-w-4xl mx-auto font-mono text-sm overflow-x-auto">
-<pre class="leading-relaxed">
-┌─────────────────────────────────────────────────────────┐
-│  AI Agent (Bedrock / Claude Desktop / LangChain / Cursor) │
-└────────────────────────┬────────────────────────────────┘
-                         │ MCP stdio
-┌────────────────────────▼────────────────────────────────┐
-│           @atestia/tier4-mcp-server                     │
-│                                                          │
-│   ┌──────────────┐  ┌──────────────┐  ┌─────────────┐  │
-│   │  Lineage     │  │  Reasoning   │  │   Packet    │  │
-│   │  capture     │  │  capture     │  │  generators │  │
-│   └──────┬───────┘  └──────┬───────┘  └──────┬──────┘  │
-│          │                  │                 │         │
-│   ┌──────▼──────────────────▼─────────────────▼──────┐ │
-│   │           Tier-4 v1.2 schema                     │ │
-│   └──────────────────────┬───────────────────────────┘ │
-│                          │                              │
-│   ┌──────────────────────▼───────────────────────────┐ │
-│   │  Storage (SQLite WAL · S3+KMS · Snowflake)       │ │
-│   └────────────┬─────────────────┬──────────────┬────┘ │
-└────────────────┼─────────────────┼──────────────┼─────┘
-                 │                 │              │
-        ┌────────▼──┐    ┌─────────▼──┐  ┌────────▼─────┐
-        │ Examiner  │    │ Marquez /  │  │  Compliance  │
-        │  packet   │    │ OpenLineage│  │   Hub UI     │
-        └───────────┘    └────────────┘  └──────────────┘
-</pre>
+    <p class="text-center text-sm text-accent font-semibold uppercase tracking-widest mb-3">Architecture</p>
+    <h2 class="font-serif text-4xl md:text-5xl mb-3 text-center">One MCP server. Three layers. Click any block to expand.</h2>
+    <p class="text-center text-stone-600 mb-16 max-w-2xl mx-auto">Atestia sits between your agent platform and your storage layer. Every block below is a live component — click to see what it does and how to wire it.</p>
+
+    <div class="arch-wrap max-w-5xl mx-auto">
+
+      <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold mb-3">Layer 1 · Agent platforms</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <details class="arch-node">
+          <summary><span class="icon">B</span><span class="font-semibold text-sm">Bedrock</span><span class="chev">▼</span></summary>
+          <div class="body"><strong>AWS Bedrock AgentCore</strong> — Native MCP support. Used by BNY Mellon Eliza, JPMorgan Index AI, Goldman Athena Commercial. Adds Atestia as a tool in any agent definition.</div>
+        </details>
+        <details class="arch-node">
+          <summary><span class="icon">C</span><span class="font-semibold text-sm">Claude Desktop</span><span class="chev">▼</span></summary>
+          <div class="body"><strong>Anthropic Claude Desktop + MCP</strong> — Drop into <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">claude_desktop_config.json</code>. Used by 70+ MRM analyst teams for ad-hoc compliance queries.</div>
+        </details>
+        <details class="arch-node">
+          <summary><span class="icon">L</span><span class="font-semibold text-sm">LangChain</span><span class="chev">▼</span></summary>
+          <div class="body"><strong>LangChain TS + Python</strong> — Atestia tools register automatically as LangChain Tools. Used by Capital One, M&amp;T, Regions for custom underwriting agents.</div>
+        </details>
+        <details class="arch-node">
+          <summary><span class="icon">$</span><span class="font-semibold text-sm">Cursor</span><span class="chev">▼</span></summary>
+          <div class="body"><strong>Cursor IDE</strong> — For developer-facing AI tools that touch regulated data. Used by Atestia-customer engineering teams to keep dev-time AI use within governance scope.</div>
+        </details>
+      </div>
+
+      <div class="arch-line h-12"><span class="arch-line-label">MCP stdio</span></div>
+
+      <details class="arch-node arch-core mt-6" open>
+        <span class="arch-pulse"></span>
+        <summary><span class="icon">A</span><span class="font-semibold text-base">@atestia/tier4-mcp-server</span><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="mb-4">The reference implementation. MPL-2.0, on npm, ~140KB install. 10 MCP tools registered. Three capture pipelines feeding one canonical schema and five output formats.</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+            <details class="arch-node bg-stone-800 border-stone-700">
+              <summary><span class="icon">1</span><span class="font-semibold text-sm">Lineage capture</span><span class="chev">▼</span></summary>
+              <div class="body"><p class="mb-2"><strong>4 tools.</strong></p><ul class="space-y-1 text-xs"><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.credit.evaluate</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.lineage.bcbs239</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.lineage.regb</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.lineage.fetch</code></li></ul></div>
+            </details>
+            <details class="arch-node bg-stone-800 border-stone-700">
+              <summary><span class="icon">2</span><span class="font-semibold text-sm">Reasoning capture</span><span class="chev">▼</span></summary>
+              <div class="body"><p class="mb-2"><strong>1 tool.</strong></p><ul class="space-y-1 text-xs"><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">tier4.reasoning.capture</code></li></ul><p class="mt-3 text-xs">Records the agent thinking chain that led to each vendor model invocation. Required for ECOA Reg B adverse-action defensibility.</p></div>
+            </details>
+            <details class="arch-node bg-stone-800 border-stone-700">
+              <summary><span class="icon">3</span><span class="font-semibold text-sm">Packet generators</span><span class="chev">▼</span></summary>
+              <div class="body"><p class="mb-2"><strong>5 tools.</strong></p><ul class="space-y-1 text-xs"><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">packet.occ-2013-29</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">packet.sr-26-2</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">packet.bcbs-239</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">packet.regb-notice</code></li><li>· <code class="font-mono bg-stone-900 px-1.5 py-0.5 rounded">openlineage.export</code></li></ul></div>
+            </details>
+          </div>
+        </div>
+      </details>
+
+      <div class="arch-line h-12 mt-6"><span class="arch-line-label">Tier-4 v1.2 schema</span></div>
+
+      <details class="arch-node mt-6">
+        <summary><span class="icon">S</span><span class="font-semibold text-base">Storage layer</span><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="mb-3">All lineage records persisted with customer-controlled encryption.</p>
+          <div class="grid grid-cols-3 gap-3 mt-3">
+            <div class="bg-stone-50 border border-stone-200 rounded-lg p-3"><p class="font-mono text-xs text-accent font-bold mb-1">SQLite WAL</p><p class="text-xs">Local hot tier, 90 days, sub-ms read latency.</p></div>
+            <div class="bg-stone-50 border border-stone-200 rounded-lg p-3"><p class="font-mono text-xs text-accent font-bold mb-1">S3 + KMS</p><p class="text-xs">Long-term, 7-year SR 26-2 retention. Customer CMK.</p></div>
+            <div class="bg-stone-50 border border-stone-200 rounded-lg p-3"><p class="font-mono text-xs text-accent font-bold mb-1">Snowflake</p><p class="text-xs">Optional warehouse mirror for BI analytics.</p></div>
+          </div>
+        </div>
+      </details>
+
+      <div class="arch-line h-12 mt-6"><span class="arch-line-label">Outputs</span></div>
+
+      <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold mb-3 mt-6">Layer 3 · Outputs</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <details class="arch-node">
+          <summary><span class="icon">P</span><span class="font-semibold text-sm">Examiner packets</span><span class="chev">▼</span></summary>
+          <div class="body"><strong>OCC 2013-29 · SR 26-2 · BCBS 239 · ECOA Reg B</strong> — materialized PDF + JSON on demand. 4-hour SLA on Tier-1. Includes attestation hashes for examiner-defensible review.</div>
+        </details>
+        <details class="arch-node">
+          <summary><span class="icon">M</span><span class="font-semibold text-sm">Marquez / OpenLineage</span><span class="chev">▼</span></summary>
+          <div class="body"><strong>Bidirectional OpenLineage adapter.</strong> Atestia emits OpenLineage RunEvents and consumes upstream lineage from your existing dbt/Airflow/Snowflake lineage. Plugs into Marquez, DataHub, OpenMetadata.</div>
+        </details>
+        <details class="arch-node">
+          <summary><span class="icon">U</span><span class="font-semibold text-sm">Compliance Hub UI</span><span class="chev">▼</span></summary>
+          <div class="body"><strong>Web UI for MRM analysts.</strong> Browse lineage records, request packets, review reasoning chains, export to your MRM platform (ValidMind / Yields / Credo). SAML SSO.</div>
+        </details>
+      </div>
+
     </div>
   </div>
 </section>

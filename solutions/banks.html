@@ -36,54 +36,154 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;backgro
   </div>
 </section>
 
+<style>
+.tier-card{transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.2s}
+.tier-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -12px rgba(28,25,23,0.15)}
+.tier-card[open]{border-color:#0e7490;box-shadow:0 20px 40px -12px rgba(14,116,144,0.15)}
+.tier-card summary{cursor:pointer;list-style:none;position:relative}
+.tier-card summary::-webkit-details-marker{display:none}
+.tier-card summary::after{content:"+";position:absolute;top:0;right:0;font-size:32px;font-weight:300;color:#a8a29e;transition:transform 0.3s,color 0.2s;width:40px;height:40px;display:flex;align-items:center;justify-content:center;line-height:1}
+.tier-card[open] summary::after{content:"−";color:#0e7490;transform:rotate(180deg)}
+.tier-detail{overflow:hidden;animation:tierExpand 0.4s cubic-bezier(0.16,1,0.3,1)}
+@keyframes tierExpand{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.use-case-row{transition:background-color 0.2s,padding 0.2s}
+.use-case-row:hover{background-color:#f5f5f4;padding-left:1.25rem!important}
+</style>
+
 <section class="bg-white border-b border-stone-200 py-20">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="font-serif text-4xl mb-12 text-center">For every bank size</h2>
+    <p class="text-center text-sm text-accent font-semibold uppercase tracking-widest mb-3">Bank tiers</p>
+    <h2 class="font-serif text-4xl md:text-5xl mb-3 text-center">For every bank size.</h2>
+    <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">Click any tier to see real bank examples, deployment specifics, and what your team gets on day one.</p>
     <div class="grid lg:grid-cols-3 gap-6">
 
-      <div class="border-2 border-stone-200 rounded-lg p-8 hover:border-accent hover:shadow-xl transition bg-white">
-        <p class="text-xs text-emerald-700 uppercase tracking-widest mb-3 font-semibold">$100B+ AUM</p>
-        <h3 class="font-serif text-3xl mb-3">Tier-1</h3>
-        <p class="text-sm text-stone-600 mb-6">JPMorgan, BofA, Wells, Citi, Goldman, Morgan Stanley, US Bank, PNC, Truist, BNY Mellon.</p>
-        <ul class="space-y-2 text-sm text-stone-700 mb-6">
-          <li><strong>$1.5M–$3M annual</strong></li>
-          <li>4-hour packet turnaround</li>
-          <li>On-prem option</li>
-          <li>Customer-held KMS</li>
-          <li>Named legal indemnity</li>
-          <li>Dedicated Solutions Engineer</li>
-        </ul>
-        <a href="../contact.html" class="text-accent font-semibold hover:underline">Contact sales →</a>
-      </div>
+      <details class="tier-card border-2 border-stone-200 rounded-2xl p-8 bg-white" open>
+        <summary class="block">
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">$100B+ AUM</p>
+          <h3 class="font-serif text-4xl mb-3 pr-12">Tier-1</h3>
+          <p class="text-sm text-stone-600 mb-5 leading-relaxed">JPMorgan, BofA, Wells, Citi, Goldman, Morgan Stanley, US Bank, PNC, Truist, BNY Mellon.</p>
+          <div class="bg-stone-50 rounded-lg p-4 mb-5">
+            <p class="font-mono text-2xl text-ink font-bold mb-1">$1.5M – $3M</p>
+            <p class="text-xs text-stone-500 uppercase tracking-widest">Annual commitment</p>
+          </div>
+          <ul class="space-y-2 text-sm text-stone-700">
+            <li class="flex gap-2"><span class="text-accent">✓</span> 4-hour packet turnaround</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> On-prem or BNY-controlled VPC</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Customer-held KMS (BYOK)</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Named legal indemnity</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Dedicated Solutions Engineer</li>
+          </ul>
+        </summary>
 
-      <div class="border-2 border-stone-200 rounded-lg p-8 hover:border-accent hover:shadow-xl transition bg-white">
-        <p class="text-xs text-emerald-700 uppercase tracking-widest mb-3 font-semibold">$10B–$100B AUM</p>
-        <h3 class="font-serif text-3xl mb-3">Regional Tier-2</h3>
-        <p class="text-sm text-stone-600 mb-6">Regions, Huntington, KeyCorp, M&T, Discover, Citizens, Capital One, Fifth Third, Cullen/Frost.</p>
-        <ul class="space-y-2 text-sm text-stone-700 mb-6">
-          <li><strong>$250K–$750K annual</strong></li>
-          <li>7-day packet turnaround</li>
-          <li>Hosted multi-tenant</li>
-          <li>Customer KMS</li>
-          <li>Named CSM</li>
-          <li>Indemnification</li>
-        </ul>
-        <a href="../contact.html" class="text-accent font-semibold hover:underline">Contact sales →</a>
-      </div>
+        <div class="tier-detail mt-8 pt-8 border-t border-stone-200">
+          <p class="text-xs text-accent uppercase tracking-widest mb-4 font-semibold">Real customer scenarios</p>
+          <div class="space-y-1 mb-6">
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">BNY Mellon</div><div class="text-sm text-stone-700">Eliza · 20K agents · OpenAI + Gemini Enterprise · OCC 2013-29 packets quarterly</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">JPMorgan</div><div class="text-sm text-stone-700">Index AI · Bedrock + internal · SR 26-2 attestation for CCAR vendor models</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Citi</div><div class="text-sm text-stone-700">Arc Platform · OpenAI + Anthropic · BCBS 239 lineage for Y-14A reporting</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Goldman Sachs</div><div class="text-sm text-stone-700">Athena Commercial · ECOA Reg B notices for agentic credit decisions</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Wells Fargo</div><div class="text-sm text-stone-700">Hugging Face partnership · MRM packet generation across 1,200+ vendor models</div></div>
+          </div>
 
-      <div class="border-2 border-stone-200 rounded-lg p-8 hover:border-accent hover:shadow-xl transition bg-white">
-        <p class="text-xs text-emerald-700 uppercase tracking-widest mb-3 font-semibold">$1B–$10B AUM</p>
-        <h3 class="font-serif text-3xl mb-3">Community</h3>
-        <p class="text-sm text-stone-600 mb-6">Glacier, Heartland, Customers, Wintrust, Cathay General, Commerce Bancshares, Atlantic Union.</p>
-        <ul class="space-y-2 text-sm text-stone-700 mb-6">
-          <li><strong>$50K–$150K annual</strong></li>
-          <li>30-day packet turnaround</li>
-          <li>Hosted multi-tenant</li>
-          <li>Customer KMS</li>
-          <li>Email support</li>
-        </ul>
-        <a href="../contact.html" class="text-accent font-semibold hover:underline">Contact sales →</a>
-      </div>
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">What you get on day one</p>
+          <div class="grid md:grid-cols-2 gap-3 mb-6 text-sm">
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">Up to 24 OCC 2013-29 packets/yr</p><p class="text-xs text-stone-600">Per vendor model, materialized in &lt;4 hrs</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">4 SR 26-2 attestation packs/yr</p><p class="text-xs text-stone-600">Full 5-artifact bundle for highest-materiality models</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">Unlimited BCBS 239 lineage</p><p class="text-xs text-stone-600">Column-level provenance for CCAR/DFAST</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">24/7 named on-call</p><p class="text-xs text-stone-600">Severity 1 paged within 15 min</p></div>
+          </div>
+
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">Charter Member program</p>
+          <div class="bg-ink text-stone-200 rounded-lg p-5 mb-6 text-sm leading-relaxed">First 10 Tier-1 contracts include complimentary Class I Charter Member status in the Tier-4 Compliance Working Group: Steering Committee seat, 3× voting weight on spec ratification, named in spec preamble in perpetuity. <a href="../tier4/charter.html" class="text-accent hover:underline">Read Charter →</a></div>
+
+          <a href="../contact.html" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded-lg hover:bg-accent transition">Talk to a Solutions Engineer →</a>
+        </div>
+      </details>
+
+      <details class="tier-card border-2 border-stone-200 rounded-2xl p-8 bg-white">
+        <summary class="block">
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">$10B – $100B AUM</p>
+          <h3 class="font-serif text-4xl mb-3 pr-12">Regional Tier-2</h3>
+          <p class="text-sm text-stone-600 mb-5 leading-relaxed">Regions, Huntington, KeyCorp, M&amp;T, Discover, Citizens, Capital One, Fifth Third, Cullen/Frost.</p>
+          <div class="bg-stone-50 rounded-lg p-4 mb-5">
+            <p class="font-mono text-2xl text-ink font-bold mb-1">$250K – $750K</p>
+            <p class="text-xs text-stone-500 uppercase tracking-widest">Annual commitment</p>
+          </div>
+          <ul class="space-y-2 text-sm text-stone-700">
+            <li class="flex gap-2"><span class="text-accent">✓</span> 7-day packet turnaround</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Hosted multi-tenant or single-tenant</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Customer KMS supported</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Named Customer Success Manager</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Indemnification clauses</li>
+          </ul>
+        </summary>
+
+        <div class="tier-detail mt-8 pt-8 border-t border-stone-200">
+          <p class="text-xs text-accent uppercase tracking-widest mb-4 font-semibold">Real customer scenarios</p>
+          <div class="space-y-1 mb-6">
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Huntington</div><div class="text-sm text-stone-700">Bedrock-based loan agent · OCC 2013-29 for credit underwriting models</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Capital One</div><div class="text-sm text-stone-700">Anthropic Claude · BCBS 239 lineage across consumer + commercial lines</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">M&amp;T Bank</div><div class="text-sm text-stone-700">LangChain agentic underwriting · ECOA Reg B Adverse Action notices</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Regions</div><div class="text-sm text-stone-700">Multi-vendor (OpenAI + Mistral) · quarterly examiner packets</div></div>
+          </div>
+
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">What you get on day one</p>
+          <div class="grid md:grid-cols-2 gap-3 mb-6 text-sm">
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">Up to 12 OCC 2013-29 packets/yr</p><p class="text-xs text-stone-600">Per vendor model · materialized in &lt;7 days</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">2 SR 26-2 attestation packs/yr</p><p class="text-xs text-stone-600">For highest-materiality models</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">BCBS 239 lineage included</p><p class="text-xs text-stone-600">Y-14A / Y-14Q reporting compatible</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">Business-hours support</p><p class="text-xs text-stone-600">Sev 1 response within 1 hour</p></div>
+          </div>
+
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">Upgrade path</p>
+          <div class="bg-stone-50 rounded-lg p-5 mb-6 text-sm leading-relaxed text-stone-700">Regional tier customers can upgrade to Tier-1 at any contract renewal. Pilot fees credit toward Tier-1 production. Charter Member program available at Tier-1 upgrade.</div>
+
+          <a href="../contact.html" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded-lg hover:bg-accent transition">Talk to sales →</a>
+        </div>
+      </details>
+
+      <details class="tier-card border-2 border-stone-200 rounded-2xl p-8 bg-white">
+        <summary class="block">
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">$1B – $10B AUM</p>
+          <h3 class="font-serif text-4xl mb-3 pr-12">Community</h3>
+          <p class="text-sm text-stone-600 mb-5 leading-relaxed">Glacier, Heartland, Customers, Wintrust, Cathay General, Commerce Bancshares, Atlantic Union.</p>
+          <div class="bg-stone-50 rounded-lg p-4 mb-5">
+            <p class="font-mono text-2xl text-ink font-bold mb-1">$50K – $150K</p>
+            <p class="text-xs text-stone-500 uppercase tracking-widest">Annual commitment</p>
+          </div>
+          <ul class="space-y-2 text-sm text-stone-700">
+            <li class="flex gap-2"><span class="text-accent">✓</span> 30-day packet turnaround</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Hosted multi-tenant</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Customer KMS supported</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Email + ticket support</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Self-service onboarding</li>
+          </ul>
+        </summary>
+
+        <div class="tier-detail mt-8 pt-8 border-t border-stone-200">
+          <p class="text-xs text-accent uppercase tracking-widest mb-4 font-semibold">Real customer scenarios</p>
+          <div class="space-y-1 mb-6">
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Customers Bank</div><div class="text-sm text-stone-700">Single Anthropic Claude agent · annual OCC examination packet</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Wintrust</div><div class="text-sm text-stone-700">2-3 vendor models · OCC 2013-29 for each on demand</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Heartland</div><div class="text-sm text-stone-700">Claude Desktop pilots · BCBS 239 not in scope · ECOA Reg B only</div></div>
+            <div class="use-case-row flex gap-4 p-3 rounded"><div class="font-mono text-xs text-stone-500 w-32 flex-shrink-0">Cathay General</div><div class="text-sm text-stone-700">Cursor + Claude internal · quarterly compliance check</div></div>
+          </div>
+
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">What you get on day one</p>
+          <div class="grid md:grid-cols-2 gap-3 mb-6 text-sm">
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">Up to 4 OCC 2013-29 packets/yr</p><p class="text-xs text-stone-600">Materialized in &lt;30 days</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">ECOA Reg B notices included</p><p class="text-xs text-stone-600">For consumer credit decisions</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">Self-service install</p><p class="text-xs text-stone-600">npm install + 60 minutes</p></div>
+            <div class="bg-stone-50 rounded-lg p-4"><p class="font-semibold mb-1">Email + ticket support</p><p class="text-xs text-stone-600">Response within 1 business day</p></div>
+          </div>
+
+          <p class="text-xs text-accent uppercase tracking-widest mb-3 font-semibold">Try the OSS first</p>
+          <div class="bg-stone-900 text-cyan-100 rounded-lg p-4 mb-6 font-mono text-xs"><div class="text-stone-500 mb-2"># Free MPL-2.0 reference implementation</div>npm install @atestia/tier4-mcp-server<br/>npx tier4-mcp-server</div>
+          <p class="text-sm text-stone-700 mb-6">If the open-source reference meets your needs, the Community tier adds 7-year retention, OCC 2013-29 packet generation, support, and SLA. <a href="https://github.com/Atestia/tier4-mcp-server" class="text-accent hover:underline">View on GitHub →</a></p>
+
+          <a href="../contact.html" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded-lg hover:bg-accent transition">Get a quote →</a>
+        </div>
+      </details>
 
     </div>
   </div>
