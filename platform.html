@@ -115,6 +115,14 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
 .arch-core .icon{background:#0e7490;color:white}
 .arch-core[open]{background:linear-gradient(135deg,#1c1917 0%,#1f2937 100%)}
 .arch-core .body{border-top-color:#404040;color:#d6d3d1}
+.arch-core .arch-node{background:#27272a;border-color:#404040;color:#fafaf9}
+.arch-core .arch-node:hover{border-color:#0e7490;background:#1f2937}
+.arch-core .arch-node[open]{background:#1f2937;border-color:#0e7490}
+.arch-core .arch-node summary{color:#fafaf9}
+.arch-core .arch-node .icon{background:#0e7490;color:white}
+.arch-core .arch-node .chev{color:#78716c}
+.arch-core .arch-node[open] .chev{color:#67e8f9}
+.arch-core .arch-node .body{border-top-color:#404040;color:#d6d3d1}
 .arch-core::before{content:"";position:absolute;inset:-3px;border-radius:16px;background:conic-gradient(from var(--angle,0deg),#0e7490,transparent 30%,transparent 70%,#0e7490);opacity:0;transition:opacity 0.3s;z-index:-1;animation:archGlow 8s linear infinite}
 .arch-core:hover::before,.arch-core[open]::before{opacity:0.5}
 @property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}
