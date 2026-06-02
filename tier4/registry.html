@@ -2,77 +2,145 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="icon" type="image/svg+xml" href="../favicon.svg"><title>Tier-4 Conformant Implementations Registry</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"><title>Tier-4 Conformant Implementations Registry — Atestia</title>
+<meta name="description" content="A public list of implementations that have declared conformance with Tier-4 v1.1 at the Implementer, Conformant, or Certified level." />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
 <style>
-body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif}
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#1c1917;background:#fafaf9}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+.font-mono{font-family:'JetBrains Mono','Menlo','Monaco',monospace}
 </style>
 </head>
-<body class="bg-stone-50 text-stone-900">
-<header class="border-b border-stone-200 bg-white">
-  <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-bold text-lg">Tier-4</a>
-    <nav class="text-sm text-stone-600 space-x-6">
-      <a href="spec.html" class="hover:text-stone-900">Specification</a>
-      <a href="charter.html" class="hover:text-stone-900">Working Group</a>
-      <a href="registry.html" class="text-stone-900">Registry</a>
-      <a href="methodology.html" class="hover:text-stone-900">Index methodology</a>
-      <a href="https://github.com/atestia/tier4-mcp-server" class="hover:text-stone-900">GitHub</a>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+    <nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+      <a href="../platform.html" class="hover:text-accent transition">Platform</a>
+      <a href="../solutions/banks.html" class="hover:text-accent transition">Solutions</a>
+      <a href="../pricing.html" class="hover:text-accent transition">Pricing</a>
+      <a href="index.html" class="text-accent font-semibold">Tier-4 spec</a>
+      <a href="../customers.html" class="hover:text-accent transition">Customers</a>
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
     </nav>
+    <a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent transition">Book a demo</a>
   </div>
 </header>
 
-<main class="max-w-3xl mx-auto px-6 py-16">
-<p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Implementations Registry</p>
-<h1 class="font-serif text-4xl leading-tight mb-4">Tier-4 Conformant Implementations</h1>
-<p class="text-stone-700 mb-8">A public list of implementations that have declared conformance with Tier-4 v1.1 at the Implementer, Conformant, or Certified level. Listing is free for any party.</p>
+<div class="border-b border-stone-200 bg-white">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-stone-600">
+    <span class="font-semibold text-ink mr-4">Tier-4 sub-site:</span>
+    <a href="index.html" class="hover:text-accent transition">Overview</a>
+    <a href="spec.html" class="hover:text-accent transition">Specification</a>
+    <a href="charter.html" class="hover:text-accent transition">Working Group</a>
+    <a href="registry.html" class="text-accent font-semibold">Registry</a>
+    <a href="methodology.html" class="hover:text-accent transition">Index methodology</a>
+    <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
+  </div>
+</div>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Implementer level</h2>
-  <p class="text-stone-600 mb-6">Implementations that emit Tier-4-conformant Lineage records per §4 of the spec.</p>
-  <div class="space-y-3">
-    <div class="border border-stone-200 rounded p-4 bg-white flex items-center justify-between">
-      <div>
-        <p class="font-semibold">tier4-mcp-server (reference implementation)</p>
-        <p class="text-sm text-stone-600">@atestia/tier4-mcp-server v0.1.0-alpha · MPL-2.0 · TypeScript / Node 20+</p>
+<section class="border-b border-stone-200 py-16">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Implementations Registry</p>
+    <h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Tier-4 Conformant Implementations</h1>
+    <p class="text-xl text-stone-700 max-w-3xl">A public list of implementations that have declared conformance with Tier-4 v1.1 at the Implementer, Conformant, or Certified level. Listing is free for any party.</p>
+  </div>
+</section>
+
+<section class="py-16 bg-white border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-2">Implementer level</h2>
+    <p class="text-stone-600 mb-6">Implementations that emit Tier-4-conformant Lineage records per §4 of the spec.</p>
+    <div class="space-y-3">
+      <div class="border border-stone-200 rounded-lg p-5 bg-paper flex items-center justify-between gap-4">
+        <div>
+          <p class="font-semibold">tier4-mcp-server (reference implementation)</p>
+          <p class="text-sm text-stone-600 font-mono">@atestia/tier4-mcp-server v0.2.0 · MPL-2.0 · TypeScript / Node 20+</p>
+        </div>
+        <a href="https://github.com/Atestia/tier4-mcp-server" class="flex-shrink-0 text-sm text-accent font-semibold hover:underline">GitHub →</a>
       </div>
-      <a href="https://github.com/atestia/tier4-mcp-server" class="text-sm text-cyan-700 underline">GitHub</a>
     </div>
   </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Conformant level</h2>
-  <p class="text-stone-600 mb-6">Implementations that pass the Tier-4 Conformance Test Suite covering §4, §5, §6, §7, and §8 of the spec.</p>
-  <p class="text-stone-500 italic">No implementations have yet completed the Conformance Test Suite. Implementations expected: Q4 2026.</p>
+<section class="py-16 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-2">Conformant level</h2>
+    <p class="text-stone-600 mb-6">Implementations that pass the Tier-4 Conformance Test Suite covering §4, §5, §6, §7, and §8 of the spec.</p>
+    <div class="border border-stone-200 rounded-lg p-5 bg-white text-center">
+      <p class="text-stone-500 italic">No implementations have yet completed the Conformance Test Suite. Implementations expected: Q4 2026.</p>
+    </div>
+  </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Certified level</h2>
-  <p class="text-stone-600 mb-6">Implementations that have undergone an annual third-party audit by a Working Group-approved auditor.</p>
-  <p class="text-stone-500 italic">No implementations have yet been certified. Certification cycle begins Q1 2027.</p>
+<section class="py-16 bg-white border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-2">Certified level</h2>
+    <p class="text-stone-600 mb-6">Implementations that have undergone an annual third-party audit by a Working Group-approved auditor.</p>
+    <div class="border border-stone-200 rounded-lg p-5 bg-paper text-center">
+      <p class="text-stone-500 italic">No implementations have yet been certified. Certification cycle begins Q1 2027.</p>
+    </div>
+  </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Submit your implementation</h2>
-  <p class="text-stone-700 leading-relaxed mb-4">If you have built a Tier-4-conformant implementation, submit it to the registry by emailing <a href="mailto:registry@tier4.org" class="text-cyan-700 underline">registry@tier4.org</a> with:</p>
-  <ul class="text-stone-700 list-disc pl-6 space-y-1">
-    <li>Implementation name and version</li>
-    <li>Source URL (GitHub, GitLab, or equivalent)</li>
-    <li>License declaration</li>
-    <li>Spec version it conforms to (v1.0 or v1.1)</li>
-    <li>Declared conformance level (Implementer / Conformant / Certified)</li>
-    <li>If claiming Conformant level: link to passing Conformance Test Suite results</li>
-    <li>If claiming Certified level: link to current Certificate of Tier-4 v1.1 Certification</li>
-  </ul>
+<section class="py-16 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-6">Submit your implementation</h2>
+    <p class="text-stone-700 leading-relaxed mb-6">If you have built a Tier-4-conformant implementation, submit it to the registry by emailing <a href="mailto:registry@tier4.org" class="text-accent underline">registry@tier4.org</a> with:</p>
+    <ul class="text-stone-700 space-y-2 mb-6">
+      <li>· Implementation name and version</li>
+      <li>· Source URL (GitHub, GitLab, or equivalent)</li>
+      <li>· License declaration</li>
+      <li>· Spec version it conforms to (v1.0 or v1.1)</li>
+      <li>· Declared conformance level (Implementer / Conformant / Certified)</li>
+      <li>· If claiming Conformant level: link to passing Conformance Test Suite results</li>
+      <li>· If claiming Certified level: link to current Certificate of Tier-4 v1.1 Certification</li>
+    </ul>
+    <a href="mailto:registry@tier4.org" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded hover:bg-accent transition">registry@tier4.org</a>
+  </div>
 </section>
 
-<footer class="mt-24 pt-8 border-t border-stone-200 text-sm text-stone-600">
-  <p>Listings are maintained by the Tier-4 Compliance Working Group. Misrepresentations of conformance level may result in removal.</p>
+<footer class="bg-ink text-stone-300 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <p class="font-bold text-white text-lg mb-3">Atestia</p>
+        <p class="text-sm text-stone-400">The runtime evidence layer for regulated AI.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Product</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="../platform.html" class="hover:text-white">Platform</a></li>
+          <li><a href="../pricing.html" class="hover:text-white">Pricing</a></li>
+          <li><a href="../solutions/banks.html" class="hover:text-white">Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Open standard</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html" class="hover:text-white">Tier-4 spec</a></li>
+          <li><a href="charter.html" class="hover:text-white">Working Group</a></li>
+          <li><a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-white">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Company</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="../company/about.html" class="hover:text-white">About</a></li>
+          <li><a href="../company/careers.html" class="hover:text-white">Careers</a></li>
+          <li><a href="../contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-stone-700 text-xs text-stone-500 flex flex-wrap justify-between gap-4">
+      <p>Atestia is a product of FuteurCredX Inc. © 2026</p>
+      <p>Tier-4 spec licensed CC-BY-4.0 · Reference impl licensed MPL-2.0</p>
+    </div>
+  </div>
 </footer>
 
-</main>
 </body>
 </html>

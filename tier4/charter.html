@@ -2,111 +2,178 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="icon" type="image/svg+xml" href="../favicon.svg"><title>Tier-4 Compliance Working Group — Charter</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"><title>Tier-4 Compliance Working Group — Charter — Atestia</title>
 <meta name="description" content="Delaware 501(c)(6) industry association ratifying the Tier-4 specification. Three membership tiers. Founding charter member applications open Q3 2026." />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
 <style>
-body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif}
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#1c1917;background:#fafaf9}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+.font-mono{font-family:'JetBrains Mono','Menlo','Monaco',monospace}
 </style>
 </head>
-<body class="bg-stone-50 text-stone-900">
-<header class="border-b border-stone-200 bg-white">
-  <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-bold text-lg">Tier-4</a>
-    <nav class="text-sm text-stone-600 space-x-6">
-      <a href="spec.html" class="hover:text-stone-900">Specification</a>
-      <a href="charter.html" class="text-stone-900">Working Group</a>
-      <a href="registry.html" class="hover:text-stone-900">Registry</a>
-      <a href="methodology.html" class="hover:text-stone-900">Index methodology</a>
-      <a href="https://github.com/atestia/tier4-mcp-server" class="hover:text-stone-900">GitHub</a>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+    <nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+      <a href="../platform.html" class="hover:text-accent transition">Platform</a>
+      <a href="../solutions/banks.html" class="hover:text-accent transition">Solutions</a>
+      <a href="../pricing.html" class="hover:text-accent transition">Pricing</a>
+      <a href="index.html" class="text-accent font-semibold">Tier-4 spec</a>
+      <a href="../customers.html" class="hover:text-accent transition">Customers</a>
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
     </nav>
+    <a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent transition">Book a demo</a>
   </div>
 </header>
 
-<main class="max-w-3xl mx-auto px-6 py-16">
-<p class="text-sm text-cyan-700 font-semibold uppercase tracking-widest mb-4">Charter v0.9</p>
-<h1 class="font-serif text-4xl leading-tight mb-4">Tier-4 Compliance Working Group</h1>
-<p class="text-stone-600 mb-8">Delaware 501(c)(6) industry association. Filing in process Q3 2026. Founding sponsor: Atestia Inc.</p>
+<div class="border-b border-stone-200 bg-white">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-stone-600">
+    <span class="font-semibold text-ink mr-4">Tier-4 sub-site:</span>
+    <a href="index.html" class="hover:text-accent transition">Overview</a>
+    <a href="spec.html" class="hover:text-accent transition">Specification</a>
+    <a href="charter.html" class="text-accent font-semibold">Working Group</a>
+    <a href="registry.html" class="hover:text-accent transition">Registry</a>
+    <a href="methodology.html" class="hover:text-accent transition">Index methodology</a>
+    <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
+  </div>
+</div>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Mission</h2>
-  <p class="text-stone-700 leading-relaxed mb-4">The Tier-4 Compliance Working Group is organized to develop, maintain, and promote open specifications for the runtime governance of vendor models invoked by agentic artificial intelligence platforms at US-supervised financial institutions.</p>
-  <p class="text-stone-700 leading-relaxed">Specifically, the Group addresses the regulatory accountability gap created by SR 26-2 (effective April 17, 2026), which explicitly excludes generative and agentic artificial intelligence from definitional model scope while retaining institutional accountability for every vendor model the institution's agents invoke.</p>
+<section class="border-b border-stone-200 py-16">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Charter v0.9</p>
+    <h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Tier-4 Compliance Working Group</h1>
+    <p class="text-xl text-stone-700 max-w-3xl">Delaware 501(c)(6) industry association. Filing in process Q3 2026. Founding sponsor: Atestia Inc.</p>
+  </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Membership tiers</h2>
-  <div class="space-y-4">
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Class I — Charter Member (founding 10)</p>
-      <ul class="text-sm text-stone-700 list-disc pl-6 space-y-1">
-        <li>Annual dues: $25,000 (waived for the first 12 months)</li>
-        <li>Steering Committee seat (three-year term)</li>
-        <li>Voting weight: 3× on spec ratification votes</li>
-        <li>Named in spec preamble in perpetuity</li>
-        <li>Open application period: Q3 2026</li>
-      </ul>
-    </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Class II — General Member</p>
-      <ul class="text-sm text-stone-700 list-disc pl-6 space-y-1">
-        <li>Annual dues: $25,000</li>
-        <li>Voting weight: 1× on spec ratification votes</li>
-        <li>30-day embargo preview of spec working drafts before public release</li>
-        <li>Private-mode access to the quarterly Tier-4 Bank MRM Readiness Index</li>
-      </ul>
-    </div>
-    <div class="border border-stone-200 rounded p-4 bg-white">
-      <p class="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-2">Class III — Implementer Member</p>
-      <ul class="text-sm text-stone-700 list-disc pl-6 space-y-1">
-        <li>No dues</li>
-        <li>Listed in the public Conformant Implementations Registry</li>
-        <li>May use the descriptor "Tier-4-Conformant" subject to the Trademark Policy</li>
-      </ul>
+<section class="py-16 bg-white border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-6">Mission</h2>
+    <p class="text-stone-700 leading-relaxed mb-4">The Tier-4 Compliance Working Group is organized to develop, maintain, and promote open specifications for the runtime governance of vendor models invoked by agentic artificial intelligence platforms at US-supervised financial institutions.</p>
+    <p class="text-stone-700 leading-relaxed">Specifically, the Group addresses the regulatory accountability gap created by SR 26-2 (effective April 17, 2026), which explicitly excludes generative and agentic artificial intelligence from definitional model scope while retaining institutional accountability for every vendor model the institution's agents invoke.</p>
+  </div>
+</section>
+
+<section class="py-16 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-8">Membership tiers</h2>
+    <div class="space-y-4">
+      <div class="border-2 border-accent rounded-lg p-6 bg-white">
+        <p class="text-xs font-semibold text-accent uppercase tracking-widest mb-3">Class I — Charter Member (founding 10)</p>
+        <ul class="text-sm text-stone-700 space-y-2">
+          <li>· Annual dues: $25,000 (waived for the first 12 months)</li>
+          <li>· Steering Committee seat (three-year term)</li>
+          <li>· Voting weight: 3× on spec ratification votes</li>
+          <li>· Named in spec preamble in perpetuity</li>
+          <li>· Open application period: Q3 2026</li>
+        </ul>
+      </div>
+      <div class="border border-stone-200 rounded-lg p-6 bg-white">
+        <p class="text-xs font-semibold text-stone-700 uppercase tracking-widest mb-3">Class II — General Member</p>
+        <ul class="text-sm text-stone-700 space-y-2">
+          <li>· Annual dues: $25,000</li>
+          <li>· Voting weight: 1× on spec ratification votes</li>
+          <li>· 30-day embargo preview of spec working drafts before public release</li>
+          <li>· Private-mode access to the quarterly Tier-4 Bank MRM Readiness Index</li>
+        </ul>
+      </div>
+      <div class="border border-stone-200 rounded-lg p-6 bg-white">
+        <p class="text-xs font-semibold text-stone-700 uppercase tracking-widest mb-3">Class III — Implementer Member</p>
+        <ul class="text-sm text-stone-700 space-y-2">
+          <li>· No dues</li>
+          <li>· Listed in the public Conformant Implementations Registry</li>
+          <li>· May use the descriptor "Tier-4-Conformant" subject to the Trademark Policy</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Eligibility</h2>
-  <p class="text-stone-700 leading-relaxed mb-4">The following entity types may apply for Class I or II membership:</p>
-  <ul class="text-stone-700 list-disc pl-6 space-y-1">
-    <li>US-supervised banks of any size</li>
-    <li>Vendor LLM providers (Anthropic, OpenAI, AWS, Microsoft, Google, etc.)</li>
-    <li>Big-Four audit firms (KPMG, Deloitte, EY, PwC) and other audit firms</li>
-    <li>Insurance underwriters (D&amp;O, E&amp;O, cyber) and insurance brokers</li>
-    <li>RegTech vendors providing complementary services to bank MRM teams</li>
-    <li>Regulator-adjacent organizations (research, policy, NIST)</li>
-  </ul>
-  <p class="text-stone-700 leading-relaxed mt-4">Banks that are direct customers of Atestia's commercial Vendor Witness platform receive a 50% discount on Class II dues for the first contract year.</p>
+<section class="py-16 bg-white border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-6">Eligibility</h2>
+    <p class="text-stone-700 leading-relaxed mb-4">The following entity types may apply for Class I or II membership:</p>
+    <ul class="text-stone-700 space-y-2 mb-4">
+      <li>· US-supervised banks of any size</li>
+      <li>· Vendor LLM providers (Anthropic, OpenAI, AWS, Microsoft, Google, etc.)</li>
+      <li>· Big-Four audit firms (KPMG, Deloitte, EY, PwC) and other audit firms</li>
+      <li>· Insurance underwriters (D&amp;O, E&amp;O, cyber) and insurance brokers</li>
+      <li>· RegTech vendors providing complementary services to bank MRM teams</li>
+      <li>· Regulator-adjacent organizations (research, policy, NIST)</li>
+    </ul>
+    <p class="text-stone-700 leading-relaxed">Banks that are direct customers of Atestia's commercial platform receive a 50% discount on Class II dues for the first contract year.</p>
+  </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Governance</h2>
-  <p class="text-stone-700 leading-relaxed mb-4">The Working Group is governed by a Steering Committee of seven seats: three Charter Member seats, two General Member seats (elected two-year terms), one Atestia Inc. designee seat (permanent, non-voting on spec ratification), and one regulator-adjacent observer seat (appointed two-year terms).</p>
-  <p class="text-stone-700 leading-relaxed mb-4">The Steering Committee elects a Chair annually from among its members. The Chair must be from a Class I or Class II member institution. The Atestia designee may not serve as Chair.</p>
+<section class="py-16 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-6">Governance</h2>
+    <p class="text-stone-700 leading-relaxed mb-4">The Working Group is governed by a Steering Committee of seven seats: three Charter Member seats, two General Member seats (elected two-year terms), one Atestia Inc. designee seat (permanent, non-voting on spec ratification), and one regulator-adjacent observer seat (appointed two-year terms).</p>
+    <p class="text-stone-700 leading-relaxed">The Steering Committee elects a Chair annually from among its members. The Chair must be from a Class I or Class II member institution. The Atestia designee may not serve as Chair.</p>
+  </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Intellectual property</h2>
-  <ul class="text-stone-700 list-disc pl-6 space-y-2">
-    <li>All Spec text and schemas licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="text-cyan-700 underline">CC-BY-4.0</a></li>
-    <li>Canonical reference implementation licensed under <a href="https://www.mozilla.org/en-US/MPL/2.0/" class="text-cyan-700 underline">MPL-2.0</a></li>
-    <li>"Tier-4", "Tier-4 Compliance", "Tier-4-Conformant" trademarks held by Atestia Inc., licensed to the Working Group under the WG Trademark License Agreement</li>
-  </ul>
+<section class="py-16 bg-white border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-6">Intellectual property</h2>
+    <ul class="text-stone-700 space-y-3">
+      <li>· All Spec text and schemas licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="text-accent underline">CC-BY-4.0</a></li>
+      <li>· Canonical reference implementation licensed under <a href="https://www.mozilla.org/en-US/MPL/2.0/" class="text-accent underline">MPL-2.0</a></li>
+      <li>· "Tier-4", "Tier-4 Compliance", "Tier-4-Conformant" trademarks held by Atestia Inc., licensed to the Working Group under the WG Trademark License Agreement</li>
+    </ul>
+  </div>
 </section>
 
-<section class="mb-12">
-  <h2 class="font-serif text-2xl mb-4">Apply for Charter Member status</h2>
-  <p class="text-stone-700 leading-relaxed mb-4">Founding Charter Member applications open in Q3 2026. The first 10 institutions accepted will be founding members. Interested institutions may contact us in advance: <a href="mailto:hello@tier4.org" class="text-cyan-700 underline">hello@tier4.org</a></p>
+<section class="py-16 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-serif text-3xl mb-6">Apply for Charter Member status</h2>
+    <p class="text-stone-700 leading-relaxed mb-6">Founding Charter Member applications open in Q3 2026. The first 10 institutions accepted will be founding members. Interested institutions may contact us in advance.</p>
+    <a href="mailto:hello@tier4.org" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded hover:bg-accent transition">hello@tier4.org</a>
+  </div>
 </section>
 
-<footer class="mt-24 pt-8 border-t border-stone-200 text-sm text-stone-600">
-  <p>Charter v0.9 draft. Public comment period: 2026-06-01 → 2026-06-22. Comments to <a href="mailto:charter@tier4.org" class="text-cyan-700 underline">charter@tier4.org</a></p>
+<footer class="bg-ink text-stone-300 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <p class="font-bold text-white text-lg mb-3">Atestia</p>
+        <p class="text-sm text-stone-400">The runtime evidence layer for regulated AI.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Product</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="../platform.html" class="hover:text-white">Platform</a></li>
+          <li><a href="../pricing.html" class="hover:text-white">Pricing</a></li>
+          <li><a href="../solutions/banks.html" class="hover:text-white">Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Open standard</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html" class="hover:text-white">Tier-4 spec</a></li>
+          <li><a href="charter.html" class="hover:text-white">Working Group</a></li>
+          <li><a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-white">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Company</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="../company/about.html" class="hover:text-white">About</a></li>
+          <li><a href="../company/careers.html" class="hover:text-white">Careers</a></li>
+          <li><a href="../contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-stone-700 text-xs text-stone-500 flex flex-wrap justify-between gap-4">
+      <p>Atestia is a product of FuteurCredX Inc. © 2026</p>
+      <p>Tier-4 spec licensed CC-BY-4.0 · Reference impl licensed MPL-2.0</p>
+    </div>
+  </div>
 </footer>
 
-</main>
 </body>
 </html>
