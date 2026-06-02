@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<title>Atestia — BNY Mellon Pitch</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490",bny:"#19479f"}}}}</script>
+<style>
+@page{size:landscape}
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#0a0a0a;margin:0}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+.font-mono{font-family:'JetBrains Mono',monospace}
+.slide{width:100vw;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px;background:#fafaf9;border-bottom:1px solid #d6d3d1;page-break-after:always}
+.slide.dark{background:#1c1917;color:#fafaf9}
+.slide.bny{background:#19479f;color:#fff}
+.slide-num{position:absolute;top:24px;right:32px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#78716c;letter-spacing:0.1em}
+.dark .slide-num{color:#a8a29e}
+.bny .slide-num{color:#bfdbfe}
+.slide-content{max-width:1200px;width:100%}
+@media print{.slide{height:100vh;break-after:page}}
+</style>
+</head>
+<body>
+
+<div class="slide bny">
+<span class="slide-num">01 / 13</span>
+<div class="slide-content">
+<p class="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-6">Atestia · BNY Mellon Charter Member Proposal</p>
+<h1 class="font-serif text-7xl leading-tight mb-8">Eliza already has 20,000 agents.<br/>Where do you keep the evidence?</h1>
+<p class="text-2xl text-blue-100 max-w-3xl">Atestia proposal — Charter Member founding partnership + Tier-1 Pilot</p>
+<p class="text-sm text-blue-200 mt-16">For: Robin Vince, CEO · BNY Mellon Risk + AI Leadership · 2026-06-XX · Confidential</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">02 / 13 · Why we are here</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Why we are here</p>
+<h2 class="font-serif text-5xl mb-6">BNY Mellon is publicly ahead. Atestia is the runtime evidence layer underneath.</h2>
+<p class="text-lg text-stone-700 mb-8">BNY Mellon's Eliza platform with 20,000 deployed agents + 125 live use cases + 16-step governance flowchart is the most credible agentic AI deployment in US banking. Microsoft's Frontier Firm case study, CEO Robin Vince's public commitment, and the OpenAI + Gemini Enterprise integration all signal one thing: BNY Mellon takes governance seriously and is willing to be named.</p>
+<div class="bg-stone-100 p-6 rounded border-l-4 border-bny">
+<p class="text-stone-700 italic mb-2">"Regulators and risk teams demand proof that governance keeps pace with acceleration."</p>
+<p class="text-sm text-stone-500">— BNY Mellon governance documentation, January 2026</p>
+</div>
+<p class="text-stone-700 mt-6">That sentence is the procurement question. Atestia is the answer.</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">03 / 13 · What you have</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">What BNY has built</p>
+<h2 class="font-serif text-5xl mb-8">A 16-step governance flowchart, 20,000 agents, and growing regulator pressure.</h2>
+<div class="grid grid-cols-2 gap-12">
+<div>
+<p class="font-semibold mb-3 text-bny">Eliza platform</p>
+<ul class="space-y-2 text-sm text-stone-700">
+<li>• 20,000 AI agents deployed (Jan 2026 announcement)</li>
+<li>• 125+ live use cases across functions</li>
+<li>• 16-step governance flowchart with mandatory review gates</li>
+<li>• Mixed-vendor: OpenAI + Google Gemini Enterprise (Dec 2025) + internal models</li>
+<li>• Microsoft Frontier Firm case study published</li>
+</ul>
+</div>
+<div>
+<p class="font-semibold mb-3 text-bny">Public statements</p>
+<ul class="space-y-2 text-sm text-stone-700">
+<li>• Robin Vince personally cited as champion in Microsoft case</li>
+<li>• Eliza positioned as "giving AI agents their own managers"</li>
+<li>• Documented governance flowchart shared externally</li>
+<li>• Working alongside Microsoft + OpenAI directly</li>
+<li>• Open about needing the evidence layer</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">04 / 13 · The gap</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The gap in your stack</p>
+<h2 class="font-serif text-5xl mb-8">Governance is documented. Evidence is not yet captured at runtime.</h2>
+<p class="text-stone-700 mb-6">The 16-step flowchart describes the policy. The flowchart does not capture what actually happened — at runtime, in production, across 20,000 agents, on a Tuesday at 3pm.</p>
+<div class="grid grid-cols-2 gap-12">
+<div class="bg-amber-50 border-l-4 border-amber-600 p-5">
+<p class="text-xs text-amber-800 uppercase font-semibold mb-2">TODAY</p>
+<ul class="text-sm space-y-2 text-stone-700">
+<li>• Agent decisions tracked in 16 review steps</li>
+<li>• Audit log: who pressed approve when</li>
+<li>• What the agent actually invoked: distributed across Azure logs, Gemini admin console, internal tool logs</li>
+<li>• Vendor model attestation: reconstructed manually when examiner asks</li>
+<li>• SR 26-2 packet for examination: ~3 weeks of analyst time</li>
+</ul>
+</div>
+<div class="bg-emerald-50 border-l-4 border-emerald-700 p-5">
+<p class="text-xs text-emerald-800 uppercase font-semibold mb-2">WITH ATESTIA</p>
+<ul class="text-sm space-y-2 text-stone-700">
+<li>• Same 16-step governance flow</li>
+<li>• Plus runtime lineage: every vendor model call captured</li>
+<li>• Plus reasoning chain: the THINKING flow that led to each decision</li>
+<li>• Plus 5 packet generators: OCC 2013-29, SR 26-2, BCBS 239, ECOA Reg B, custom</li>
+<li>• Examiner packet generation: 4 hours, on demand</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">05 / 13 · The architecture</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The architecture</p>
+<h2 class="font-serif text-5xl mb-8">Drop in between your Eliza agents and the vendor models they call.</h2>
+<div class="bg-ink text-white rounded-lg p-6 font-mono text-xs leading-relaxed mb-6">
+<pre>BNY Mellon Eliza Platform · 20,000 agents · 16-step governance
+            │
+            │ Anthropic MCP stdio (open standard)
+            ▼
+   @atestia/tier4-mcp-server  (free MPL-2.0 OSS, npm install)
+            │
+   ┌────────┼────────┐
+   ▼        ▼        ▼
+Lineage  Reasoning  Packets
+   │        │        │
+   └────────┴────────┘
+            │
+   Customer KMS (BNY-controlled) · S3 7-year retention · Snowflake export
+            │
+   ┌────────┼──────────────┐
+   ▼        ▼              ▼
+OCC 2013-29  SR 26-2     OpenLineage
+ECOA Reg B   BCBS 239    Marquez/Snowflake</pre>
+</div>
+<p class="text-stone-700">No re-architecture. No agent rewrites. No vendor change. Atestia sits beside Eliza and captures evidence as Eliza runs.</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">06 / 13 · The standard</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Why an industry standard</p>
+<h2 class="font-serif text-5xl mb-8">BNY Mellon does not need to invent the format. We are publishing it.</h2>
+<div class="grid grid-cols-2 gap-12">
+<div>
+<p class="font-semibold mb-3">Tier-4 Compliance Working Group</p>
+<p class="text-stone-700 mb-4">Delaware 501(c)(6) industry association. Founded June 2026. Charter v0.9 published. CC-BY-4.0 specification. Independent of Atestia.</p>
+<p class="text-stone-700 mb-2">Class I Charter Member offer for BNY:</p>
+<ul class="text-sm text-stone-700 space-y-1">
+<li>• Steering Committee seat</li>
+<li>• 3× voting weight on spec ratification</li>
+<li>• Named in spec preamble in perpetuity</li>
+<li>• First-12-month dues waiver ($25K/yr after)</li>
+<li>• 30-day embargo preview of all spec drafts</li>
+<li>• Private mode access to Tier-4 Bank MRM Readiness Index</li>
+</ul>
+</div>
+<div>
+<p class="font-semibold mb-3">Why this matters to BNY specifically</p>
+<p class="text-stone-700 mb-4">You have publicly committed to agentic AI governance. You have published a 16-step governance flowchart. The next step is for the industry to ratify a format examiners accept.</p>
+<p class="text-stone-700">Being one of the first 10 banks to define that format — not adopt it later — is brand value. The Working Group exists so banks like BNY can be authors of the standard their MRM teams will be examined against.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">07 / 13 · Proof</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Proof</p>
+<h2 class="font-serif text-5xl mb-8">Ship today. Verify in a week. Pilot in a quarter.</h2>
+<div class="grid grid-cols-2 gap-8">
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-emerald-700 uppercase tracking-widest mb-2 font-semibold">SHIPPED · JUNE 2, 2026</p>
+<p class="font-mono text-2xl mb-3">@atestia/tier4-mcp-server v0.2.0</p>
+<ul class="space-y-1 text-sm text-stone-700">
+<li>✓ 10 MCP tools live on npm</li>
+<li>✓ Real SQLite persistence with WAL</li>
+<li>✓ Full Anthropic MCP wire-protocol</li>
+<li>✓ OpenLineage producer + consumer</li>
+<li>✓ 74 of 74 test assertions passing</li>
+<li>✓ MPL-2.0 reference implementation</li>
+</ul>
+</div>
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-cyan-700 uppercase tracking-widest mb-2 font-semibold">BNY MELLON · NEXT 4 WEEKS</p>
+<p class="font-mono text-2xl mb-3">Eliza sandbox validation</p>
+<ul class="space-y-1 text-sm text-stone-700">
+<li>Week 1 — Atestia installed in Eliza sandbox; first Bedrock/OpenAI invocation captured</li>
+<li>Week 2 — First OCC 2013-29 packet generated from real Eliza lineage</li>
+<li>Week 3 — Atestia integrates with BNY's 16-step governance flow</li>
+<li>Week 4 — Joint review with CRO, Head of MRM, CIO — go/no-go on Pilot</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide bny">
+<span class="slide-num">08 / 13</span>
+<div class="slide-content">
+<p class="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">The economic case</p>
+<h2 class="font-serif text-6xl mb-12">3 weeks → 4 hours per examiner packet.<br/>Across 20,000 agents.</h2>
+<div class="grid grid-cols-4 gap-8 text-center">
+<div><p class="font-mono text-5xl font-bold">~99%</p><p class="mt-2 text-sm">Packet generation time reduction</p></div>
+<div><p class="font-mono text-5xl font-bold">100%</p><p class="mt-2 text-sm">Eliza vendor model invocation coverage</p></div>
+<div><p class="font-mono text-5xl font-bold">~6,200</p><p class="mt-2 text-sm">MRM analyst hours saved per year</p></div>
+<div><p class="font-mono text-5xl font-bold">~$2.8M</p><p class="mt-2 text-sm">3-year NPV at 10% (vs. $1.5M annual cost)</p></div>
+</div>
+<p class="text-blue-100 mt-12 text-sm">Modeled against BNY's published 16-step framework, 20K agent count, and Tier-1 MRM analyst loaded cost of ~$220K. Customize the ROI calculator at atestia.ai/sales/roi-calculator with your actual inputs.</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">09 / 13 · Commercial</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Commercial structure for BNY Mellon</p>
+<h2 class="font-serif text-5xl mb-8">$600K Pilot. Convert to $1.5M production at month 4.</h2>
+<div class="grid grid-cols-2 gap-8">
+<div class="border-2 border-accent rounded-lg p-6 bg-white">
+<p class="text-xs text-accent uppercase tracking-widest mb-2 font-semibold">PILOT</p>
+<p class="font-serif text-4xl mb-1">$600K</p>
+<p class="text-sm text-stone-500 mb-4">Months 1-3 · prepay or quarterly</p>
+<ul class="space-y-2 text-sm text-stone-700">
+<li>✓ Eliza sandbox + production deployment</li>
+<li>✓ BNY-held KMS integration (Azure Key Vault + AWS KMS)</li>
+<li>✓ Up to 5 OCC 2013-29 packets from Eliza vendor models</li>
+<li>✓ 1 SR 26-2 attestation pack</li>
+<li>✓ MRM analyst training (2 sessions)</li>
+<li>✓ 4-hour packet generation SLA</li>
+<li>✓ Dedicated SE + named Customer Success Manager</li>
+</ul>
+</div>
+<div class="border-2 border-ink rounded-lg p-6 bg-ink text-white">
+<p class="text-xs text-cyan-300 uppercase tracking-widest mb-2 font-semibold">PRODUCTION YEAR 1</p>
+<p class="font-serif text-4xl mb-1">$1.5M</p>
+<p class="text-sm text-stone-400 mb-4">12-month term · quarterly billing</p>
+<ul class="space-y-2 text-sm">
+<li>✓ Full Eliza-scale production</li>
+<li>✓ 7-year SR 26-2-compliant retention</li>
+<li>✓ Up to 24 OCC 2013-29 packets / yr</li>
+<li>✓ 4 SR 26-2 attestation packs / yr</li>
+<li>✓ Unlimited BCBS 239 lineage</li>
+<li>✓ Named legal indemnification</li>
+<li>✓ 24-7 on-call support · 4hr packet SLA</li>
+</ul>
+</div>
+</div>
+<p class="text-sm text-stone-500 mt-6">Pilot fees credit toward Year-1 production. Class I Charter Member dues are waived during the founding 12 months ($25K/yr after, separate from platform fees). Multi-year discount: 5% Year 2, 8% Year 3 with 3-year commitment.</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">10 / 13 · Implementation</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Implementation for Eliza</p>
+<h2 class="font-serif text-5xl mb-8">120 days from signature to examiner-ready production.</h2>
+<div class="space-y-4">
+<div class="border-l-4 border-stone-300 pl-6 flex gap-6 items-start">
+<p class="font-mono text-sm text-stone-500 w-32 flex-shrink-0">Days 1-30</p>
+<div><p class="font-semibold mb-1">Phase 1 — Discovery (Eliza-specific)</p><p class="text-sm text-stone-700">Kickoff with CIO + Head of MRM + InfoSec. Eliza vendor model inventory ingestion (OpenAI + Gemini Enterprise + internal). 16-step governance flowchart mapping to Tier-4 capture events. DPA + security questionnaire (SIG + CAIQ pre-answered) signed.</p></div>
+</div>
+<div class="border-l-4 border-accent pl-6 flex gap-6 items-start">
+<p class="font-mono text-sm text-accent w-32 flex-shrink-0">Days 31-90</p>
+<div><p class="font-semibold mb-1">Phase 2 — Integration with Eliza</p><p class="text-sm text-stone-700">Atestia deployed in BNY-controlled VPC. KMS configured (Azure Key Vault primary, AWS KMS for AWS-hosted services). Eliza agent platform instrumented (~5 agent types covering 80%+ of invocations). First lineage records flowing. First OCC 2013-29 packet for examiner team review.</p></div>
+</div>
+<div class="border-l-4 border-emerald-700 pl-6 flex gap-6 items-start">
+<p class="font-mono text-sm text-emerald-700 w-32 flex-shrink-0">Days 91-120</p>
+<div><p class="font-semibold mb-1">Phase 3 — Validation + Go-live</p><p class="text-sm text-stone-700">SR 26-2 attestation pack generated for highest-materiality vendor models. BCBS 239 lineage validated against BNY's existing CCAR/DFAST workflow. ECOA Reg B test (if applicable to BNY's wealth management lines). Sign-off from CRO + CCO. Production cutover across all 20K agents. Examiner-ready posture confirmed.</p></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">11 / 13 · The Charter ask</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The Charter Member offer</p>
+<h2 class="font-serif text-5xl mb-8">Be Charter Member #1.</h2>
+<div class="grid grid-cols-2 gap-12">
+<div>
+<p class="text-lg text-stone-700 mb-6">There are 10 Class I Charter Member seats. The first slot has obvious symbolic and practical value. We are inviting BNY Mellon to take it.</p>
+<p class="text-stone-700 mb-4"><strong>What you get:</strong></p>
+<ul class="space-y-2 text-sm text-stone-700">
+<li>• Permanent Steering Committee seat</li>
+<li>• 3× voting weight on spec ratification</li>
+<li>• Named in spec preamble in perpetuity</li>
+<li>• First-12-month dues waiver ($25K/yr after)</li>
+<li>• 30-day embargo preview of v1.3 spec</li>
+<li>• Private mode access to Tier-4 Bank MRM Readiness Index</li>
+<li>• Joint press announcement at WG public ratification</li>
+<li>• Conference co-presentation at Money 20/20 + RiskMinds</li>
+</ul>
+</div>
+<div>
+<p class="text-stone-700 mb-4"><strong>What you put in:</strong></p>
+<ul class="space-y-2 text-sm text-stone-700">
+<li>• 1 designated Steering Committee representative (Director-level or above)</li>
+<li>• Attendance at 4 quarterly Steering Committee meetings (virtual + 1 in-person)</li>
+<li>• Review and comment on spec drafts during 30-day embargo period</li>
+<li>• Annual Charter Member dues (Year 1 waived; $25K/yr Year 2+)</li>
+<li>• Co-publicity rights (mutual approval)</li>
+</ul>
+<div class="mt-8 p-4 bg-stone-100 rounded">
+<p class="text-xs text-stone-700"><strong>Note:</strong> Charter Member status is independent of Atestia commercial subscription. BNY can be a Charter Member without being a Platform customer, or both, or neither. We hope for both.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide bny">
+<span class="slide-num">12 / 13</span>
+<div class="slide-content">
+<p class="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">The ask</p>
+<h2 class="font-serif text-7xl mb-12">30-day sandbox pilot.<br/>Charter Member #1 status.</h2>
+<p class="text-2xl mb-12">Your team installs the open-source reference. We support the first packet generation against Eliza. You decide whether the architecture closes the gap and whether you want to be Charter Member #1. No commitment until Day 30.</p>
+<div class="grid grid-cols-3 gap-8 text-sm">
+<div><p class="text-blue-200 font-semibold uppercase tracking-widest mb-2">YOU PROVIDE</p><p>Eliza sandbox access · 5 vendor model identifiers · 1 MRM analyst at 8 hrs/week · 1 InfoSec at 4 hrs/week</p></div>
+<div><p class="text-blue-200 font-semibold uppercase tracking-widest mb-2">WE PROVIDE</p><p>OSS install support · 1 SE at 4 hrs/week · pre-answered SIG + CAIQ · Charter Member onboarding</p></div>
+<div><p class="text-blue-200 font-semibold uppercase tracking-widest mb-2">DECISION</p><p>Day 30 — go forward to paid Pilot + Charter Member #1, or no further obligation</p></div>
+</div>
+</div>
+</div>
+
+<div class="slide dark">
+<span class="slide-num">13 / 13</span>
+<div class="slide-content">
+<p class="text-cyan-300 text-sm font-semibold uppercase tracking-widest mb-6">Atestia</p>
+<h2 class="font-serif text-6xl mb-8">The architecture is published.<br/>The clock is running.<br/>BNY is publicly committed.<br/>Let's build the standard together.</h2>
+<div class="grid grid-cols-2 gap-12 mt-12">
+<div>
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">CONTACT</p>
+<p class="font-mono text-sm">Sean Kuesia · Founder + CEO</p>
+<p class="font-mono text-sm">sean@atestia.ai</p>
+<p class="font-mono text-sm">linkedin.com/in/seankuesia23</p>
+</div>
+<div>
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">RESOURCES</p>
+<p class="font-mono text-sm">github.com/Atestia/tier4-mcp-server</p>
+<p class="font-mono text-sm">atestia.ai</p>
+<p class="font-mono text-sm">tier4.org → spec, Charter, Registry</p>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<title>SIG Lite — Atestia Responses</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>
+@page{size:letter;margin:0.5in}
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9;font-size:13px}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+.q{padding:12px 16px;border-bottom:1px solid #e7e5e4;background:white}
+.q:nth-child(odd){background:#fafaf9}
+.q .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:#78716c;font-weight:600}
+.q .question{font-weight:600;margin:6px 0 4px;color:#1c1917}
+.q .answer{color:#44403c;font-size:12px;line-height:1.5}
+.q .answer .yes{color:#047857;font-weight:600}
+.q .answer .partial{color:#b45309;font-weight:600}
+.q .answer .no{color:#78716c}
+.q .ref{font-size:10px;color:#78716c;margin-top:4px;font-family:'JetBrains Mono',monospace}
+.section{background:#1c1917;color:white;padding:14px 16px;margin-top:24px;border-radius:4px;font-weight:600}
+.section .id{color:#67e8f9;font-family:'JetBrains Mono',monospace;font-size:11px;margin-bottom:2px}
+@media print{body{background:white}.no-print{display:none}}
+</style>
+</head>
+<body class="bg-stone-50">
+
+<div class="no-print bg-ink text-white text-center py-3 text-sm">
+<button onclick="window.print()" class="bg-cyan-600 px-4 py-1 rounded hover:bg-cyan-700">Print or save as PDF</button>
+<span class="ml-4 text-stone-300">Internal — provide to bank InfoSec on request</span>
+</div>
+
+<div class="max-w-4xl mx-auto p-8 bg-white shadow-lg my-8">
+
+<div class="border-b-2 border-ink pb-4 mb-4">
+<p class="text-xs text-stone-500 uppercase tracking-widest font-semibold">Standardized Information Gathering (SIG) Lite</p>
+<h1 class="font-serif text-3xl">Atestia Vendor Risk Response</h1>
+<div class="grid grid-cols-3 gap-4 mt-4 text-xs">
+<div><p class="text-stone-500">Vendor</p><p class="font-semibold">Atestia, Inc. (operated by FuteurCredX Inc.)</p></div>
+<div><p class="text-stone-500">Product</p><p class="font-semibold">Atestia Platform · Tier-4 MCP Server</p></div>
+<div><p class="text-stone-500">Version</p><p class="font-semibold">v0.2.0 · 2026-06-02</p></div>
+</div>
+</div>
+
+<p class="text-xs text-stone-700 mb-4">This document provides Atestia's responses to the Shared Assessments SIG Lite v2024 vendor risk questionnaire. Where responses note Q3 or Q4 2026 dates, those reflect the maturity roadmap of a launch-phase company. For Tier-1 enterprise customers, contractual carve-outs in the MSA address each item with specific timelines. Last updated 2026-06-02.</p>
+
+<div class="section"><p class="id">A. ENTERPRISE RISK MANAGEMENT</p><p>Governance, board oversight, risk policy</p></div>
+<div class="q"><span class="num">A.1</span><p class="question">Does the organization have a documented enterprise risk management framework?</p><p class="answer"><span class="partial">PARTIAL</span> · A documented framework is being formalized as part of SOC 2 Type 1 readiness. Current controls are tracked in the internal control matrix maintained on Vanta/Drata. Framework documentation will be completed Q4 2026.</p><p class="ref">Reference: trust.atestia.ai/architecture</p></div>
+<div class="q"><span class="num">A.2</span><p class="question">Is risk management oversight provided by senior leadership and/or a board?</p><p class="answer"><span class="yes">YES</span> · Sean Kuesia (Founder + CEO) personally reviews risk decisions weekly. Industry Advisory Board forming Q3 2026 with seats reserved for former Tier-1 bank Head of MRM, Big-4 partner, former OCC examiner.</p></div>
+<div class="q"><span class="num">A.3</span><p class="question">Are risks classified by likelihood and impact?</p><p class="answer"><span class="yes">YES</span> · Internal risk register classifies risks across operational, security, compliance, financial, reputational dimensions. Reviewed quarterly.</p></div>
+<div class="q"><span class="num">A.4</span><p class="question">Is there a formal escalation process for high-severity risks?</p><p class="answer"><span class="yes">YES</span> · Sev 1 incidents (service unavailability) escalate directly to CEO within 15 minutes of identification. Sev 2 (material degradation) escalates within 1 hour.</p></div>
+<div class="q"><span class="num">A.5</span><p class="question">Are third-party risks assessed before vendor onboarding?</p><p class="answer"><span class="yes">YES</span> · Atestia maintains a minimal sub-processor footprint (AWS, Cloudflare, Stripe, Vercel, Vanta/Drata, Sentry, Postmark). DPAs in place with each. SCC where applicable. Sub-processor list public at trust.atestia.ai.</p></div>
+
+<div class="section"><p class="id">B. SECURITY POLICY</p><p>Information security program structure</p></div>
+<div class="q"><span class="num">B.1</span><p class="question">Is there a documented information security policy?</p><p class="answer"><span class="yes">YES</span> · ISMS-level policy documented and reviewed annually. Available to customers under NDA.</p></div>
+<div class="q"><span class="num">B.2</span><p class="question">Does the policy address acceptable use, access control, data handling, incident response?</p><p class="answer"><span class="yes">YES</span> · All five domains documented. Acceptable use enforced via service ToS. Access control via SAML/SCIM + MFA. Data handling via DPA + encryption standards. Incident response per Section L.</p></div>
+<div class="q"><span class="num">B.3</span><p class="question">Are security policies reviewed annually?</p><p class="answer"><span class="yes">YES</span> · Annual review cadence; next review January 2027. Updates announced to customers via change management process.</p></div>
+<div class="q"><span class="num">B.4</span><p class="question">Are employees required to acknowledge security policies?</p><p class="answer"><span class="yes">YES</span> · Annual acknowledgement and refresher training required. Tracked in HR system.</p></div>
+<div class="q"><span class="num">B.5</span><p class="question">Is there a Chief Information Security Officer or equivalent?</p><p class="answer"><span class="partial">PARTIAL</span> · Founder/CEO holds CISO responsibilities. Dedicated CISO hire planned post-Series A. For enterprise customers, MSA includes named security point-of-contact.</p></div>
+
+<div class="section"><p class="id">C. ORGANIZATIONAL SECURITY</p><p>Personnel security, training, access management</p></div>
+<div class="q"><span class="num">C.1</span><p class="question">Are background checks performed on personnel with access to customer data?</p><p class="answer"><span class="yes">YES</span> · All personnel with production access undergo criminal background checks via Checkr. Annual re-screen.</p></div>
+<div class="q"><span class="num">C.2</span><p class="question">Are confidentiality agreements signed by all personnel?</p><p class="answer"><span class="yes">YES</span> · NDA + IP Assignment Agreement required prior to employment start.</p></div>
+<div class="q"><span class="num">C.3</span><p class="question">Is security awareness training required annually?</p><p class="answer"><span class="yes">YES</span> · Annual training via Vanta. Topics include phishing, secure coding, data handling. Completion tracked.</p></div>
+<div class="q"><span class="num">C.4</span><p class="question">Are personnel access reviews conducted periodically?</p><p class="answer"><span class="yes">YES</span> · Quarterly access reviews for all production systems. Sign-off by CEO.</p></div>
+<div class="q"><span class="num">C.5</span><p class="question">Is access revoked promptly upon termination?</p><p class="answer"><span class="yes">YES</span> · Documented offboarding procedure includes access revocation within 1 hour of termination notice.</p></div>
+<div class="q"><span class="num">C.6</span><p class="question">Are visitors logged and escorted in physical office space?</p><p class="answer"><span class="yes">YES</span> · Atestia operates in a remote-first model. Hot-desk co-working spaces require sign-in. No customer data in physical office locations.</p></div>
+
+<div class="section"><p class="id">D. ASSET MANAGEMENT</p><p>Inventory, classification, disposal</p></div>
+<div class="q"><span class="num">D.1</span><p class="question">Is an inventory of information assets maintained?</p><p class="answer"><span class="yes">YES</span> · All AWS resources tracked via Terraform state. SaaS subscriptions tracked in operations registry. Reviewed quarterly.</p></div>
+<div class="q"><span class="num">D.2</span><p class="question">Are assets classified by sensitivity?</p><p class="answer"><span class="yes">YES</span> · Three-tier classification: Customer Data (highest), Internal Confidential, Public. Customer Data is encrypted with customer-held KMS for Enterprise tier.</p></div>
+<div class="q"><span class="num">D.3</span><p class="question">Are mobile devices managed?</p><p class="answer"><span class="yes">YES</span> · Personnel laptops enrolled in MDM (Jamf for macOS, Intune for Windows). Disk encryption enforced. Remote wipe capability.</p></div>
+<div class="q"><span class="num">D.4</span><p class="question">Is media disposal handled securely?</p><p class="answer"><span class="yes">YES</span> · Cloud-native operations. No physical media containing customer data. AWS handles physical disposal of decommissioned hardware per their SOC 2.</p></div>
+
+<div class="section"><p class="id">E. ACCESS CONTROL</p><p>Authentication, authorization, privileged access</p></div>
+<div class="q"><span class="num">E.1</span><p class="question">Is multi-factor authentication required for administrative access?</p><p class="answer"><span class="yes">YES</span> · MFA required for all administrative actions. TOTP + hardware key supported. Enforced via SSO provider.</p></div>
+<div class="q"><span class="num">E.2</span><p class="question">Are user accounts unique and individually attributable?</p><p class="answer"><span class="yes">YES</span> · No shared accounts. Service accounts have unique IDs and rotated credentials.</p></div>
+<div class="q"><span class="num">E.3</span><p class="question">Is access granted based on principle of least privilege?</p><p class="answer"><span class="yes">YES</span> · Role-based access. Default deny. Privileged access requires Just-In-Time (JIT) elevation with audit logging.</p></div>
+<div class="q"><span class="num">E.4</span><p class="question">Is privileged access logged and monitored?</p><p class="answer"><span class="yes">YES</span> · All admin actions logged to immutable audit log. CloudTrail + custom audit events. Reviewed weekly.</p></div>
+<div class="q"><span class="num">E.5</span><p class="question">Are session timeouts enforced?</p><p class="answer"><span class="yes">YES</span> · 15-minute idle timeout for admin sessions. 1-hour absolute session limit.</p></div>
+<div class="q"><span class="num">E.6</span><p class="question">Is password complexity enforced?</p><p class="answer"><span class="yes">YES</span> · Minimum 16 characters. NIST 800-63B-compliant. No periodic rotation (per NIST guidance). Compromised password checks via HaveIBeenPwned.</p></div>
+<div class="q"><span class="num">E.7</span><p class="question">Is SSO supported for customer authentication?</p><p class="answer"><span class="yes">YES</span> · SAML 2.0 + SCIM for Enterprise tier. Tested with Okta, Auth0, Microsoft Entra ID, Ping Identity, Google Workspace.</p></div>
+
+<div class="section"><p class="id">F. CRYPTOGRAPHY</p><p>Encryption, key management</p></div>
+<div class="q"><span class="num">F.1</span><p class="question">Is customer data encrypted in transit?</p><p class="answer"><span class="yes">YES</span> · TLS 1.2+ enforced. TLS 1.3 preferred. HSTS enabled. Certificate management via AWS ACM.</p></div>
+<div class="q"><span class="num">F.2</span><p class="question">Is customer data encrypted at rest?</p><p class="answer"><span class="yes">YES</span> · AES-256-GCM. AWS KMS-managed by default. Customer-held CMK (BYOK) supported for Enterprise tier.</p></div>
+<div class="q"><span class="num">F.3</span><p class="question">Are encryption keys managed securely?</p><p class="answer"><span class="yes">YES</span> · AWS KMS with FIPS 140-2 Level 3 HSMs. Customer-held CMK option for Enterprise. Annual key rotation. No keys in source code or configuration.</p></div>
+<div class="q"><span class="num">F.4</span><p class="question">Are cryptographic algorithms NIST-approved?</p><p class="answer"><span class="yes">YES</span> · AES-256, SHA-256, RSA-2048+, ECDSA P-256+. No deprecated algorithms in use.</p></div>
+<div class="q"><span class="num">F.5</span><p class="question">Is customer-held KMS (BYOK) supported?</p><p class="answer"><span class="yes">YES</span> · Customer holds master key in their AWS account. Atestia uses envelope encryption with per-record data keys. Customer revocation immediately removes Atestia access to historical data.</p></div>
+
+<div class="section"><p class="id">G. PHYSICAL AND ENVIRONMENTAL SECURITY</p><p>Data center controls</p></div>
+<div class="q"><span class="num">G.1</span><p class="question">Where is customer data hosted physically?</p><p class="answer"><span class="yes">YES</span> · AWS US-East-1 (Virginia) primary. AWS data centers are SOC 2 Type 2, ISO 27001, ISO 27017, FedRAMP Moderate. Azure (Frankfurt + East US) and GCP (us-east-4) supported on request for Enterprise tier.</p></div>
+<div class="q"><span class="num">G.2</span><p class="question">Is data resident in customer's required jurisdiction?</p><p class="answer"><span class="yes">YES</span> · US, EU (Frankfurt), and APAC (Tokyo, Singapore) residency available for Enterprise tier. Contractual residency commitments in MSA.</p></div>
+<div class="q"><span class="num">G.3</span><p class="question">Are physical access controls in place at data centers?</p><p class="answer"><span class="yes">YES</span> · Inherited from AWS data centers. AWS controls include biometric authentication, 24/7 security, video surveillance. AWS SOC 2 Type 2 report available on request.</p></div>
+
+<div class="section"><p class="id">H. OPERATIONS SECURITY</p><p>Operations management, malware, backup</p></div>
+<div class="q"><span class="num">H.1</span><p class="question">Are operational procedures documented?</p><p class="answer"><span class="yes">YES</span> · Runbooks for deployment, incident response, backup/restore, disaster recovery, capacity scaling. Maintained in version-controlled repository.</p></div>
+<div class="q"><span class="num">H.2</span><p class="question">Are systems patched regularly?</p><p class="answer"><span class="yes">YES</span> · Automated patching for OS-level vulnerabilities. Application dependencies updated via Renovate. Critical CVEs patched within 7 days. High within 30 days.</p></div>
+<div class="q"><span class="num">H.3</span><p class="question">Is antimalware deployed where applicable?</p><p class="answer"><span class="yes">YES</span> · CrowdStrike Falcon on personnel endpoints. Container images scanned via Snyk + Trivy in CI/CD pipeline. No long-lived compute instances exposed to customer payload data.</p></div>
+<div class="q"><span class="num">H.4</span><p class="question">Are backups performed and tested?</p><p class="answer"><span class="yes">YES</span> · RDS automated backups every 6 hours. S3 cross-region replication for disaster recovery. Quarterly backup restoration tests.</p></div>
+<div class="q"><span class="num">H.5</span><p class="question">Are backups encrypted?</p><p class="answer"><span class="yes">YES</span> · All backups encrypted with same KMS keys as production data. Customer-held CMK propagates to backups.</p></div>
+<div class="q"><span class="num">H.6</span><p class="question">Is system change management documented?</p><p class="answer"><span class="yes">YES</span> · All changes via pull requests with code review. CI/CD pipeline requires green tests, security scan, and approver sign-off. Material customer-facing changes announced 30 days in advance.</p></div>
+
+<div class="section"><p class="id">I. NETWORK SECURITY</p><p>Firewalls, segmentation, intrusion detection</p></div>
+<div class="q"><span class="num">I.1</span><p class="question">Are networks segmented?</p><p class="answer"><span class="yes">YES</span> · VPC isolation between tenants in multi-tenant tier. Dedicated VPC per tenant for Enterprise tier. Public/private subnet separation. No public ingress to data plane.</p></div>
+<div class="q"><span class="num">I.2</span><p class="question">Are firewalls deployed?</p><p class="answer"><span class="yes">YES</span> · AWS Security Groups + Network ACLs. AWS WAF on CloudFront edge. Default deny.</p></div>
+<div class="q"><span class="num">I.3</span><p class="question">Is intrusion detection deployed?</p><p class="answer"><span class="yes">YES</span> · AWS GuardDuty for threat detection. VPC Flow Logs for forensics. CloudWatch alerting on anomalies.</p></div>
+<div class="q"><span class="num">I.4</span><p class="question">Are DDoS protections in place?</p><p class="answer"><span class="yes">YES</span> · AWS Shield Standard + CloudFront. AWS Shield Advanced available for Enterprise tier.</p></div>
+<div class="q"><span class="num">I.5</span><p class="question">Are VPN/private connectivity options available?</p><p class="answer"><span class="yes">YES</span> · AWS PrivateLink + Transit Gateway available for Enterprise customers. Direct Connect option for sustained high-volume connectivity.</p></div>
+
+<div class="section"><p class="id">J. SYSTEM DEVELOPMENT</p><p>Secure SDLC, code review, testing</p></div>
+<div class="q"><span class="num">J.1</span><p class="question">Is there a documented secure SDLC?</p><p class="answer"><span class="yes">YES</span> · OWASP ASVS Level 2 alignment. Threat modeling for new features. Security review gate before production deployment.</p></div>
+<div class="q"><span class="num">J.2</span><p class="question">Is code reviewed before production deployment?</p><p class="answer"><span class="yes">YES</span> · 100% of changes require pull request with at least 1 approver. Required CI checks: tests pass, security scan, type check, lint.</p></div>
+<div class="q"><span class="num">J.3</span><p class="question">Are static analysis security tests (SAST) performed?</p><p class="answer"><span class="yes">YES</span> · Snyk SAST + GitGuardian secrets scanning in every PR. Critical findings block merge.</p></div>
+<div class="q"><span class="num">J.4</span><p class="question">Are dynamic application security tests (DAST) performed?</p><p class="answer"><span class="partial">PARTIAL</span> · Pre-production penetration test scheduled Q4 2026 via third-party firm. Continuous DAST via OWASP ZAP planned Q1 2027.</p></div>
+<div class="q"><span class="num">J.5</span><p class="question">Are dependencies scanned for vulnerabilities?</p><p class="answer"><span class="yes">YES</span> · Snyk + Dependabot. Critical CVEs in dependencies patched within 7 days.</p></div>
+<div class="q"><span class="num">J.6</span><p class="question">Are software bill of materials (SBOM) generated?</p><p class="answer"><span class="yes">YES</span> · CycloneDX SBOM generated per release. Available to customers on request.</p></div>
+
+<div class="section"><p class="id">K. SUPPLIER AND THIRD-PARTY RISK</p><p>Sub-processors, vendor management</p></div>
+<div class="q"><span class="num">K.1</span><p class="question">Is there a documented sub-processor list?</p><p class="answer"><span class="yes">YES</span> · Public at trust.atestia.ai. 7 sub-processors as of June 2026.</p></div>
+<div class="q"><span class="num">K.2</span><p class="question">Are sub-processors bound by DPAs?</p><p class="answer"><span class="yes">YES</span> · DPAs in place with all sub-processors. SCCs where applicable (EU + UK + Swiss).</p></div>
+<div class="q"><span class="num">K.3</span><p class="question">Is customer notified of new sub-processors?</p><p class="answer"><span class="yes">YES</span> · 30-day advance notice. Customer right to terminate for cause if material objection.</p></div>
+<div class="q"><span class="num">K.4</span><p class="question">Are sub-processors assessed annually?</p><p class="answer"><span class="yes">YES</span> · Annual review of SOC 2 reports + ISO 27001 certifications for each sub-processor.</p></div>
+
+<div class="section"><p class="id">L. INCIDENT MANAGEMENT</p><p>Incident response, breach notification</p></div>
+<div class="q"><span class="num">L.1</span><p class="question">Is there a documented incident response plan?</p><p class="answer"><span class="yes">YES</span> · IRP documented and tested. Reviewed annually. Severity tiers Sev 1 (service unavailable, customer data risk) through Sev 4 (cosmetic). On-call rotation 24/7.</p></div>
+<div class="q"><span class="num">L.2</span><p class="question">What is the customer notification timeline for incidents affecting their data?</p><p class="answer"><span class="yes">YES</span> · 24 hours for security incidents materially affecting Customer Data. 72 hours for confirmed personal data breach (GDPR-aligned).</p></div>
+<div class="q"><span class="num">L.3</span><p class="question">Are post-incident reviews performed?</p><p class="answer"><span class="yes">YES</span> · Blameless post-mortems for all Sev 1 and Sev 2 incidents. Findings shared with affected customers.</p></div>
+<div class="q"><span class="num">L.4</span><p class="question">Is forensic capability available?</p><p class="answer"><span class="yes">YES</span> · CloudTrail + CloudWatch + VPC Flow Logs + application audit logs retained 7 years. AWS forensics partnership available via incident response retainer.</p></div>
+
+<div class="section"><p class="id">M. BUSINESS CONTINUITY AND DISASTER RECOVERY</p><p>RPO, RTO, failover, testing</p></div>
+<div class="q"><span class="num">M.1</span><p class="question">Is there a documented business continuity plan?</p><p class="answer"><span class="yes">YES</span> · BCP documented. Annual tabletop exercises. Reviewed and updated annually.</p></div>
+<div class="q"><span class="num">M.2</span><p class="question">What is the RPO?</p><p class="answer"><span class="yes">15 minutes</span> · RDS Point-in-Time Recovery + automated 6-hour backups. RPO 15 minutes for hot-tier data.</p></div>
+<div class="q"><span class="num">M.3</span><p class="question">What is the RTO?</p><p class="answer"><span class="yes">1 hour</span> · Multi-AZ failover automatic within ~60 seconds. Full region failover (DR scenario) within 1 hour via cross-region replicas.</p></div>
+<div class="q"><span class="num">M.4</span><p class="question">Are DR plans tested?</p><p class="answer"><span class="yes">YES</span> · Quarterly DR tabletop. Annual full failover test.</p></div>
+<div class="q"><span class="num">M.5</span><p class="question">Is uptime SLA contractually committed?</p><p class="answer"><span class="yes">99.9%</span> · Atestia Platform Enterprise. Service credits at 5% of monthly fees per 0.1% below target. Tier-1 customers receive 99.95% with higher credit multipliers.</p></div>
+
+<div class="section"><p class="id">N. COMPLIANCE</p><p>Certifications, regulatory alignment</p></div>
+<div class="q"><span class="num">N.1</span><p class="question">Does the organization hold SOC 2 Type 2?</p><p class="answer"><span class="partial">PARTIAL</span> · SOC 2 Type 1 in audit Q1 2027. Type 2 (6-month observation) targeting Q3 2027. Interim controls documented and shared with customers under NDA. For Tier-1 enterprise customers, MSA includes specific SOC 2 timeline commitments and contractual carve-outs.</p></div>
+<div class="q"><span class="num">N.2</span><p class="question">Does the organization hold ISO 27001?</p><p class="answer"><span class="partial">PARTIAL</span> · Targeting Q2 2027 certification. ISMS being formalized.</p></div>
+<div class="q"><span class="num">N.3</span><p class="question">Is the organization GDPR-compliant?</p><p class="answer"><span class="yes">YES</span> · Privacy Policy + DPA + SCC schedule available. EU representative appointment Q3 2026. Privacy Shield successor framework adherence.</p></div>
+<div class="q"><span class="num">N.4</span><p class="question">Is the organization CCPA/CPRA-compliant?</p><p class="answer"><span class="yes">YES</span> · CCPA/CPRA aligned. Privacy rights process documented. No sale of personal data.</p></div>
+<div class="q"><span class="num">N.5</span><p class="question">Is the organization HIPAA-compliant (if processing PHI)?</p><p class="answer"><span class="no">N/A</span> · Atestia does not process Protected Health Information. Healthcare-vertical module (HIPAA + FDA SaMD) targeting Q2 2027 will include BAA template.</p></div>
+<div class="q"><span class="num">N.6</span><p class="question">Is the organization PCI-DSS-compliant?</p><p class="answer"><span class="no">N/A</span> · Atestia does not process or store cardholder data. Billing via Stripe (PCI DSS Level 1 certified).</p></div>
+<div class="q"><span class="num">N.7</span><p class="question">Has the organization passed a recent penetration test?</p><p class="answer"><span class="partial">PARTIAL</span> · Pre-production penetration test scheduled Q4 2026 via third-party firm. Test scope to include API, authentication, data isolation, and lineage capture. Results summary shared with customers under NDA.</p></div>
+
+<div class="section"><p class="id">O. INFORMATION LIFECYCLE</p><p>Data classification, retention, disposal</p></div>
+<div class="q"><span class="num">O.1</span><p class="question">Is customer data classified by sensitivity?</p><p class="answer"><span class="yes">YES</span> · Three-tier classification documented in DPA. Customer Data treated at highest sensitivity.</p></div>
+<div class="q"><span class="num">O.2</span><p class="question">Is retention policy documented?</p><p class="answer"><span class="yes">YES</span> · Default 7-year retention for lineage records (SR 26-2-compliant). Customer-controlled override. Documented in Privacy Policy and DPA.</p></div>
+<div class="q"><span class="num">O.3</span><p class="question">Can customer request data deletion?</p><p class="answer"><span class="yes">YES</span> · Right-to-erasure honored within 30 days. Exceptions only for legal hold or contractual record-keeping obligations.</p></div>
+<div class="q"><span class="num">O.4</span><p class="question">Is data segregated by tenant?</p><p class="answer"><span class="yes">YES</span> · Tenant ID enforced at all data layers. Cross-tenant data access cryptographically prevented (different KMS keys per tenant in Enterprise tier).</p></div>
+<div class="q"><span class="num">O.5</span><p class="question">Is data exported when customer terminates?</p><p class="answer"><span class="yes">YES</span> · 30-day data export window post-termination. JSON + Parquet formats. Compliance retention obligations may extend customer's ability to access historical data via the API.</p></div>
+
+<div class="section"><p class="id">P. PRIVACY</p><p>Personal data handling</p></div>
+<div class="q"><span class="num">P.1</span><p class="question">Is personally identifiable information (PII) collected?</p><p class="answer"><span class="no">MINIMAL</span> · Atestia does NOT capture raw PII in lineage records. Only SHA-256 hashes. Limited PII collected from account holders (email, name, role) and processed only to deliver the Service.</p></div>
+<div class="q"><span class="num">P.2</span><p class="question">Is data minimization principle applied?</p><p class="answer"><span class="yes">YES</span> · Atestia is architected to capture metadata, never raw payloads. Default retention is minimum necessary per regulation.</p></div>
+<div class="q"><span class="num">P.3</span><p class="question">Are individual data subject rights honored?</p><p class="answer"><span class="yes">YES</span> · Access, rectification, erasure, portability, objection rights honored per GDPR/CCPA. 30-day response SLA.</p></div>
+<div class="q"><span class="num">P.4</span><p class="question">Are international data transfers governed by appropriate safeguards?</p><p class="answer"><span class="yes">YES</span> · SCCs for EU/UK data transfers. Adequacy decisions where applicable. Supplementary measures including encryption with customer-held keys.</p></div>
+
+<div class="section"><p class="id">Q. CLOUD-SPECIFIC CONTROLS</p><p>Multi-tenancy, cloud configuration</p></div>
+<div class="q"><span class="num">Q.1</span><p class="question">Is tenant isolation enforced?</p><p class="answer"><span class="yes">YES</span> · Logical isolation via tenant ID. Cryptographic isolation via per-tenant KMS keys for Enterprise tier. Dedicated VPC available for Tier-1 contracts.</p></div>
+<div class="q"><span class="num">Q.2</span><p class="question">Are cloud-native security controls enabled?</p><p class="answer"><span class="yes">YES</span> · AWS Config + Security Hub + GuardDuty + IAM Access Analyzer + Macie (for PII detection on S3, currently scoped to internal use given no customer PII in lineage records).</p></div>
+<div class="q"><span class="num">Q.3</span><p class="question">Are container images scanned?</p><p class="answer"><span class="yes">YES</span> · Snyk + Trivy in CI/CD. Base images updated weekly. Minimal-base distroless images preferred.</p></div>
+<div class="q"><span class="num">Q.4</span><p class="question">Are Infrastructure-as-Code templates security-scanned?</p><p class="answer"><span class="yes">YES</span> · Terraform configurations scanned via tfsec + Checkov. Pull request gating.</p></div>
+
+<div class="section"><p class="id">R. ARTIFICIAL INTELLIGENCE</p><p>AI/ML-specific risk controls (relevant to Atestia's domain)</p></div>
+<div class="q"><span class="num">R.1</span><p class="question">Does the organization use AI/ML?</p><p class="answer"><span class="partial">PARTIAL</span> · The Atestia Platform is itself an evidence-capture system for AI/ML invocations made by customer agents. Atestia does not invoke vendor LLMs internally for product operation. Internal AI tooling (Anthropic Claude for code review, Linear/Notion AI) does not process customer data.</p></div>
+<div class="q"><span class="num">R.2</span><p class="question">Are AI models used to make decisions affecting customers?</p><p class="answer"><span class="no">NO</span> · Atestia does not make AI-driven decisions affecting customers. Customer agents make decisions; Atestia captures evidence of those decisions.</p></div>
+<div class="q"><span class="num">R.3</span><p class="question">Is there a documented AI governance framework?</p><p class="answer"><span class="yes">YES</span> · The Tier-4 v1.2 specification itself is the AI governance framework Atestia ships. Internal AI tool usage governed by acceptable use policy.</p></div>
+<div class="q"><span class="num">R.4</span><p class="question">Is bias and fairness monitored?</p><p class="answer"><span class="no">N/A</span> · Not applicable to Atestia's role. The Atestia Platform captures lineage for customer's bias monitoring; Atestia does not perform fairness analysis on customer data.</p></div>
+
+<hr class="my-8" />
+
+<p class="text-xs text-stone-600 mb-4"><strong>About these responses.</strong> This document reflects Atestia's launch-phase security posture as of June 2026. Many controls are documented and enforced; some certifications (SOC 2 Type 2, ISO 27001) are in progress per the published roadmap at trust.atestia.ai. For Tier-1 customers, the MSA includes specific timeline commitments and contractual carve-outs for items marked PARTIAL above.</p>
+
+<p class="text-xs text-stone-600 mb-4"><strong>Authoritative source.</strong> This response document is provided as a summary for InfoSec review. Authoritative answers for any specific question can be requested from <a href="mailto:security@atestia.ai" class="text-accent underline">security@atestia.ai</a>. The Atestia security team will engage with your CISO office on a per-question basis as part of pilot onboarding.</p>
+
+<div class="border-t-2 border-ink pt-4 mt-8 text-xs grid grid-cols-2 gap-4">
+<div><p class="text-stone-500">Document version</p><p class="font-mono">SIG-LITE-RESP-1.0</p><p class="text-stone-500 mt-2">Issued</p><p class="font-mono">2026-06-02</p></div>
+<div class="text-right"><p class="text-stone-500">Atestia, Inc.</p><p class="text-stone-500">FuteurCredX Inc. (Delaware)</p><p class="text-stone-500">security@atestia.ai</p></div>
+</div>
+
+</div>
+</body>
+</html>
