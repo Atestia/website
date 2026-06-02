@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg"><title>FAQ — Atestia</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}details{margin-bottom:0.75rem}summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:"+";float:right;font-size:1.5rem;color:#0e7490;transition:transform 0.2s}details[open] summary::after{content:"−"}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../platform.html" class="hover:text-accent">Platform</a>
+<a href="../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="index.html" class="text-accent font-semibold">Resources</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">FAQ</p>
+<h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Frequently asked.</h1>
+<p class="text-xl text-stone-700">30 questions from bank MRM teams across the pilot lifecycle.</p>
+</div>
+</section>
+
+<section class="py-12">
+<div class="max-w-3xl mx-auto px-6">
+
+<h2 class="font-serif text-3xl mb-6 mt-12">Pre-installation</h2>
+<div class="bg-white border border-stone-200 rounded p-2">
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Do we need to be on a specific cloud to use Atestia?</summary><p class="mt-3 text-sm text-stone-700">No. Atestia is cloud-agnostic. The reference implementation runs anywhere Node 20+ runs. The commercial Atestia Platform is hosted on AWS US-East-1 by default but supports Azure (Frankfurt + East US) and GCP (us-east-4) on request. For Tier-1 contracts we deploy into customer VPC.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What's the typical install time from contract signature to first lineage record?</summary><p class="mt-3 text-sm text-stone-700">4 to 8 weeks for production deployment. The open-source reference implementation installs in 60 seconds; first sandbox lineage record can be generated the same afternoon. Production cutover requires customer KMS integration (1-2 weeks), agent platform instrumentation (1-2 weeks), and InfoSec review.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Does Atestia work with our existing MRM platform (ValidMind, Yields, etc.)?</summary><p class="mt-3 text-sm text-stone-700">Yes. Atestia captures runtime evidence; existing MRM platforms manage approval workflow and validation evidence storage. Many deployments run Atestia alongside ValidMind or Yields. Atestia exports OpenLineage events and supports webhook forwarding to your existing platform.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What's the minimum vendor model count to justify deployment?</summary><p class="mt-3 text-sm text-stone-700">Approximately 30 vendor models if you have ongoing examination cycles. For banks with fewer than 30 models, the open-source tier may be sufficient. Atestia Platform Enterprise is most economical when you generate 8+ packets per year or have more than 100 vendor models.</p></details>
+
+<details class="p-4"><summary class="font-semibold text-stone-800">Where does my customer data go?</summary><p class="mt-3 text-sm text-stone-700">It doesn't. Atestia captures SHA-256 hashes of vendor model inputs and structured metadata (vendor ID, latency, agent ID, decision context). Raw payloads never reach Atestia infrastructure. The architecture is intentionally PII-free.</p></details>
+</div>
+
+<h2 class="font-serif text-3xl mb-6 mt-12">Installation + configuration</h2>
+<div class="bg-white border border-stone-200 rounded p-2">
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Which AI agent platforms are officially supported?</summary><p class="mt-3 text-sm text-stone-700">AWS Bedrock AgentCore, Anthropic Claude Desktop, Cursor, OpenAI Assistants (via wrapper), LangChain (TypeScript and Python), and any MCP-conformant client. Integration guides for each are in <a href="https://github.com/Atestia/tier4-mcp-server/tree/main/examples" class="text-accent underline">github.com/Atestia/tier4-mcp-server/tree/main/examples</a>.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">How does the customer KMS integration work?</summary><p class="mt-3 text-sm text-stone-700">Atestia uses envelope encryption. Customer holds the master KMS key (AWS KMS, Azure Key Vault, or GCP Cloud KMS). Atestia generates per-record data keys, encrypts each lineage record at rest, and stores only the wrapped key. The customer can revoke key access; Atestia loses access immediately.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Can we self-host Atestia in our own VPC?</summary><p class="mt-3 text-sm text-stone-700">Yes, for Tier-1 enterprise contracts. We provide a Terraform module and infrastructure-as-code templates for AWS, Azure, and GCP. Customer operates the infrastructure; Atestia operates the application layer with SaaS-style updates.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What identity providers do you support?</summary><p class="mt-3 text-sm text-stone-700">SAML 2.0 and SCIM for Enterprise tier. Tested with Okta, Auth0, Microsoft Entra ID, Ping Identity, and Google Workspace. Clerk-backed authentication for Atestia Pro Starter/Pro/Scale tiers. Multi-factor authentication is required for administrative actions across all tiers.</p></details>
+
+<details class="p-4"><summary class="font-semibold text-stone-800">How do we configure retention policies?</summary><p class="mt-3 text-sm text-stone-700">Default is 7 years SR 26-2-compliant. Customers can configure shorter retention via policy (subject to record-keeping obligations). All retention changes are logged. Cold storage tier (S3 + KMS) activates automatically after 90 days; customer KMS access required for retrieval.</p></details>
+</div>
+
+<h2 class="font-serif text-3xl mb-6 mt-12">First packet generation</h2>
+<div class="bg-white border border-stone-200 rounded p-2">
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">How long does a packet take to generate?</summary><p class="mt-3 text-sm text-stone-700">OCC 2013-29 packet: 30-60 seconds API time, 4 hours wall-clock with MRM analyst review (formatting, footnotes, sign-off). SR 26-2 attestation pack: 2-3 minutes API time, full pack delivered in 24 hours including analyst review. BCBS 239 aggregation reference: 1-2 minutes for typical CCAR Y-14A scope.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Can we customize packet templates for our bank?</summary><p class="mt-3 text-sm text-stone-700">Yes. The Tier-4 spec defines the canonical structure; bank-specific footnotes, signatures, and supplementary attachments are configurable. Custom packet generators (e.g., bank-specific CCAR templates) are supported via the pluggable PacketGenerator interface.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What if our examiner asks for a packet format we haven't tested?</summary><p class="mt-3 text-sm text-stone-700">Our Solutions Engineering team builds custom packet generators on a 7-business-day turnaround for Enterprise customers. The cost is included in your subscription for the first 2 custom formats per year; additional formats are billed at $25K-$100K per format depending on complexity.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Can we run the packet generators against historical lineage?</summary><p class="mt-3 text-sm text-stone-700">Yes, against any lineage captured by Atestia. For pre-Atestia historical data, we offer a backfill service that ingests CloudWatch / Snowflake / custom log sources into Atestia-conformant lineage records. Backfill is billed as professional services ($150K-$500K typical scope).</p></details>
+
+<details class="p-4"><summary class="font-semibold text-stone-800">How do we share packets with our examiner?</summary><p class="mt-3 text-sm text-stone-700">Packets are delivered as JSON or PDF. Atestia provides a secure share link with expiration controls and audit logs (who downloaded when). For sensitive examinations, packets can be exported with watermark and revocable access controls.</p></details>
+</div>
+
+<h2 class="font-serif text-3xl mb-6 mt-12">Production scale</h2>
+<div class="bg-white border border-stone-200 rounded p-2">
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What's the throughput ceiling?</summary><p class="mt-3 text-sm text-stone-700">Single-tenant Atestia Platform Enterprise: 10,000 lineage records per second sustained, 100,000 burst. Multi-tenant Atestia Pro: 1,000 records per second per tenant. Tested at JPM-scale agent invocation volumes during pre-production load tests.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What's the latency added to vendor model calls?</summary><p class="mt-3 text-sm text-stone-700">p50: ~5ms. p95: ~25ms. p99: ~100ms. Capture is asynchronous to vendor model invocation by default — Atestia does not block the agent. Synchronous mode (block until captured) adds 20-30ms p95 if your bank policy requires guaranteed capture before agent action.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What's the SLA?</summary><p class="mt-3 text-sm text-stone-700">99.9% monthly uptime for Atestia Platform Enterprise. RPO 15 minutes, RTO 1 hour. Credits at 5% of monthly fees per 0.1% below target. Tier-1 customers receive 99.95% uptime with higher credit multipliers.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">How is high availability handled?</summary><p class="mt-3 text-sm text-stone-700">Multi-AZ in primary region, with cross-region replication on customer request for disaster recovery. RDS Multi-AZ for hot storage. S3 cross-region replication for cold storage. Stateless API tier with auto-scaling.</p></details>
+
+<details class="p-4"><summary class="font-semibold text-stone-800">Can we monitor Atestia from our existing observability stack?</summary><p class="mt-3 text-sm text-stone-700">Yes. Atestia emits OpenTelemetry-compliant metrics, structured logs (JSON), and audit events. Native integrations with Datadog, Splunk, Sumo Logic, and Sentry. Customer-side dashboards and alerts can be configured via the standard providers.</p></details>
+</div>
+
+<h2 class="font-serif text-3xl mb-6 mt-12">Examiner readiness</h2>
+<div class="bg-white border border-stone-200 rounded p-2">
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Has the OCC accepted a Tier-4 packet at an examination?</summary><p class="mt-3 text-sm text-stone-700">The format is brand new (June 2026). No examination cycle has tested the format yet. However, the format mirrors the structure of existing OCC 2013-29 and Federal Reserve SR 11-7 evidence patterns that examiners have used for 12+ years. The Working Group is engaging examiners directly during the v1.2 RFC period to capture preferences before the first 2027 cycle.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What if our examiner wants something Atestia doesn't produce?</summary><p class="mt-3 text-sm text-stone-700">We modify the spec to match examiner workflow, not the other way around. Custom packet generators are built within 7 business days. The Tier-4 v1.2 RFC process is specifically designed to incorporate examiner feedback. If your examination experience reveals a format gap, we ship a new generator.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Is the Tier-4 spec accepted by Big-4 audit firms?</summary><p class="mt-3 text-sm text-stone-700">Big-4 firms (KPMG, Deloitte, EY, PwC) are being invited to join the Tier-4 Compliance Working Group as Class II Members. Tier-4 Approved Auditor program opens Q1 2027 for firms to certify implementations. Audit firms acceptance is a Working Group governance priority.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Does Atestia replace our SR 11-7 / SR 26-2 validation process?</summary><p class="mt-3 text-sm text-stone-700">No. Atestia captures runtime evidence and generates packets. Pre-deployment validation work (model card creation, fairness testing, business policy alignment) remains your MRM team's responsibility. Atestia automates the evidence layer; validation remains intellectual labor.</p></details>
+
+<details class="p-4"><summary class="font-semibold text-stone-800">Can we use the open-source tier for examiner-facing packets?</summary><p class="mt-3 text-sm text-stone-700">Yes, the open-source reference implementation generates fully Tier-4-conformant packets. However, the enterprise tier adds 7-year SR 26-2-compliant retention enforcement, customer-held KMS, indemnification, 24-7 support, and dedicated SE support during examination preparation. Most banks adopt the open-source tier in pilots and upgrade to enterprise pre-production.</p></details>
+</div>
+
+<h2 class="font-serif text-3xl mb-6 mt-12">Renewal + expansion</h2>
+<div class="bg-white border border-stone-200 rounded p-2">
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">How is renewal pricing structured?</summary><p class="mt-3 text-sm text-stone-700">Year 1 ACV is locked. Year 2 includes a 5% uplift (capped at CPI + 2%); Year 3 includes 3% uplift. Multi-year discounts: 5% off Year 2, 8% off Year 3 with 3-year commitment at contract signing. Volume discounts available for banks generating 40+ packets per year.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What expansion paths are typical?</summary><p class="mt-3 text-sm text-stone-700">First-year scope is usually one business unit (e.g., commercial credit decisioning). Year 2 expansion: add adjacent units (consumer credit, AML, KYC). Year 3 expansion: add BCBS 239 lineage for risk data aggregation, then add ECOA Reg B Adverse Action automation. Cross-industry expansion (capital markets, insurance, healthcare) becomes available Q1-Q3 2027.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Can we negotiate custom packet generators into the contract?</summary><p class="mt-3 text-sm text-stone-700">Yes. Custom packet generators are negotiated as separate SOWs or as part of the Master Services Agreement. Typical scope: 2 custom formats per year included in Year 1, additional formats at $25K-$100K per format.</p></details>
+
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What happens if Atestia is acquired?</summary><p class="mt-3 text-sm text-stone-700">The Tier-4 specification is governed by a 501(c)(6) industry working group and licensed under CC-BY-4.0. The reference implementation is MPL-2.0. An acquisition does not affect customer's ability to continue operating against the open-source code. Customer contracts include change-of-control provisions guaranteeing service continuity for the remainder of the term plus 12 months.</p></details>
+
+<details class="p-4"><summary class="font-semibold text-stone-800">Can we become a Working Group Charter Member?</summary><p class="mt-3 text-sm text-stone-700">Yes. First 10 institutions to apply as Class I Charter Members receive Steering Committee seat, 3× voting weight on spec ratification, first-12-month dues waiver, and named-in-perpetuity placement in spec preamble. Apply at <a href="../tier4/charter.html" class="text-accent underline">tier4/charter</a>.</p></details>
+</div>
+
+</div>
+</section>
+
+<section class="bg-ink text-white py-16">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<h2 class="font-serif text-3xl mb-4">Question not answered?</h2>
+<a href="../contact.html" class="inline-block px-6 py-3 bg-white text-ink font-semibold rounded hover:bg-stone-200">Book a call</a>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+<script src="../assets/shared.js" defer></script>
+</body>
+</html>

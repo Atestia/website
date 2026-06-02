@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg"><title>Atestia — Pitch Deck</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>
+@page{size:landscape}
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#0a0a0a;margin:0}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+.font-mono{font-family:'JetBrains Mono','Menlo',monospace}
+.slide{width:100vw;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px;background:#fafaf9;border-bottom:1px solid #d6d3d1;page-break-after:always}
+.slide.dark{background:#1c1917;color:#fafaf9}
+.slide.accent{background:#0e7490;color:#fff}
+.slide-num{position:absolute;top:24px;right:32px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#78716c;letter-spacing:0.1em}
+.dark .slide-num{color:#a8a29e}
+.accent .slide-num{color:#a5f3fc}
+.slide-content{max-width:1200px;width:100%}
+@media print{.slide{height:100vh;min-height:100vh;break-after:page}}
+</style>
+</head>
+<body>
+
+<div class="slide dark">
+<span class="slide-num">01 / 13</span>
+<div class="slide-content">
+<p class="text-cyan-300 text-sm font-semibold uppercase tracking-widest mb-6">Atestia · Tier-4 Compliance Working Group</p>
+<h1 class="font-serif text-7xl leading-tight mb-8">The runtime evidence layer for regulated AI.</h1>
+<p class="text-2xl text-stone-300 max-w-3xl">SR 26-2 vendor model attestation. BCBS 239 risk data lineage. ECOA Reg B explainability. Captured at runtime, examiner-ready in seconds.</p>
+<p class="text-sm text-stone-500 mt-16">Pitch to [BANK NAME] · [DATE] · Confidential</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">02 / 13 · The clock</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The regulatory clock is ticking</p>
+<h2 class="font-serif text-5xl mb-8">The first SR 26-2 examination cycle starts in 2027.</h2>
+<div class="grid grid-cols-3 gap-8 mb-12">
+<div class="border-l-4 border-stone-300 pl-6"><p class="font-mono text-3xl font-bold text-stone-400">2011</p><p class="font-semibold mt-2">SR 11-7 issued</p><p class="text-sm text-stone-600 mt-1">The framework banks have used for 15 years.</p></div>
+<div class="border-l-4 border-stone-300 pl-6"><p class="font-mono text-3xl font-bold text-stone-400">2021</p><p class="font-semibold mt-2">SR 21-8 AML supplement</p><p class="text-sm text-stone-600 mt-1">BSA/AML extension to MRM principles.</p></div>
+<div class="border-l-4 border-accent pl-6"><p class="font-mono text-3xl font-bold text-accent">APR 17, 2026</p><p class="font-semibold mt-2">SR 26-2 issued</p><p class="text-sm text-stone-600 mt-1">First full rewrite since the financial crisis. Joint Fed/OCC/FDIC. <strong>You are here.</strong></p></div>
+</div>
+<p class="text-lg text-stone-700">The guidance shifts MRM from point-in-time validation to continuous, event-driven, materiality-proportionate monitoring. Banks above $30B AUM face the first exam under the new framework in their next routine cycle — Q1 to Q2 2027 for most.</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">03 / 13 · The gap</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The gap</p>
+<h2 class="font-serif text-5xl mb-8">Banks have shipped agentic AI faster than they shipped the evidence layer.</h2>
+<div class="grid grid-cols-3 gap-8">
+<div><p class="font-mono text-6xl font-bold text-accent">~250K</p><p class="font-semibold mt-2">JPMorgan LLM Suite seats</p><p class="text-sm text-stone-600 mt-2">450+ production use cases invoking OpenAI and Anthropic.</p></div>
+<div><p class="font-mono text-6xl font-bold text-accent">~215K</p><p class="font-semibold mt-2">Wells Fargo Agentspace</p><p class="text-sm text-stone-600 mt-2">Google Gemini across the firm. MRM AI governance role open.</p></div>
+<div><p class="font-mono text-6xl font-bold text-accent">46.5K</p><p class="font-semibold mt-2">Goldman GS AI Assistant</p><p class="text-sm text-stone-600 mt-2">OpenAI + Anthropic + Google + Meta in production.</p></div>
+</div>
+<div class="mt-12 border-l-4 border-accent pl-6">
+<p class="text-xl font-semibold mb-2">George Argenti, CIO, Goldman Sachs:</p>
+<p class="text-lg text-stone-700 italic">"The governance to manage them does not exist yet."</p>
+<p class="text-sm text-stone-500 mt-2">— Public statement, May 2026</p>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">04 / 13 · What examiners ask</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">What the examiner will ask</p>
+<h2 class="font-serif text-5xl mb-8">"Show me the vendor model invocation log for credit decision X, six months ago."</h2>
+<div class="grid grid-cols-2 gap-12">
+<div><p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">Today</p><div class="bg-stone-100 p-6 rounded space-y-3 text-sm"><p>• Logs in 3 vendor cloud consoles</p><p>• Email threads with vendor risk team</p><p>• Manual reconstruction from CloudWatch + Snowflake</p><p>• ~3 weeks of MRM analyst time</p><p>• 60-70% data completeness</p><p>• No reasoning chain for the decision</p></div></div>
+<div><p class="text-xs text-emerald-700 uppercase tracking-widest mb-3 font-semibold">With Atestia</p><div class="bg-emerald-50 border border-emerald-200 p-6 rounded space-y-3 text-sm"><p>✓ Single query against lineage substrate</p><p>✓ Full vendor model invocation record</p><p>✓ Reasoning chain with confidence + human-in-loop</p><p>✓ OCC 2013-29 + SR 26-2 packet in 4 hours</p><p>✓ 100% capture coverage</p><p>✓ Examiner-defensible chain of custody</p></div></div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">05 / 13 · The architecture</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The architecture</p>
+<h2 class="font-serif text-5xl mb-8">One MCP server. Ten tools. Three regulations.</h2>
+<div class="bg-ink text-white rounded-lg p-8 font-mono text-xs leading-relaxed mb-8">
+<pre>AI Agent (Bedrock AgentCore / Claude Desktop / Cursor / LangChain)
+            │
+            │ Anthropic MCP stdio
+            ▼
+   @atestia/tier4-mcp-server
+            │
+   ┌────────┼────────────┐
+   ▼        ▼            ▼
+[Lineage] [Reasoning] [Packet generators]
+   │        │            │
+   └────────┴────────────┘
+            │
+   SQLite WAL  /  S3 + Customer KMS  /  Snowflake
+            │
+   ┌────────┼────────┐
+   ▼        ▼        ▼
+[OCC 2013-29] [SR 26-2] [BCBS 239]
+[Reg B Notice] [OpenLineage export]</pre>
+</div>
+<div class="grid grid-cols-3 gap-6 text-sm">
+<div class="border-l-4 border-emerald-700 pl-4"><p class="font-semibold">Lineage capture</p><p class="text-stone-600">Every vendor model invocation. SHA-256 hash, latency, context.</p></div>
+<div class="border-l-4 border-emerald-700 pl-4"><p class="font-semibold">Reasoning capture</p><p class="text-stone-600">Observation → tool call → tool result → decision.</p></div>
+<div class="border-l-4 border-emerald-700 pl-4"><p class="font-semibold">Packet generation</p><p class="text-stone-600">OCC 2013-29, SR 26-2, BCBS 239, Reg B. On demand.</p></div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">06 / 13 · The standard</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The standard</p>
+<h2 class="font-serif text-5xl mb-8">Tier-4 is an industry-association standard. Not a vendor format.</h2>
+<div class="grid grid-cols-2 gap-12">
+<div>
+<p class="font-semibold text-lg mb-3">Tier-4 Compliance Working Group</p>
+<p class="text-stone-700 mb-4">Delaware 501(c)(6) industry association. Sponsored by Atestia. Governed independently.</p>
+<ul class="space-y-2 text-sm text-stone-700">
+<li>• CC-BY-4.0 specification</li>
+<li>• MPL-2.0 reference implementation</li>
+<li>• 60-day public RFC process</li>
+<li>• Steering Committee with bank, LLM provider, audit firm, insurance, and regulator-adjacent seats</li>
+<li>• Founder seat is permanent, non-voting on spec ratification</li>
+</ul>
+</div>
+<div>
+<p class="font-semibold text-lg mb-3">Why this matters to your bank</p>
+<p class="text-stone-700 mb-4">Your vendor risk committee will not accept a proprietary attestation packet format owned by a startup. They will accept an industry standard governed by an industry body.</p>
+<p class="text-stone-700">The same dynamic that made SOC 2 the audit standard, CycloneDX the SBOM standard, and OpenLineage the data lineage standard.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">07 / 13 · Proof</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Proof</p>
+<h2 class="font-serif text-5xl mb-8">Ship today. Verify in a week. Pilot in a quarter.</h2>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-emerald-700 uppercase tracking-widest mb-2 font-semibold">SHIPPED · JUNE 2, 2026</p>
+<p class="font-mono text-2xl mb-3">@atestia/tier4-mcp-server v0.2.0</p>
+<ul class="space-y-1 text-sm text-stone-700">
+<li>✓ 10 MCP tools across capture + reasoning + packet generation</li>
+<li>✓ Real SQLite persistence (WAL mode)</li>
+<li>✓ Full MCP wire-protocol round-trip</li>
+<li>✓ OpenLineage producer + consumer</li>
+<li>✓ 74 of 74 test assertions passing</li>
+<li>✓ MPL-2.0 license</li>
+</ul>
+</div>
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-cyan-700 uppercase tracking-widest mb-2 font-semibold">YOUR BANK · NEXT 4 WEEKS</p>
+<p class="font-mono text-2xl mb-3">Sandbox validation pilot</p>
+<ul class="space-y-1 text-sm text-stone-700">
+<li>Week 1 — MRM analyst installs in sandbox, instruments one agent</li>
+<li>Week 2 — Produces first OCC 2013-29 packet from real lineage</li>
+<li>Week 3 — Reviews packet against bank's existing evidence standard</li>
+<li>Week 4 — Decision on production pilot scope</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide accent">
+<span class="slide-num">08 / 13</span>
+<div class="slide-content">
+<p class="text-cyan-200 text-sm font-semibold uppercase tracking-widest mb-4">The economic case</p>
+<h2 class="font-serif text-6xl mb-12">3 weeks → 4 hours per examiner packet.<br/>$0 incremental infrastructure.</h2>
+<div class="grid grid-cols-4 gap-8 text-center">
+<div><p class="font-mono text-5xl font-bold">~99%</p><p class="mt-2 text-sm">Reduction in packet generation time</p></div>
+<div><p class="font-mono text-5xl font-bold">100%</p><p class="mt-2 text-sm">Coverage of vendor model invocations</p></div>
+<div><p class="font-mono text-5xl font-bold">2.4x</p><p class="mt-2 text-sm">MRM analyst capacity freed</p></div>
+<div><p class="font-mono text-5xl font-bold">7yr</p><p class="mt-2 text-sm">Examiner-defensible retention</p></div>
+</div>
+<p class="text-cyan-100 mt-12 text-sm">Based on first deployment results. Actual ROI projection inside; ask for the calculator.</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">09 / 13 · Commercial</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Commercial structure</p>
+<h2 class="font-serif text-5xl mb-8">$600K pilot. Convert to $1.5M production at month 4.</h2>
+<div class="grid grid-cols-2 gap-8">
+<div class="border-2 border-accent rounded-lg p-6 bg-white">
+<p class="text-xs text-accent uppercase tracking-widest mb-2 font-semibold">PILOT</p>
+<p class="font-serif text-4xl mb-1">$600K</p>
+<p class="text-sm text-stone-500 mb-4">Months 1-3, prepay or quarterly</p>
+<ul class="space-y-2 text-sm text-stone-700">
+<li>✓ Sandbox + production deployment</li>
+<li>✓ Customer KMS integration</li>
+<li>✓ Up to 5 OCC 2013-29 packets</li>
+<li>✓ 1 SR 26-2 attestation pack</li>
+<li>✓ MRM analyst training (2 sessions)</li>
+<li>✓ 4-hour packet generation SLA</li>
+<li>✓ Dedicated Solutions Engineer</li>
+</ul>
+</div>
+<div class="border-2 border-ink rounded-lg p-6 bg-ink text-white">
+<p class="text-xs text-cyan-300 uppercase tracking-widest mb-2 font-semibold">PRODUCTION (Year 1)</p>
+<p class="font-serif text-4xl mb-1">$1.5M</p>
+<p class="text-sm text-stone-400 mb-4">12-month term, quarterly billing</p>
+<ul class="space-y-2 text-sm">
+<li>✓ Full production multi-tenant</li>
+<li>✓ 7-year SR 26-2-compliant retention</li>
+<li>✓ Up to 24 OCC 2013-29 packets/yr</li>
+<li>✓ 4 SR 26-2 attestation packs/yr</li>
+<li>✓ Unlimited BCBS 239 lineage</li>
+<li>✓ Named legal indemnification</li>
+<li>✓ 24-7 on-call support</li>
+</ul>
+</div>
+</div>
+<p class="text-sm text-stone-500 mt-6">Pilot fees credit toward Year 1 production. Multi-year discount: 5% Year 2, 8% Year 3 with 3-year commitment.</p>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">10 / 13 · Implementation</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Implementation timeline</p>
+<h2 class="font-serif text-5xl mb-8">120 days from signature to examiner-ready production.</h2>
+<div class="space-y-4">
+<div class="border-l-4 border-stone-300 pl-6 flex gap-6 items-start">
+<p class="font-mono text-sm text-stone-500 w-32 flex-shrink-0">Days 1-30</p>
+<div><p class="font-semibold mb-1">Phase 1 — Discovery</p><p class="text-sm text-stone-700">Kickoff. Vendor model inventory ingestion. Atestia SE shadows MRM team for 2 days. Integration architecture review with InfoSec and Application Platform team. Sign DPA and security questionnaire (50 questions, pre-answered).</p></div>
+</div>
+<div class="border-l-4 border-accent pl-6 flex gap-6 items-start">
+<p class="font-mono text-sm text-accent w-32 flex-shrink-0">Days 31-90</p>
+<div><p class="font-semibold mb-1">Phase 2 — Integration</p><p class="text-sm text-stone-700">Deploy Atestia Platform in customer VPC. Configure customer KMS. Instrument first agent platform (Bedrock AgentCore, Claude Desktop integration, or custom MCP client). First lineage records flowing. First OCC 2013-29 packet generated for examiner team review.</p></div>
+</div>
+<div class="border-l-4 border-emerald-700 pl-6 flex gap-6 items-start">
+<p class="font-mono text-sm text-emerald-700 w-32 flex-shrink-0">Days 91-120</p>
+<div><p class="font-semibold mb-1">Phase 3 — Validation + Go-live</p><p class="text-sm text-stone-700">SR 26-2 attestation pack generated. BCBS 239 lineage validated against bank's existing risk reporting workflow. ECOA Reg B Adverse Action Notice end-to-end test. Sign-off from CRO and CCO. Production cutover. Examiner-ready posture confirmed.</p></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">11 / 13 · The team</span>
+<div class="slide-content">
+<p class="text-accent text-sm font-semibold uppercase tracking-widest mb-4">The team</p>
+<h2 class="font-serif text-5xl mb-8">Atestia + the Tier-4 Compliance Working Group.</h2>
+<div class="grid grid-cols-2 gap-12">
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">FOUNDER</p>
+<p class="font-serif text-2xl mb-2">Sean Kuesia</p>
+<p class="text-sm text-stone-700 mb-3">Founder + CEO. Author of Tier-4 v1.2 specification. Permanent non-voting Steering Committee seat. Previously built FuteurCredX bank-vertical credit analytics platform serving community and regional banks.</p>
+</div>
+<div class="border border-stone-200 rounded-lg p-6 bg-white">
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-2 font-semibold">WORKING GROUP</p>
+<p class="font-serif text-2xl mb-2">Charter seats opening</p>
+<p class="text-sm text-stone-700 mb-3">Class I Charter Member program opens Q3 2026. First 10 institutions receive Steering Committee seat, 3× voting weight on spec ratification, first-12-month dues waiver, and named-in-perpetuity placement.</p>
+</div>
+</div>
+<p class="text-sm text-stone-500 mt-6">Industry Advisory Board forming Q3 2026: former Tier-1 bank Head of MRM, Big-4 Model Risk Advisory partner, former OCC examiner, LLM provider regulated industries lead, insurance carrier AI underwriter.</p>
+</div>
+</div>
+
+<div class="slide accent">
+<span class="slide-num">12 / 13</span>
+<div class="slide-content">
+<p class="text-cyan-200 text-sm font-semibold uppercase tracking-widest mb-4">The ask</p>
+<h2 class="font-serif text-7xl mb-12">30-day sandbox pilot.</h2>
+<p class="text-2xl mb-12">Your MRM team installs the open-source reference. We support the first packet generation. You decide whether the architecture closes the gap. No commitment.</p>
+<div class="grid grid-cols-3 gap-8 text-sm">
+<div><p class="text-cyan-200 font-semibold uppercase tracking-widest mb-2">YOU PROVIDE</p><p>Sandbox access + vendor model list + 1 MRM analyst, 8 hours/week</p></div>
+<div><p class="text-cyan-200 font-semibold uppercase tracking-widest mb-2">WE PROVIDE</p><p>OSS install support + 1 SE, 4 hours/week + pre-answered security questionnaire</p></div>
+<div><p class="text-cyan-200 font-semibold uppercase tracking-widest mb-2">DECISION</p><p>Day 30 — go forward to paid pilot, or no further obligation</p></div>
+</div>
+</div>
+</div>
+
+<div class="slide dark">
+<span class="slide-num">13 / 13</span>
+<div class="slide-content">
+<p class="text-cyan-300 text-sm font-semibold uppercase tracking-widest mb-6">Atestia</p>
+<h2 class="font-serif text-6xl mb-8">The architecture is published.<br/>The clock is running.<br/>Build with us.</h2>
+<div class="grid grid-cols-2 gap-12 mt-12">
+<div>
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">CONTACT</p>
+<p class="font-mono text-sm">Sean Kuesia · Founder + CEO</p>
+<p class="font-mono text-sm">enterprise@atestia.ai</p>
+<p class="font-mono text-sm">linkedin.com/in/seankuesia23</p>
+</div>
+<div>
+<p class="text-xs text-stone-500 uppercase tracking-widest mb-3 font-semibold">RESOURCES</p>
+<p class="font-mono text-sm">github.com/Atestia/tier4-mcp-server</p>
+<p class="font-mono text-sm">atestia.ai</p>
+<p class="font-mono text-sm">atestia.ai/tier4 — spec + Working Group</p>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

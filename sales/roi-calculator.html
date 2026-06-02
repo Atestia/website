@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg"><title>ROI Calculator — Atestia</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}.font-mono{font-family:'JetBrains Mono',monospace}input[type="range"]{accent-color:#0e7490}</style>
+</head>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../platform.html" class="hover:text-accent">Platform</a>
+<a href="../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../resources/index.html" class="hover:text-accent">Resources</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">ROI Calculator</p>
+<h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Quantify the gap.</h1>
+<p class="text-xl text-stone-700">Slide three inputs. See what Atestia saves your MRM team in dollars and time.</p>
+</div>
+</section>
+
+<section class="py-16">
+<div class="max-w-5xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
+
+<div class="bg-white border border-stone-200 rounded-lg p-8">
+<h2 class="font-serif text-2xl mb-6">Your bank's profile</h2>
+
+<div class="mb-8">
+<label class="flex justify-between mb-2"><span class="font-semibold text-sm">Bank AUM (USD)</span><span class="font-mono text-sm text-accent" id="aumVal">$50B</span></label>
+<input type="range" id="aum" min="1" max="3000" step="10" value="50" class="w-full" />
+<div class="flex justify-between text-xs text-stone-500 mt-1"><span>$1B</span><span>$100B</span><span>$3T</span></div>
+</div>
+
+<div class="mb-8">
+<label class="flex justify-between mb-2"><span class="font-semibold text-sm">Vendor models in production</span><span class="font-mono text-sm text-accent" id="modelsVal">150</span></label>
+<input type="range" id="models" min="10" max="800" step="5" value="150" class="w-full" />
+<div class="flex justify-between text-xs text-stone-500 mt-1"><span>10</span><span>400</span><span>800</span></div>
+</div>
+
+<div class="mb-8">
+<label class="flex justify-between mb-2"><span class="font-semibold text-sm">Examiner packets per year</span><span class="font-mono text-sm text-accent" id="packetsVal">12</span></label>
+<input type="range" id="packets" min="1" max="50" step="1" value="12" class="w-full" />
+<div class="flex justify-between text-xs text-stone-500 mt-1"><span>1</span><span>20</span><span>50</span></div>
+</div>
+
+<div class="mb-8">
+<label class="flex justify-between mb-2"><span class="font-semibold text-sm">MRM analyst loaded cost (USD/yr)</span><span class="font-mono text-sm text-accent" id="costVal">$220K</span></label>
+<input type="range" id="cost" min="100" max="500" step="10" value="220" class="w-full" />
+<div class="flex justify-between text-xs text-stone-500 mt-1"><span>$100K</span><span>$300K</span><span>$500K</span></div>
+</div>
+
+<p class="text-xs text-stone-500 italic">Inputs are local. No data leaves your browser.</p>
+</div>
+
+<div class="bg-ink text-white rounded-lg p-8 self-start sticky top-24">
+<p class="text-xs text-cyan-300 uppercase tracking-widest mb-4 font-semibold">Annual savings with Atestia</p>
+<p class="font-mono text-5xl font-bold mb-2" id="savingsVal">$1.4M</p>
+<p class="text-stone-300 mb-8 text-sm">vs. manual reconstruction workflow</p>
+
+<div class="space-y-4 text-sm">
+<div class="flex justify-between border-b border-stone-700 pb-3"><span class="text-stone-400">Analyst hours saved / year</span><span class="font-mono font-semibold" id="hoursVal">~6,200</span></div>
+<div class="flex justify-between border-b border-stone-700 pb-3"><span class="text-stone-400">FTE-equivalent freed</span><span class="font-mono font-semibold" id="fteVal">~3.0</span></div>
+<div class="flex justify-between border-b border-stone-700 pb-3"><span class="text-stone-400">Packet turnaround time</span><span class="font-mono font-semibold text-emerald-400">~3wk → ~4h</span></div>
+<div class="flex justify-between border-b border-stone-700 pb-3"><span class="text-stone-400">Atestia Year 1 cost</span><span class="font-mono font-semibold" id="atestiaCost">$1.5M</span></div>
+<div class="flex justify-between border-b border-stone-700 pb-3"><span class="text-stone-400">Net Year 1 benefit</span><span class="font-mono font-semibold text-emerald-400" id="netVal">-$100K</span></div>
+<div class="flex justify-between"><span class="text-stone-400">Net 3-Year benefit (NPV at 10%)</span><span class="font-mono font-semibold text-emerald-400" id="npvVal">$2.8M</span></div>
+</div>
+
+<div class="border-t border-stone-700 mt-8 pt-6">
+<p class="text-xs text-stone-400 mb-2">Plus uncosted benefits:</p>
+<ul class="text-xs text-stone-300 space-y-1">
+<li>✓ Examiner-defensible 7-year retention</li>
+<li>✓ Reduced regulatory action risk</li>
+<li>✓ Faster Tier-2/Tier-1 contract close</li>
+<li>✓ MRM team strategic re-deployment</li>
+</ul>
+</div>
+
+<a href="../contact.html" class="block text-center mt-8 px-6 py-3 bg-cyan-700 text-white font-semibold rounded hover:bg-cyan-600">Book a scoping call</a>
+</div>
+
+</div>
+</section>
+
+<section class="bg-white border-t border-stone-200 py-16">
+<div class="max-w-3xl mx-auto px-6 text-sm text-stone-600 leading-relaxed">
+<h3 class="font-serif text-2xl mb-4 text-ink">Methodology</h3>
+<p class="mb-4"><strong>Baseline (manual reconstruction):</strong> Industry benchmark — 1 OCC 2013-29 packet requires ~120 MRM analyst hours when reconstructed from CloudWatch logs, vendor SOC 2 reports, email threads, and Confluence pages. SR 26-2 attestation packs require ~200 hours. BCBS 239 lineage queries vary; we model 40 hours per examiner question.</p>
+<p class="mb-4"><strong>With Atestia:</strong> Packet generation is automated and reviewed (~4 hours of MRM analyst review per packet for QA and bank-specific footnotes). Lineage queries take minutes.</p>
+<p class="mb-4"><strong>Atestia pricing:</strong> Year 1 ACV based on bank AUM tier — Tier-1 ($100B+ AUM): $1.5M to $3M; Regional Tier-2: $250K to $750K; Community: $50K to $150K. The calculator selects pricing automatically from your AUM input.</p>
+<p class="mb-4"><strong>NPV calculation:</strong> 3-year horizon, 10% discount rate, 5% Year-2 contract uplift, 3% Year-3 uplift. Pilot fee credits toward Year 1 production.</p>
+<p class="mb-4"><strong>Uncosted benefits:</strong> Regulatory action risk reduction (which has tail-risk magnitudes of $10M-$50M+ in CFPB consent decrees per recent precedent), reputation premium with examiners, downstream Tier-1 audit firm reception, and MRM analyst attrition reduction are not modeled.</p>
+<p class="text-xs text-stone-500">For a custom ROI engagement with your actual workflow inputs, <a href="../contact.html" class="text-accent underline">book a call</a>.</p>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+</div>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = v => v >= 1e9 ? `$${(v/1e9).toFixed(1)}B` : v >= 1e6 ? `$${(v/1e6).toFixed(1)}M` : v >= 1e3 ? `$${(v/1e3).toFixed(0)}K` : `$${v.toFixed(0)}`;
+const fmtNum = v => v.toLocaleString();
+
+function compute() {
+  const aumB = parseInt($('aum').value); // bank AUM in $B
+  const models = parseInt($('models').value);
+  const packets = parseInt($('packets').value);
+  const analystCostK = parseInt($('cost').value);
+
+  $('aumVal').textContent = aumB >= 1000 ? `$${(aumB/1000).toFixed(1)}T` : `$${aumB}B`;
+  $('modelsVal').textContent = models;
+  $('packetsVal').textContent = packets;
+  $('costVal').textContent = `$${analystCostK}K`;
+
+  // Baseline hours: 120 hrs/packet × packets/yr + 30 hrs/model/yr governance overhead + 600 hrs/yr lineage questions
+  const baselineHours = (120 * packets) + (30 * models) + 600;
+  // Atestia hours: 4 hrs/packet × packets/yr + 3 hrs/model/yr governance + 60 hrs/yr lineage questions
+  const atestiaHours = (4 * packets) + (3 * models) + 60;
+  const hoursSaved = baselineHours - atestiaHours;
+  const hourlyCost = (analystCostK * 1000) / 2080;
+  const savings = hoursSaved * hourlyCost;
+
+  // Atestia Year 1 pricing by AUM tier
+  let atestiaCost;
+  if (aumB >= 100) atestiaCost = Math.min(3000000, Math.max(1500000, aumB * 4000));
+  else if (aumB >= 10) atestiaCost = Math.min(750000, Math.max(250000, aumB * 7000));
+  else atestiaCost = Math.min(150000, Math.max(50000, aumB * 15000));
+
+  const net = savings - atestiaCost;
+  // 3-year NPV at 10%, with 5% / 3% uplift
+  const y1 = net;
+  const y2 = (savings * 1.05) - (atestiaCost * 1.05);
+  const y3 = (savings * 1.05 * 1.03) - (atestiaCost * 1.05 * 1.03);
+  const npv = y1 + (y2 / 1.1) + (y3 / 1.21);
+
+  $('savingsVal').textContent = fmt(savings);
+  $('hoursVal').textContent = `~${Math.round(hoursSaved).toLocaleString()}`;
+  $('fteVal').textContent = `~${(hoursSaved / 2080).toFixed(1)}`;
+  $('atestiaCost').textContent = fmt(atestiaCost);
+  $('netVal').textContent = `${net >= 0 ? '' : '-'}${fmt(Math.abs(net))}`;
+  $('netVal').className = `font-mono font-semibold ${net >= 0 ? 'text-emerald-400' : 'text-amber-400'}`;
+  $('npvVal').textContent = `${npv >= 0 ? '' : '-'}${fmt(Math.abs(npv))}`;
+  $('npvVal').className = `font-mono font-semibold ${npv >= 0 ? 'text-emerald-400' : 'text-amber-400'}`;
+}
+['aum', 'models', 'packets', 'cost'].forEach(id => $(id).addEventListener('input', compute));
+compute();
+</script>
+<script src="../assets/shared.js" defer></script>
+</body>
+</html>
