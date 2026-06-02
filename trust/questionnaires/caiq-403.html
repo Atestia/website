@@ -10,149 +10,187 @@
 <script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
 <style>
 @page{size:letter;margin:0.5in}
-body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9;font-size:13px}
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#1c1917;background:#fafaf9;font-size:13.5px}
 .font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
-.q{padding:12px 16px;border-bottom:1px solid #e7e5e4;background:white}
+.font-mono{font-family:'JetBrains Mono','Menlo','Monaco',monospace}
+.q{padding:14px 18px;border-bottom:1px solid #e7e5e4;background:white}
+.q:last-child{border-bottom:0}
 .q:nth-child(odd){background:#fafaf9}
-.q .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:#78716c;font-weight:600}
-.q .question{font-weight:600;margin:6px 0 4px;color:#1c1917}
-.q .answer{color:#44403c;font-size:12px;line-height:1.5}
-.q .answer .yes{color:#047857;font-weight:600}
-.q .answer .partial{color:#b45309;font-weight:600}
-.q .answer .na{color:#78716c}
-.section{background:#1c1917;color:white;padding:14px 16px;margin-top:24px;border-radius:4px;font-weight:600}
-.section .id{color:#67e8f9;font-family:'JetBrains Mono',monospace;font-size:11px;margin-bottom:2px}
-@media print{body{background:white}.no-print{display:none}}
+.q .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:#0e7490;font-weight:600;letter-spacing:0.05em}
+.q .question{font-weight:600;margin:6px 0 6px;color:#1c1917;font-size:14.5px}
+.q .answer{color:#44403c;font-size:13px;line-height:1.6}
+.q .answer .yes{color:#047857;font-weight:700;font-size:11.5px;letter-spacing:0.04em}
+.q .answer .partial{color:#b45309;font-weight:700;font-size:11.5px;letter-spacing:0.04em}
+.q .answer .no,.q .answer .na{color:#78716c;font-weight:700;font-size:11.5px;letter-spacing:0.04em}
+.section{margin-top:32px;padding:0 0 14px;border-bottom:1px solid #d6d3d1}
+.section .id{color:#0e7490;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;font-weight:600;text-transform:uppercase;margin-bottom:6px}
+.section .title{font-family:'Iowan Old Style','Charter','Georgia',serif;font-size:26px;letter-spacing:-0.02em;color:#1c1917;margin-bottom:4px}
+.section .sub{font-size:13px;color:#78716c}
+.section-body{border:1px solid #e7e5e4;border-radius:8px;overflow:hidden;background:white;margin-top:14px}
+@media print{body{background:white}.no-print{display:none}.section-body{border-radius:0}}
 </style>
 </head>
-<body class="bg-stone-50">
+<body>
 
-<div class="no-print bg-ink text-white text-center py-3 text-sm">
-<button onclick="window.print()" class="bg-cyan-600 px-4 py-1 rounded hover:bg-cyan-700">Print or save as PDF</button>
-<span class="ml-4 text-stone-300">Internal — provide to bank InfoSec on request</span>
+<div class="no-print bg-ink text-stone-200 text-center py-3 text-sm flex items-center justify-center gap-6">
+<button onclick="window.print()" class="bg-accent text-white px-5 py-1.5 rounded font-semibold hover:bg-cyan-800 transition">Print or save as PDF</button>
+<span class="text-stone-400 text-xs">Internal — provide to bank InfoSec on request</span>
 </div>
 
-<div class="max-w-4xl mx-auto p-8 bg-white shadow-lg my-8">
+<div class="max-w-4xl mx-auto p-10 bg-white shadow-lg my-10 border border-stone-200 rounded-lg">
 
-<div class="border-b-2 border-ink pb-4 mb-4">
-<p class="text-xs text-stone-500 uppercase tracking-widest font-semibold">Cloud Security Alliance · Consensus Assessments Initiative Questionnaire</p>
-<h1 class="font-serif text-3xl">CAIQ v4.0.3 — Atestia Responses</h1>
-<div class="grid grid-cols-3 gap-4 mt-4 text-xs">
-<div><p class="text-stone-500">CSP</p><p class="font-semibold">Atestia, Inc. (operated by FuteurCredX Inc.)</p></div>
-<div><p class="text-stone-500">Service</p><p class="font-semibold">Atestia Platform · SaaS</p></div>
-<div><p class="text-stone-500">Cloud Provider</p><p class="font-semibold">AWS (primary)</p></div>
+<div class="border-b-2 border-ink pb-6 mb-6">
+<p class="text-xs text-accent uppercase tracking-widest font-semibold mb-3">Cloud Security Alliance · CAIQ v4.0.3</p>
+<h1 class="font-serif text-4xl mb-3 leading-tight">Atestia — Consensus Assessments Initiative Questionnaire</h1>
+<div class="grid grid-cols-3 gap-4 mt-6 text-xs">
+<div><p class="text-stone-500 uppercase tracking-widest mb-1">CSP</p><p class="font-semibold text-stone-800">Atestia, Inc.<br/><span class="text-stone-500 font-normal">(operated by FuteurCredX Inc.)</span></p></div>
+<div><p class="text-stone-500 uppercase tracking-widest mb-1">Service</p><p class="font-semibold text-stone-800">Atestia Platform · SaaS</p></div>
+<div><p class="text-stone-500 uppercase tracking-widest mb-1">Cloud provider</p><p class="font-semibold text-stone-800">AWS (primary)</p></div>
 </div>
 </div>
 
-<p class="text-xs text-stone-700 mb-4">Responses aligned to CSA CAIQ v4.0.3 across 17 control domains and ~261 questions. For brevity, this summary shows the highest-impact controls per domain. Full CAIQ workbook (XLSX) available on request to security@atestia.ai. Last updated 2026-06-02.</p>
+<p class="text-sm text-stone-700 mb-6 leading-relaxed">Responses aligned to CSA CAIQ v4.0.3 across 17 control domains and ~261 questions. For brevity, this summary shows the highest-impact controls per domain. Full CAIQ workbook (XLSX) available on request to security@atestia.ai.</p>
 
-<div class="section"><p class="id">A&amp;A — Audit &amp; Assurance</p><p>Internal and external audit framework</p></div>
-<div class="q"><span class="num">A&amp;A-01.1</span><p class="question">Are audit and assurance policies established, documented, approved, communicated, applied?</p><p class="answer"><span class="partial">PARTIAL</span> · Policies documented; SOC 2 Type 1 audit Q1 2027. Pre-launch documentation tracked in Vanta.</p></div>
-<div class="q"><span class="num">A&amp;A-02.1</span><p class="question">Are independent reviews and assessments performed at least annually?</p><p class="answer"><span class="yes">YES</span> · Annual external SOC 2 audit (Q1 2027 first cycle). Quarterly internal control reviews.</p></div>
-<div class="q"><span class="num">A&amp;A-03.1</span><p class="question">Is risk-based compliance against external laws/regulations performed?</p><p class="answer"><span class="yes">YES</span> · GDPR, CCPA/CPRA, SOC 2 controls actively monitored. SR 26-2 compliance (Atestia's own product domain) embedded in delivery.</p></div>
+<div class="section"><p class="id">A&amp;A · Audit and Assurance</p><p class="title">Audit and Assurance</p><p class="sub">Internal and external audit framework</p></div>
+<div class="section-body">
+<div class="q"><p class="num">A&amp;A-01.1</p><p class="question">Are audit and assurance policies established, documented, approved, communicated, applied?</p><p class="answer"><span class="partial">PARTIAL</span> · Policies documented; SOC 2 Type 1 audit Q1 2027. Pre-launch documentation tracked in Vanta.</p></div>
+<div class="q"><p class="num">A&amp;A-02.1</p><p class="question">Are independent reviews and assessments performed at least annually?</p><p class="answer"><span class="yes">YES</span> · Annual external SOC 2 audit (Q1 2027 first cycle). Quarterly internal control reviews.</p></div>
+<div class="q"><p class="num">A&amp;A-03.1</p><p class="question">Is risk-based compliance against external laws/regulations performed?</p><p class="answer"><span class="yes">YES</span> · GDPR, CCPA/CPRA, SOC 2 controls actively monitored. SR 26-2 compliance (Atestia's own product domain) embedded in delivery.</p></div>
+</div>
 
-<div class="section"><p class="id">AIS — Application &amp; Interface Security</p><p>Secure application development and operation</p></div>
-<div class="q"><span class="num">AIS-01.1</span><p class="question">Are application security requirements established and documented?</p><p class="answer"><span class="yes">YES</span> · OWASP ASVS Level 2 baseline. Threat modeling for new features.</p></div>
-<div class="q"><span class="num">AIS-02.1</span><p class="question">Are application security testing methods established (SAST, DAST, IAST)?</p><p class="answer"><span class="yes">YES</span> · SAST via Snyk in CI. Pre-production DAST scheduled Q4 2026 via third party.</p></div>
-<div class="q"><span class="num">AIS-03.1</span><p class="question">Are software supply chain security practices established (SBOM, signing)?</p><p class="answer"><span class="yes">YES</span> · CycloneDX SBOM generated per release. npm provenance signing starting Q4 2026. Container images signed via cosign.</p></div>
-<div class="q"><span class="num">AIS-04.1</span><p class="question">Are secure development training programs in place?</p><p class="answer"><span class="yes">YES</span> · Annual secure coding training via Vanta. New-hire onboarding includes secure-by-design workshop.</p></div>
+<div class="section"><p class="id">AIS · Application and Interface Security</p><p class="title">Application and Interface Security</p><p class="sub">Secure application development and operation</p></div>
+<div class="section-body">
+<div class="q"><p class="num">AIS-01.1</p><p class="question">Are application security requirements established and documented?</p><p class="answer"><span class="yes">YES</span> · OWASP ASVS Level 2 baseline. Threat modeling for new features.</p></div>
+<div class="q"><p class="num">AIS-02.1</p><p class="question">Are application security testing methods established (SAST, DAST, IAST)?</p><p class="answer"><span class="yes">YES</span> · SAST via Snyk in CI. Pre-production DAST scheduled Q4 2026 via third party.</p></div>
+<div class="q"><p class="num">AIS-03.1</p><p class="question">Are software supply chain security practices established (SBOM, signing)?</p><p class="answer"><span class="yes">YES</span> · CycloneDX SBOM generated per release. npm provenance signing starting Q4 2026. Container images signed via cosign.</p></div>
+<div class="q"><p class="num">AIS-04.1</p><p class="question">Are secure development training programs in place?</p><p class="answer"><span class="yes">YES</span> · Annual secure coding training via Vanta. New-hire onboarding includes secure-by-design workshop.</p></div>
+</div>
 
-<div class="section"><p class="id">BCR — Business Continuity &amp; Operational Resilience</p><p>BCP, DR, and resilience</p></div>
-<div class="q"><span class="num">BCR-01.1</span><p class="question">Is business continuity management framework established?</p><p class="answer"><span class="yes">YES</span> · BCM framework documented. Annual review.</p></div>
-<div class="q"><span class="num">BCR-02.1</span><p class="question">Are BC plans tested?</p><p class="answer"><span class="yes">YES</span> · Quarterly tabletop. Annual full failover.</p></div>
-<div class="q"><span class="num">BCR-03.1</span><p class="question">Are RTO/RPO defined?</p><p class="answer"><span class="yes">YES · RTO 1 hour, RPO 15 minutes</span> for Atestia Platform Enterprise.</p></div>
-<div class="q"><span class="num">BCR-04.1</span><p class="question">Are backups performed and tested for restorability?</p><p class="answer"><span class="yes">YES</span> · Automated 6-hour RDS backups. Cross-region S3 replication. Quarterly restoration tests.</p></div>
+<div class="section"><p class="id">BCR · Business Continuity and Operational Resilience</p><p class="title">Business Continuity and Operational Resilience</p><p class="sub">BCP, DR, and resilience</p></div>
+<div class="section-body">
+<div class="q"><p class="num">BCR-01.1</p><p class="question">Is business continuity management framework established?</p><p class="answer"><span class="yes">YES</span> · BCM framework documented. Annual review.</p></div>
+<div class="q"><p class="num">BCR-02.1</p><p class="question">Are BC plans tested?</p><p class="answer"><span class="yes">YES</span> · Quarterly tabletop. Annual full failover.</p></div>
+<div class="q"><p class="num">BCR-03.1</p><p class="question">Are RTO/RPO defined?</p><p class="answer"><span class="yes">YES · RTO 1 hour, RPO 15 minutes</span> for Atestia Platform Enterprise.</p></div>
+<div class="q"><p class="num">BCR-04.1</p><p class="question">Are backups performed and tested for restorability?</p><p class="answer"><span class="yes">YES</span> · Automated 6-hour RDS backups. Cross-region S3 replication. Quarterly restoration tests.</p></div>
+</div>
 
-<div class="section"><p class="id">CCC — Change Control &amp; Configuration Management</p><p>Change and configuration governance</p></div>
-<div class="q"><span class="num">CCC-01.1</span><p class="question">Are change control policies established?</p><p class="answer"><span class="yes">YES</span> · All production changes via pull request + approval + CI gating. No direct production access.</p></div>
-<div class="q"><span class="num">CCC-02.1</span><p class="question">Is segregation of duties enforced for changes?</p><p class="answer"><span class="yes">YES</span> · Change author and approver must be different individuals. Production deploys via automated CD pipeline (no human production access).</p></div>
-<div class="q"><span class="num">CCC-03.1</span><p class="question">Is configuration management baseline established?</p><p class="answer"><span class="yes">YES</span> · Infrastructure-as-Code (Terraform). Configuration drift monitored continuously via Terraform Cloud.</p></div>
+<div class="section"><p class="id">CCC · Change Control and Configuration Management</p><p class="title">Change Control and Configuration Management</p><p class="sub">Change and configuration governance</p></div>
+<div class="section-body">
+<div class="q"><p class="num">CCC-01.1</p><p class="question">Are change control policies established?</p><p class="answer"><span class="yes">YES</span> · All production changes via pull request + approval + CI gating. No direct production access.</p></div>
+<div class="q"><p class="num">CCC-02.1</p><p class="question">Is segregation of duties enforced for changes?</p><p class="answer"><span class="yes">YES</span> · Change author and approver must be different individuals. Production deploys via automated CD pipeline (no human production access).</p></div>
+<div class="q"><p class="num">CCC-03.1</p><p class="question">Is configuration management baseline established?</p><p class="answer"><span class="yes">YES</span> · Infrastructure-as-Code (Terraform). Configuration drift monitored continuously via Terraform Cloud.</p></div>
+</div>
 
-<div class="section"><p class="id">CEK — Cryptography, Encryption &amp; Key Management</p><p>Cryptographic controls</p></div>
-<div class="q"><span class="num">CEK-01.1</span><p class="question">Are cryptographic policies and procedures established?</p><p class="answer"><span class="yes">YES</span> · NIST-approved algorithms (AES-256, SHA-256, RSA-2048+, ECDSA P-256+). No deprecated algorithms.</p></div>
-<div class="q"><span class="num">CEK-02.1</span><p class="question">Is data encrypted in transit?</p><p class="answer"><span class="yes">YES</span> · TLS 1.2+ enforced. TLS 1.3 preferred. HSTS enabled.</p></div>
-<div class="q"><span class="num">CEK-03.1</span><p class="question">Is data encrypted at rest?</p><p class="answer"><span class="yes">YES</span> · AES-256-GCM via AWS KMS. Customer-held CMK for Enterprise tier.</p></div>
-<div class="q"><span class="num">CEK-04.1</span><p class="question">Are encryption keys managed securely with HSM?</p><p class="answer"><span class="yes">YES</span> · AWS KMS with FIPS 140-2 Level 3 HSMs.</p></div>
-<div class="q"><span class="num">CEK-05.1</span><p class="question">Are key rotation policies enforced?</p><p class="answer"><span class="yes">YES</span> · Annual rotation for KMS keys. Quarterly for service credentials.</p></div>
-<div class="q"><span class="num">CEK-06.1</span><p class="question">Is customer-managed key (BYOK) supported?</p><p class="answer"><span class="yes">YES</span> · Customer holds master KMS key. Envelope encryption with per-record data keys. Customer revocation removes Atestia access immediately.</p></div>
+<div class="section"><p class="id">CEK · Cryptography, Encryption and Key Management</p><p class="title">Cryptography, Encryption and Key Management</p><p class="sub">Cryptographic controls</p></div>
+<div class="section-body">
+<div class="q"><p class="num">CEK-01.1</p><p class="question">Are cryptographic policies and procedures established?</p><p class="answer"><span class="yes">YES</span> · NIST-approved algorithms (AES-256, SHA-256, RSA-2048+, ECDSA P-256+). No deprecated algorithms.</p></div>
+<div class="q"><p class="num">CEK-02.1</p><p class="question">Is data encrypted in transit?</p><p class="answer"><span class="yes">YES</span> · TLS 1.2+ enforced. TLS 1.3 preferred. HSTS enabled.</p></div>
+<div class="q"><p class="num">CEK-03.1</p><p class="question">Is data encrypted at rest?</p><p class="answer"><span class="yes">YES</span> · AES-256-GCM via AWS KMS. Customer-held CMK for Enterprise tier.</p></div>
+<div class="q"><p class="num">CEK-04.1</p><p class="question">Are encryption keys managed securely with HSM?</p><p class="answer"><span class="yes">YES</span> · AWS KMS with FIPS 140-2 Level 3 HSMs.</p></div>
+<div class="q"><p class="num">CEK-05.1</p><p class="question">Are key rotation policies enforced?</p><p class="answer"><span class="yes">YES</span> · Annual rotation for KMS keys. Quarterly for service credentials.</p></div>
+<div class="q"><p class="num">CEK-06.1</p><p class="question">Is customer-managed key (BYOK) supported?</p><p class="answer"><span class="yes">YES</span> · Customer holds master KMS key. Envelope encryption with per-record data keys. Customer revocation removes Atestia access immediately.</p></div>
+</div>
 
-<div class="section"><p class="id">DCS — Datacenter Security</p><p>Physical data center controls</p></div>
-<div class="q"><span class="num">DCS-01.1</span><p class="question">Are physical access controls in place?</p><p class="answer"><span class="yes">YES (inherited)</span> · AWS data center physical controls per AWS SOC 2 Type 2. Atestia operates remotely; no Atestia-managed physical facilities house customer data.</p></div>
-<div class="q"><span class="num">DCS-02.1</span><p class="question">Are environmental controls (fire, power, HVAC) in place?</p><p class="answer"><span class="yes">YES (inherited)</span> · AWS responsibility.</p></div>
+<div class="section"><p class="id">DCS · Datacenter Security</p><p class="title">Datacenter Security</p><p class="sub">Physical data center controls</p></div>
+<div class="section-body">
+<div class="q"><p class="num">DCS-01.1</p><p class="question">Are physical access controls in place?</p><p class="answer"><span class="yes">YES (inherited)</span> · AWS data center physical controls per AWS SOC 2 Type 2. Atestia operates remotely; no Atestia-managed physical facilities house customer data.</p></div>
+<div class="q"><p class="num">DCS-02.1</p><p class="question">Are environmental controls (fire, power, HVAC) in place?</p><p class="answer"><span class="yes">YES (inherited)</span> · AWS responsibility.</p></div>
+</div>
 
-<div class="section"><p class="id">DSP — Data Security &amp; Privacy</p><p>Data classification, handling, privacy</p></div>
-<div class="q"><span class="num">DSP-01.1</span><p class="question">Is a data classification scheme implemented?</p><p class="answer"><span class="yes">YES</span> · Three-tier classification: Customer Data, Internal Confidential, Public.</p></div>
-<div class="q"><span class="num">DSP-02.1</span><p class="question">Are data sensitivity labels applied?</p><p class="answer"><span class="yes">YES</span> · Customer Data tagged in S3 + RDS. Tags drive access policies.</p></div>
-<div class="q"><span class="num">DSP-03.1</span><p class="question">Is data retention policy documented?</p><p class="answer"><span class="yes">YES</span> · Default 7-year retention for lineage. Customer override available.</p></div>
-<div class="q"><span class="num">DSP-04.1</span><p class="question">Is secure data disposal procedure documented?</p><p class="answer"><span class="yes">YES</span> · Cryptographic erasure via KMS key destruction. Customer-controlled for CMK customers.</p></div>
-<div class="q"><span class="num">DSP-05.1</span><p class="question">Is PII processing minimized?</p><p class="answer"><span class="yes">YES</span> · Atestia does NOT capture raw PII in lineage records. SHA-256 hashes only.</p></div>
-<div class="q"><span class="num">DSP-06.1</span><p class="question">Are data subject rights honored?</p><p class="answer"><span class="yes">YES</span> · GDPR/CCPA rights honored. 30-day response SLA.</p></div>
-<div class="q"><span class="num">DSP-07.1</span><p class="question">Are international transfers governed?</p><p class="answer"><span class="yes">YES</span> · SCCs for EU/UK. Supplementary measures via customer-held KMS.</p></div>
+<div class="section"><p class="id">DSP · Data Security and Privacy</p><p class="title">Data Security and Privacy</p><p class="sub">Data classification, handling, privacy</p></div>
+<div class="section-body">
+<div class="q"><p class="num">DSP-01.1</p><p class="question">Is a data classification scheme implemented?</p><p class="answer"><span class="yes">YES</span> · Three-tier classification: Customer Data, Internal Confidential, Public.</p></div>
+<div class="q"><p class="num">DSP-02.1</p><p class="question">Are data sensitivity labels applied?</p><p class="answer"><span class="yes">YES</span> · Customer Data tagged in S3 + RDS. Tags drive access policies.</p></div>
+<div class="q"><p class="num">DSP-03.1</p><p class="question">Is data retention policy documented?</p><p class="answer"><span class="yes">YES</span> · Default 7-year retention for lineage. Customer override available.</p></div>
+<div class="q"><p class="num">DSP-04.1</p><p class="question">Is secure data disposal procedure documented?</p><p class="answer"><span class="yes">YES</span> · Cryptographic erasure via KMS key destruction. Customer-controlled for CMK customers.</p></div>
+<div class="q"><p class="num">DSP-05.1</p><p class="question">Is PII processing minimized?</p><p class="answer"><span class="yes">YES</span> · Atestia does NOT capture raw PII in lineage records. SHA-256 hashes only.</p></div>
+<div class="q"><p class="num">DSP-06.1</p><p class="question">Are data subject rights honored?</p><p class="answer"><span class="yes">YES</span> · GDPR/CCPA rights honored. 30-day response SLA.</p></div>
+<div class="q"><p class="num">DSP-07.1</p><p class="question">Are international transfers governed?</p><p class="answer"><span class="yes">YES</span> · SCCs for EU/UK. Supplementary measures via customer-held KMS.</p></div>
+</div>
 
-<div class="section"><p class="id">GRC — Governance, Risk &amp; Compliance</p><p>Organizational governance framework</p></div>
-<div class="q"><span class="num">GRC-01.1</span><p class="question">Is enterprise risk management framework established?</p><p class="answer"><span class="partial">PARTIAL</span> · Formalization in progress as part of SOC 2 readiness. Risk register maintained in Vanta.</p></div>
-<div class="q"><span class="num">GRC-02.1</span><p class="question">Are governance policies established?</p><p class="answer"><span class="yes">YES</span> · ISMS-level policies documented. Annual review.</p></div>
-<div class="q"><span class="num">GRC-03.1</span><p class="question">Is compliance with applicable laws monitored?</p><p class="answer"><span class="yes">YES</span> · GDPR, CCPA/CPRA, SOC 2 controls actively monitored. Legal counsel on retainer (Cooley LLP).</p></div>
+<div class="section"><p class="id">GRC · Governance, Risk and Compliance</p><p class="title">Governance, Risk and Compliance</p><p class="sub">Organizational governance framework</p></div>
+<div class="section-body">
+<div class="q"><p class="num">GRC-01.1</p><p class="question">Is enterprise risk management framework established?</p><p class="answer"><span class="partial">PARTIAL</span> · Formalization in progress as part of SOC 2 readiness. Risk register maintained in Vanta.</p></div>
+<div class="q"><p class="num">GRC-02.1</p><p class="question">Are governance policies established?</p><p class="answer"><span class="yes">YES</span> · ISMS-level policies documented. Annual review.</p></div>
+<div class="q"><p class="num">GRC-03.1</p><p class="question">Is compliance with applicable laws monitored?</p><p class="answer"><span class="yes">YES</span> · GDPR, CCPA/CPRA, SOC 2 controls actively monitored. Legal counsel on retainer (Cooley LLP).</p></div>
+</div>
 
-<div class="section"><p class="id">HRS — Human Resources</p><p>Personnel security controls</p></div>
-<div class="q"><span class="num">HRS-01.1</span><p class="question">Are background checks performed?</p><p class="answer"><span class="yes">YES</span> · Criminal background checks via Checkr for all production-access personnel.</p></div>
-<div class="q"><span class="num">HRS-02.1</span><p class="question">Are confidentiality/NDA agreements in place?</p><p class="answer"><span class="yes">YES</span> · NDA + IP Assignment required prior to employment.</p></div>
-<div class="q"><span class="num">HRS-03.1</span><p class="question">Is security awareness training mandatory?</p><p class="answer"><span class="yes">YES</span> · Annual training. New-hire training within first 30 days.</p></div>
-<div class="q"><span class="num">HRS-04.1</span><p class="question">Is offboarding/access revocation timely?</p><p class="answer"><span class="yes">YES</span> · Access revoked within 1 hour of termination notice.</p></div>
+<div class="section"><p class="id">HRS · Human Resources</p><p class="title">Human Resources</p><p class="sub">Personnel security controls</p></div>
+<div class="section-body">
+<div class="q"><p class="num">HRS-01.1</p><p class="question">Are background checks performed?</p><p class="answer"><span class="yes">YES</span> · Criminal background checks via Checkr for all production-access personnel.</p></div>
+<div class="q"><p class="num">HRS-02.1</p><p class="question">Are confidentiality/NDA agreements in place?</p><p class="answer"><span class="yes">YES</span> · NDA + IP Assignment required prior to employment.</p></div>
+<div class="q"><p class="num">HRS-03.1</p><p class="question">Is security awareness training mandatory?</p><p class="answer"><span class="yes">YES</span> · Annual training. New-hire training within first 30 days.</p></div>
+<div class="q"><p class="num">HRS-04.1</p><p class="question">Is offboarding/access revocation timely?</p><p class="answer"><span class="yes">YES</span> · Access revoked within 1 hour of termination notice.</p></div>
+</div>
 
-<div class="section"><p class="id">IAM — Identity &amp; Access Management</p><p>Authentication, authorization, identity</p></div>
-<div class="q"><span class="num">IAM-01.1</span><p class="question">Are identity provisioning procedures established?</p><p class="answer"><span class="yes">YES</span> · SCIM-based provisioning for Enterprise. SSO via SAML 2.0.</p></div>
-<div class="q"><span class="num">IAM-02.1</span><p class="question">Is MFA required for administrative access?</p><p class="answer"><span class="yes">YES</span> · MFA enforced for all administrative actions. TOTP + hardware key supported.</p></div>
-<div class="q"><span class="num">IAM-03.1</span><p class="question">Is principle of least privilege enforced?</p><p class="answer"><span class="yes">YES</span> · Role-based access. Default deny. JIT elevation.</p></div>
-<div class="q"><span class="num">IAM-04.1</span><p class="question">Are user access reviews periodic?</p><p class="answer"><span class="yes">YES</span> · Quarterly access reviews. Sign-off by CEO.</p></div>
-<div class="q"><span class="num">IAM-05.1</span><p class="question">Is privileged access logged?</p><p class="answer"><span class="yes">YES</span> · All admin actions audit-logged. CloudTrail + custom audit events. 7-year retention.</p></div>
+<div class="section"><p class="id">IAM · Identity and Access Management</p><p class="title">Identity and Access Management</p><p class="sub">Authentication, authorization, identity</p></div>
+<div class="section-body">
+<div class="q"><p class="num">IAM-01.1</p><p class="question">Are identity provisioning procedures established?</p><p class="answer"><span class="yes">YES</span> · SCIM-based provisioning for Enterprise. SSO via SAML 2.0.</p></div>
+<div class="q"><p class="num">IAM-02.1</p><p class="question">Is MFA required for administrative access?</p><p class="answer"><span class="yes">YES</span> · MFA enforced for all administrative actions. TOTP + hardware key supported.</p></div>
+<div class="q"><p class="num">IAM-03.1</p><p class="question">Is principle of least privilege enforced?</p><p class="answer"><span class="yes">YES</span> · Role-based access. Default deny. JIT elevation.</p></div>
+<div class="q"><p class="num">IAM-04.1</p><p class="question">Are user access reviews periodic?</p><p class="answer"><span class="yes">YES</span> · Quarterly access reviews. Sign-off by CEO.</p></div>
+<div class="q"><p class="num">IAM-05.1</p><p class="question">Is privileged access logged?</p><p class="answer"><span class="yes">YES</span> · All admin actions audit-logged. CloudTrail + custom audit events. 7-year retention.</p></div>
+</div>
 
-<div class="section"><p class="id">IPY — Interoperability &amp; Portability</p><p>Data portability and standards</p></div>
-<div class="q"><span class="num">IPY-01.1</span><p class="question">Are data export formats documented?</p><p class="answer"><span class="yes">YES</span> · JSON + Parquet export available. OpenLineage RunEvent format for upstream consumption.</p></div>
-<div class="q"><span class="num">IPY-02.1</span><p class="question">Are standard APIs documented?</p><p class="answer"><span class="yes">YES</span> · Anthropic MCP protocol (open standard). Tier-4 v1.2 specification (CC-BY-4.0).</p></div>
+<div class="section"><p class="id">IPY · Interoperability and Portability</p><p class="title">Interoperability and Portability</p><p class="sub">Data portability and standards</p></div>
+<div class="section-body">
+<div class="q"><p class="num">IPY-01.1</p><p class="question">Are data export formats documented?</p><p class="answer"><span class="yes">YES</span> · JSON + Parquet export available. OpenLineage RunEvent format for upstream consumption.</p></div>
+<div class="q"><p class="num">IPY-02.1</p><p class="question">Are standard APIs documented?</p><p class="answer"><span class="yes">YES</span> · Anthropic MCP protocol (open standard). Tier-4 v1.2 specification (CC-BY-4.0).</p></div>
+</div>
 
-<div class="section"><p class="id">IVS — Infrastructure &amp; Virtualization Security</p><p>Cloud infrastructure controls</p></div>
-<div class="q"><span class="num">IVS-01.1</span><p class="question">Is network segmentation enforced?</p><p class="answer"><span class="yes">YES</span> · VPC isolation. Dedicated VPC for Enterprise tier.</p></div>
-<div class="q"><span class="num">IVS-02.1</span><p class="question">Are firewalls and security groups configured?</p><p class="answer"><span class="yes">YES</span> · AWS Security Groups + Network ACLs + WAF.</p></div>
-<div class="q"><span class="num">IVS-03.1</span><p class="question">Is intrusion detection deployed?</p><p class="answer"><span class="yes">YES</span> · AWS GuardDuty. VPC Flow Logs. Anomaly alerting.</p></div>
-<div class="q"><span class="num">IVS-04.1</span><p class="question">Is virtualization platform secured?</p><p class="answer"><span class="yes">YES</span> · AWS-managed virtualization. Inherited from AWS SOC 2.</p></div>
+<div class="section"><p class="id">IVS · Infrastructure and Virtualization Security</p><p class="title">Infrastructure and Virtualization Security</p><p class="sub">Cloud infrastructure controls</p></div>
+<div class="section-body">
+<div class="q"><p class="num">IVS-01.1</p><p class="question">Is network segmentation enforced?</p><p class="answer"><span class="yes">YES</span> · VPC isolation. Dedicated VPC for Enterprise tier.</p></div>
+<div class="q"><p class="num">IVS-02.1</p><p class="question">Are firewalls and security groups configured?</p><p class="answer"><span class="yes">YES</span> · AWS Security Groups + Network ACLs + WAF.</p></div>
+<div class="q"><p class="num">IVS-03.1</p><p class="question">Is intrusion detection deployed?</p><p class="answer"><span class="yes">YES</span> · AWS GuardDuty. VPC Flow Logs. Anomaly alerting.</p></div>
+<div class="q"><p class="num">IVS-04.1</p><p class="question">Is virtualization platform secured?</p><p class="answer"><span class="yes">YES</span> · AWS-managed virtualization. Inherited from AWS SOC 2.</p></div>
+</div>
 
-<div class="section"><p class="id">LOG — Logging &amp; Monitoring</p><p>Audit logging, SIEM, monitoring</p></div>
-<div class="q"><span class="num">LOG-01.1</span><p class="question">Are security-relevant events logged?</p><p class="answer"><span class="yes">YES</span> · CloudTrail + custom application audit events. Authentication, authorization, data access, configuration changes all logged.</p></div>
-<div class="q"><span class="num">LOG-02.1</span><p class="question">Are logs centralized?</p><p class="answer"><span class="yes">YES</span> · Centralized in CloudWatch Logs. Forwarded to Datadog for SIEM analytics.</p></div>
-<div class="q"><span class="num">LOG-03.1</span><p class="question">Is log retention defined?</p><p class="answer"><span class="yes">YES</span> · Audit logs retained 7 years. Application logs 90 days.</p></div>
-<div class="q"><span class="num">LOG-04.1</span><p class="question">Are logs tamper-proof?</p><p class="answer"><span class="yes">YES</span> · CloudTrail logs immutable (S3 Object Lock + KMS). Hash chains for audit log integrity.</p></div>
+<div class="section"><p class="id">LOG · Logging and Monitoring</p><p class="title">Logging and Monitoring</p><p class="sub">Audit logging, SIEM, monitoring</p></div>
+<div class="section-body">
+<div class="q"><p class="num">LOG-01.1</p><p class="question">Are security-relevant events logged?</p><p class="answer"><span class="yes">YES</span> · CloudTrail + custom application audit events. Authentication, authorization, data access, configuration changes all logged.</p></div>
+<div class="q"><p class="num">LOG-02.1</p><p class="question">Are logs centralized?</p><p class="answer"><span class="yes">YES</span> · Centralized in CloudWatch Logs. Forwarded to Datadog for SIEM analytics.</p></div>
+<div class="q"><p class="num">LOG-03.1</p><p class="question">Is log retention defined?</p><p class="answer"><span class="yes">YES</span> · Audit logs retained 7 years. Application logs 90 days.</p></div>
+<div class="q"><p class="num">LOG-04.1</p><p class="question">Are logs tamper-proof?</p><p class="answer"><span class="yes">YES</span> · CloudTrail logs immutable (S3 Object Lock + KMS). Hash chains for audit log integrity.</p></div>
+</div>
 
-<div class="section"><p class="id">SEF — Security Incident, E-discovery &amp; Forensics</p><p>Incident response, forensics</p></div>
-<div class="q"><span class="num">SEF-01.1</span><p class="question">Is incident response plan documented?</p><p class="answer"><span class="yes">YES</span> · IRP documented. Annual tabletop. Severity tiers Sev 1-4.</p></div>
-<div class="q"><span class="num">SEF-02.1</span><p class="question">Are incidents detected and responded to within defined SLAs?</p><p class="answer"><span class="yes">YES</span> · Sev 1: 30 min response, 4 hr resolution target. Sev 2: 2 hr / 24 hr.</p></div>
-<div class="q"><span class="num">SEF-03.1</span><p class="question">Is customer notification timeline defined?</p><p class="answer"><span class="yes">YES</span> · 24 hours for security incidents affecting Customer Data. 72 hours for confirmed personal data breach.</p></div>
-<div class="q"><span class="num">SEF-04.1</span><p class="question">Are forensic capabilities maintained?</p><p class="answer"><span class="yes">YES</span> · CloudTrail + Flow Logs + application audit logs (7-year retention). AWS forensics partnership available.</p></div>
+<div class="section"><p class="id">SEF · Security Incident, E-discovery and Forensics</p><p class="title">Security Incident, E-discovery and Forensics</p><p class="sub">Incident response, forensics</p></div>
+<div class="section-body">
+<div class="q"><p class="num">SEF-01.1</p><p class="question">Is incident response plan documented?</p><p class="answer"><span class="yes">YES</span> · IRP documented. Annual tabletop. Severity tiers Sev 1-4.</p></div>
+<div class="q"><p class="num">SEF-02.1</p><p class="question">Are incidents detected and responded to within defined SLAs?</p><p class="answer"><span class="yes">YES</span> · Sev 1: 30 min response, 4 hr resolution target. Sev 2: 2 hr / 24 hr.</p></div>
+<div class="q"><p class="num">SEF-03.1</p><p class="question">Is customer notification timeline defined?</p><p class="answer"><span class="yes">YES</span> · 24 hours for security incidents affecting Customer Data. 72 hours for confirmed personal data breach.</p></div>
+<div class="q"><p class="num">SEF-04.1</p><p class="question">Are forensic capabilities maintained?</p><p class="answer"><span class="yes">YES</span> · CloudTrail + Flow Logs + application audit logs (7-year retention). AWS forensics partnership available.</p></div>
+</div>
 
-<div class="section"><p class="id">STA — Supply Chain Management, Transparency &amp; Accountability</p><p>Sub-processor management, supply chain</p></div>
-<div class="q"><span class="num">STA-01.1</span><p class="question">Is supply chain risk management documented?</p><p class="answer"><span class="yes">YES</span> · Sub-processor list public. DPA in place with each. Annual SOC 2 review.</p></div>
-<div class="q"><span class="num">STA-02.1</span><p class="question">Are downstream notifications provided?</p><p class="answer"><span class="yes">YES</span> · 30-day advance notice of sub-processor additions. Customer right to terminate for cause if material objection.</p></div>
-<div class="q"><span class="num">STA-03.1</span><p class="question">Are supplier audit rights established?</p><p class="answer"><span class="yes">YES</span> · Audit rights in DPAs with sub-processors. Annual review of their certifications.</p></div>
+<div class="section"><p class="id">STA · Supply Chain Management, Transparency, Accountability</p><p class="title">Supply Chain Management, Transparency, Accountability</p><p class="sub">Sub-processor management, supply chain</p></div>
+<div class="section-body">
+<div class="q"><p class="num">STA-01.1</p><p class="question">Is supply chain risk management documented?</p><p class="answer"><span class="yes">YES</span> · Sub-processor list public. DPA in place with each. Annual SOC 2 review.</p></div>
+<div class="q"><p class="num">STA-02.1</p><p class="question">Are downstream notifications provided?</p><p class="answer"><span class="yes">YES</span> · 30-day advance notice of sub-processor additions. Customer right to terminate for cause if material objection.</p></div>
+<div class="q"><p class="num">STA-03.1</p><p class="question">Are supplier audit rights established?</p><p class="answer"><span class="yes">YES</span> · Audit rights in DPAs with sub-processors. Annual review of their certifications.</p></div>
+</div>
 
-<div class="section"><p class="id">TVM — Threat &amp; Vulnerability Management</p><p>Vulnerability management, threat intelligence</p></div>
-<div class="q"><span class="num">TVM-01.1</span><p class="question">Is vulnerability management program established?</p><p class="answer"><span class="yes">YES</span> · Snyk + Dependabot for dependency CVEs. Trivy for container images. AWS Inspector for EC2/ECS.</p></div>
-<div class="q"><span class="num">TVM-02.1</span><p class="question">Are critical CVEs patched within defined SLA?</p><p class="answer"><span class="yes">YES · Critical: 7 days · High: 30 days · Medium: 90 days</span></p></div>
-<div class="q"><span class="num">TVM-03.1</span><p class="question">Are penetration tests performed?</p><p class="answer"><span class="partial">PARTIAL</span> · Pre-production penetration test Q4 2026. Annual cadence thereafter.</p></div>
-<div class="q"><span class="num">TVM-04.1</span><p class="question">Is responsible disclosure program in place?</p><p class="answer"><span class="yes">YES</span> · security@atestia.ai. 48-hour acknowledgment. 90-day coordinated disclosure.</p></div>
+<div class="section"><p class="id">TVM · Threat and Vulnerability Management</p><p class="title">Threat and Vulnerability Management</p><p class="sub">Vulnerability management, threat intelligence</p></div>
+<div class="section-body">
+<div class="q"><p class="num">TVM-01.1</p><p class="question">Is vulnerability management program established?</p><p class="answer"><span class="yes">YES</span> · Snyk + Dependabot for dependency CVEs. Trivy for container images. AWS Inspector for EC2/ECS.</p></div>
+<div class="q"><p class="num">TVM-02.1</p><p class="question">Are critical CVEs patched within defined SLA?</p><p class="answer"><span class="yes">YES · Critical: 7 days · High: 30 days · Medium: 90 days</span></p></div>
+<div class="q"><p class="num">TVM-03.1</p><p class="question">Are penetration tests performed?</p><p class="answer"><span class="partial">PARTIAL</span> · Pre-production penetration test Q4 2026. Annual cadence thereafter.</p></div>
+<div class="q"><p class="num">TVM-04.1</p><p class="question">Is responsible disclosure program in place?</p><p class="answer"><span class="yes">YES</span> · security@atestia.ai. 48-hour acknowledgment. 90-day coordinated disclosure.</p></div>
+</div>
 
-<div class="section"><p class="id">UEM — Universal Endpoint Management</p><p>Endpoint security</p></div>
-<div class="q"><span class="num">UEM-01.1</span><p class="question">Is endpoint management (MDM) deployed?</p><p class="answer"><span class="yes">YES</span> · Jamf for macOS, Intune for Windows. Disk encryption enforced. Remote wipe capability.</p></div>
-<div class="q"><span class="num">UEM-02.1</span><p class="question">Is endpoint protection (anti-malware) deployed?</p><p class="answer"><span class="yes">YES</span> · CrowdStrike Falcon on all personnel endpoints. Real-time monitoring.</p></div>
-<div class="q"><span class="num">UEM-03.1</span><p class="question">Are endpoint OS updates managed?</p><p class="answer"><span class="yes">YES</span> · Auto-update enforced via MDM. Critical patches within 7 days.</p></div>
+<div class="section"><p class="id">UEM · Universal Endpoint Management</p><p class="title">Universal Endpoint Management</p><p class="sub">Endpoint security</p></div>
+<div class="section-body">
+<div class="q"><p class="num">UEM-01.1</p><p class="question">Is endpoint management (MDM) deployed?</p><p class="answer"><span class="yes">YES</span> · Jamf for macOS, Intune for Windows. Disk encryption enforced. Remote wipe capability.</p></div>
+<div class="q"><p class="num">UEM-02.1</p><p class="question">Is endpoint protection (anti-malware) deployed?</p><p class="answer"><span class="yes">YES</span> · CrowdStrike Falcon on all personnel endpoints. Real-time monitoring.</p></div>
+<div class="q"><p class="num">UEM-03.1</p><p class="question">Are endpoint OS updates managed?</p><p class="answer"><span class="yes">YES</span> · Auto-update enforced via MDM. Critical patches within 7 days.</p></div>
+</div>
 
-<hr class="my-8" />
+<div class="border-t-2 border-ink mt-12 pt-6">
+<p class="text-sm text-stone-600 mb-4"><strong>About these responses.</strong> This document summarizes Atestia's CAIQ v4.0.3 control postures across 17 domains as of June 2026. Full per-question detail (~261 controls in the complete workbook) available on request via security@atestia.ai. For Tier-1 customers, the MSA includes specific timeline commitments for items marked PARTIAL.</p>
+<p class="text-sm text-stone-600 mb-6"><strong>Authoritative source.</strong> Authoritative answers for any specific question can be requested via security@atestia.ai. Atestia security team will engage with customer's CISO office during pilot onboarding.</p>
+</div>
 
-<p class="text-xs text-stone-600 mb-4"><strong>About these responses.</strong> This document summarizes Atestia's CAIQ v4.0.3 control postures across 17 domains as of June 2026. Full per-question detail (~261 controls in the complete workbook) available on request via security@atestia.ai. For Tier-1 customers, the MSA includes specific timeline commitments for items marked PARTIAL.</p>
-
-<p class="text-xs text-stone-600 mb-4"><strong>Authoritative source.</strong> Authoritative answers for any specific question can be requested via security@atestia.ai. Atestia security team will engage with customer's CISO office during pilot onboarding.</p>
-
-<div class="border-t-2 border-ink pt-4 mt-8 text-xs grid grid-cols-2 gap-4">
-<div><p class="text-stone-500">Document version</p><p class="font-mono">CAIQ-403-RESP-1.0</p><p class="text-stone-500 mt-2">Issued</p><p class="font-mono">2026-06-02</p></div>
+<div class="grid grid-cols-2 gap-4 text-xs mt-6">
+<div><p class="text-stone-500 uppercase tracking-widest mb-1">Document version</p><p class="font-mono">CAIQ-403-RESP-1.0</p><p class="text-stone-500 uppercase tracking-widest mt-3 mb-1">Issued</p><p class="font-mono">2026-06-02</p></div>
 <div class="text-right"><p class="text-stone-500">Atestia, Inc.</p><p class="text-stone-500">FuteurCredX Inc. (Delaware)</p><p class="text-stone-500">security@atestia.ai</p></div>
 </div>
 
