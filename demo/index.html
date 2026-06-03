@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Walk through Atestia — a self-guided demo for Model Risk Management teams</title>
+<meta name="description" content="A self-guided walkthrough of Atestia from the perspective of a Head of Model Risk Management at a regional bank. Nine scenes. No sales call required." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>
+body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#1c1917;background:#fafaf9}
+.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}
+.font-mono{font-family:'JetBrains Mono','Menlo','Monaco',monospace}
+
+/* scene transitions */
+.scene{scroll-margin-top:80px;opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}
+.scene.in-view{opacity:1;transform:translateY(0)}
+
+/* scene number badge */
+.scene-num{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#0e7490;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px}
+.scene-num .dot{width:6px;height:6px;background:#0e7490;border-radius:50%}
+.scene-num .rule{width:48px;height:1px;background:#d6d3d1}
+
+/* persona card */
+.persona-bar{background:linear-gradient(90deg,#1c1917 0%,#27272a 100%);color:#fafaf9;border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:14px;margin-bottom:24px;font-size:13px}
+.persona-bar .avatar{width:36px;height:36px;border-radius:50%;background:#0e7490;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Iowan Old Style','Charter','Georgia',serif;font-size:16px;flex-shrink:0}
+.persona-bar .role{color:#a8a29e;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px}
+.persona-bar .said{color:#fafaf9;font-style:italic}
+
+/* navigator */
+.navigator{position:fixed;top:50%;right:24px;transform:translateY(-50%);z-index:40;display:none;flex-direction:column;gap:10px}
+@media(min-width:1280px){.navigator{display:flex}}
+.nav-dot{width:10px;height:10px;border-radius:50%;background:#d6d3d1;cursor:pointer;transition:background 0.2s,transform 0.2s;position:relative}
+.nav-dot:hover{background:#78716c;transform:scale(1.2)}
+.nav-dot.active{background:#0e7490;transform:scale(1.3)}
+.nav-dot .tooltip{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:#1c1917;color:#fafaf9;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:500;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.nav-dot:hover .tooltip{opacity:1}
+
+/* diagram frames */
+.diagram{background:white;border:1px solid #e7e5e4;border-radius:14px;padding:8px;box-shadow:0 8px 30px -12px rgba(28,25,23,0.1)}
+.diagram img{width:100%;height:auto;border-radius:10px;display:block}
+.diagram-caption{font-size:11px;color:#78716c;text-align:center;padding:14px 8px 8px;letter-spacing:0.04em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+
+/* progressive disclosure cards */
+.disclose{border:1px solid #e7e5e4;border-radius:14px;background:white;transition:border-color 0.2s,box-shadow 0.3s,transform 0.3s}
+.disclose:hover{border-color:#0e7490;box-shadow:0 12px 28px -8px rgba(14,116,144,0.12);transform:translateY(-2px)}
+.disclose[open]{border-color:#0e7490;box-shadow:0 12px 28px -8px rgba(14,116,144,0.18)}
+.disclose summary{cursor:pointer;list-style:none;padding:20px 24px;display:flex;align-items:flex-start;gap:14px}
+.disclose summary::-webkit-details-marker{display:none}
+.disclose .chev{margin-left:auto;color:#a8a29e;font-size:14px;transition:transform 0.3s;flex-shrink:0;margin-top:2px}
+.disclose[open] .chev{transform:rotate(180deg);color:#0e7490}
+.disclose .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:#0e7490;background:#ecfeff;padding:4px 8px;border-radius:6px;font-weight:600;flex-shrink:0}
+.disclose .body{padding:0 24px 24px 60px;animation:reveal 0.4s cubic-bezier(0.16,1,0.3,1)}
+@keyframes reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* code block */
+.code{background:#1c1917;color:#cffafe;border-radius:10px;padding:18px 22px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;overflow-x:auto}
+.code .c{color:#78716c}
+.code .k{color:#67e8f9}
+.code .s{color:#a7f3d0}
+
+/* next-scene link */
+.next-link{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#0e7490;text-decoration:none;padding:14px 22px;background:#ecfeff;border:1px solid #a5f3fc;border-radius:10px;transition:background 0.2s,transform 0.2s}
+.next-link:hover{background:#cffafe;transform:translateX(4px)}
+
+/* stat row */
+.stat{text-align:center}
+.stat .num{font-family:'Iowan Old Style','Charter','Georgia',serif;font-size:48px;font-weight:700;color:#0e7490;line-height:1;letter-spacing:-0.02em}
+.stat .lbl{font-size:11px;color:#78716c;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px;font-weight:600}
+
+/* memo */
+.memo{background:#fef9c3;border-left:4px solid #ca8a04;border-radius:0 10px 10px 0;padding:18px 22px;font-size:13px;line-height:1.6;color:#713f12}
+.memo .lbl{font-size:10px;color:#a16207;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+
+/* timeline pill */
+.timeline{display:flex;gap:1px;background:#e7e5e4;border-radius:10px;overflow:hidden}
+.tp{flex:1;padding:14px 16px;background:white;text-align:center}
+.tp .d{font-family:'JetBrains Mono',monospace;font-size:10px;color:#0e7490;font-weight:600;letter-spacing:0.08em}
+.tp .l{font-size:12px;color:#44403c;margin-top:6px;font-weight:500}
+</style>
+</head>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+    <nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+      <a href="../platform.html" class="hover:text-accent transition">Platform</a>
+      <a href="../solutions/banks.html" class="hover:text-accent transition">Solutions</a>
+      <a href="../pricing.html" class="hover:text-accent transition">Pricing</a>
+      <a href="../tier4/index.html" class="hover:text-accent transition">Tier-4 spec</a>
+      <a href="index.html" class="text-accent font-semibold">Demo</a>
+      <a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent transition">GitHub</a>
+    </nav>
+    <a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent transition">Book a demo</a>
+  </div>
+</header>
+
+<aside class="navigator" aria-label="Scene navigator">
+  <a href="#scene-1" class="nav-dot" data-scene="1"><span class="tooltip">01 · The morning</span></a>
+  <a href="#scene-2" class="nav-dot" data-scene="2"><span class="tooltip">02 · How we got here</span></a>
+  <a href="#scene-3" class="nav-dot" data-scene="3"><span class="tooltip">03 · What Atestia does</span></a>
+  <a href="#scene-4" class="nav-dot" data-scene="4"><span class="tooltip">04 · Tuesday at 3pm</span></a>
+  <a href="#scene-5" class="nav-dot" data-scene="5"><span class="tooltip">05 · How to install</span></a>
+  <a href="#scene-6" class="nav-dot" data-scene="6"><span class="tooltip">06 · The packet</span></a>
+  <a href="#scene-7" class="nav-dot" data-scene="7"><span class="tooltip">07 · The catch</span></a>
+  <a href="#scene-8" class="nav-dot" data-scene="8"><span class="tooltip">08 · Pricing</span></a>
+  <a href="#scene-9" class="nav-dot" data-scene="9"><span class="tooltip">09 · What's next</span></a>
+</aside>
+
+<section class="border-b border-stone-200 py-20">
+  <div class="max-w-4xl mx-auto px-6">
+    <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-4">A self-guided demo · 12 minutes · no sales call required</p>
+    <h1 class="font-serif text-5xl md:text-7xl leading-[1.05] mb-8">Walk through Atestia<br/>as a Head of MRM<br/>at a regional bank.</h1>
+    <p class="text-xl text-stone-700 leading-relaxed max-w-2xl mb-10">No name-drops. No sales pitch. Nine short scenes from the perspective of the buyer — what you find on your desk, what you need to do about it, and what Atestia gives you to do it with.</p>
+    <div class="flex flex-wrap gap-4 items-center">
+      <a href="#scene-1" class="px-8 py-4 bg-ink text-white font-semibold rounded-lg hover:bg-accent transition">Start the walk-through ↓</a>
+      <span class="text-sm text-stone-500">Or jump to <a href="#scene-8" class="text-accent hover:underline">pricing</a> if you already get it.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE 1 — THE MORNING -->
+<section id="scene-1" class="scene py-24 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 01</span><span class="rule"></span><span>The morning you found out</span></div>
+    <div class="grid lg:grid-cols-5 gap-10 items-start">
+      <div class="lg:col-span-3">
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">A memo on your desk. A 90-day clock starting.</h2>
+        <p class="text-lg text-stone-700 leading-relaxed mb-6">You walk in Monday morning. There's an unfolded memo on your desk. The CRO's executive assistant printed it personally. Single sentence on the top sticky note: <em>"Need to talk Tuesday."</em></p>
+        <div class="persona-bar">
+          <div class="avatar">M</div>
+          <div><div class="role">You are</div><div>Head of Model Risk Management · $40B regional commercial bank · 14 years in MRM</div></div>
+        </div>
+        <div class="memo">
+          <p class="lbl">Memo — from CRO</p>
+          <p class="mb-2">Three lines of business deployed agentic AI tools last year without going through the model risk governance flow. Commercial credit. Treasury services. The Wealth desk. None of it surfaced in our vendor model inventory because nobody called it a "model".</p>
+          <p class="mb-2">The OCC's SR 26-2 examination cycle begins Q1 2027. We have eight months.</p>
+          <p>I need an answer by Friday on whether we can produce examiner-ready evidence for these three deployments without ripping them out. — CRO</p>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="diagram">
+          <img src="diagrams/01-the-morning.png" alt="An MRM analyst desk at dawn with a memo, coffee, monitors showing scattered logs, and a sticky note reading 'vendor models?'" onerror="this.parentElement.innerHTML='<div class=&quot;p-16 text-center text-stone-400 font-mono text-sm&quot;>Scene illustration generating…</div>'" />
+          <div class="diagram-caption">Scene 01 · Monday, 7:14 am</div>
+        </div>
+      </div>
+    </div>
+    <a href="#scene-2" class="next-link mt-12">How did we get here? <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 2 — HOW WE GOT HERE -->
+<section id="scene-2" class="scene py-24 border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 02</span><span class="rule"></span><span>How we got here</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">Three years of agentic AI. Twelve months of governance.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">The lines of business didn't think they needed to file with you. Their reasoning was internally consistent:</p>
+
+    <div class="space-y-3 mb-12">
+      <details class="disclose" open>
+        <summary><span class="num">01</span><div class="flex-1"><p class="font-semibold text-base mb-1">"It's not a model — it's just an LLM wrapper"</p><p class="text-sm text-stone-600">Commercial credit deployed a Bedrock-based loan-screening assistant in Q2 2025. The vendor LLM never wrote the credit decision; it generated explanations and suggested next steps. From the LOB perspective, no model risk.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">But SR 26-2 Section III.A pulled vendor LLMs into model risk scope when the institution's agent calls them. The reasoning chain the LLM produced influenced the loan officer's recommendation. That's a model in the supervisory definition.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">You have no record of which prompts produced which recommendations, which vendor model versions were in play, which decisions were affected, or whether the customer's protected-class characteristics ever entered the prompt context. You need to reconstruct it. From logs scattered across Azure, the agent platform, and the credit officer's email.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">02</span><div class="flex-1"><p class="font-semibold text-base mb-1">"It runs in the cloud — the vendor owns the model"</p><p class="text-sm text-stone-600">Treasury services deployed an LLM-driven liquidity recommendation tool. The vendor (a name brand SaaS) said they handled compliance. The LOB filed nothing with you.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">SR 26-2 explicitly says: when the bank invokes a vendor model, model risk accountability stays with the bank. Not the vendor. The vendor's SOC 2 covers their operational security; it does not cover your model risk obligation.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">You need a vendor model inventory for the treasury tool. You need invocation lineage for every recommendation it produced that influenced a treasury decision over the past 12 months. You need a packet examiner-ready by Q1 2027.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">03</span><div class="flex-1"><p class="font-semibold text-base mb-1">"It's a productivity tool, not a decisioning system"</p><p class="text-sm text-stone-600">Wealth deployed Claude Desktop and ChatGPT Enterprise to 200 advisors as productivity assistants. No governance file. No vendor questionnaire.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">If those advisors used the tools to draft client-facing recommendations, or to summarize a prospectus before suggesting an allocation, the tool influenced the advice. Reg BI and the SEC marketing rule apply. So does SR 26-2 if any of those recommendations touched a credit product.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">You need to know what prompts your advisors ran, what answers they got, and whether any output is reachable from a regulator's discovery request. The vendors do not give you that visibility by default.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="diagram mb-10">
+      <img src="diagrams/02-how-we-got-here.png" alt="Editorial timeline diagram showing agentic AI deployment curve rising steeply 2023-2026 while governance curve barely rises, with cyan SR 26-2 effective marker" onerror="this.parentElement.innerHTML='<div class=&quot;p-16 text-center text-stone-400 font-mono text-sm&quot;>Timeline diagram generating…</div>'" />
+      <div class="diagram-caption">Scene 02 · the evidence gap, 2023 - Q1 2027</div>
+    </div>
+
+    <p class="text-lg text-stone-700 mb-2">You start to write the answer to the CRO's question. Halfway through paragraph three, you realize you don't have a tool to do this with.</p>
+    <p class="text-lg text-stone-700">You start searching.</p>
+
+    <a href="#scene-3" class="next-link mt-12">What does Atestia do, exactly? <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 3 — WHAT ATESTIA DOES -->
+<section id="scene-3" class="scene py-24 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 03</span><span class="rule"></span><span>What Atestia does, exactly</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">Capture. Attest. Produce.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">Atestia is one piece of open-source software that sits between your AI agents and the vendor models they call. Every invocation is captured in a canonical schema, attested with a hash chain, and made queryable. When the examiner asks, you generate the packet.</p>
+
+    <div class="diagram mb-12">
+      <img src="diagrams/03-what-atestia-does.png" alt="Three-panel editorial illustration showing CAPTURE (cube with inputs), ATTEST (open ledger book with seal), PRODUCE (manila folder labeled examiner-ready packet)" onerror="this.parentElement.innerHTML='<div class=&quot;p-16 text-center text-stone-400 font-mono text-sm&quot;>Three-panel diagram generating…</div>'" />
+      <div class="diagram-caption">Scene 03 · the three movements of evidence</div>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 items-start">
+      <details class="disclose">
+        <summary><span class="num">01</span><div class="flex-1"><p class="font-semibold text-base mb-1">Capture</p><p class="text-sm text-stone-600">Every vendor model invocation. Every reasoning chain. Every risk data lineage event.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">A small open-source server registers as an MCP tool with Bedrock, Claude Desktop, LangChain, or any MCP-compatible agent runtime. When the agent invokes a vendor LLM, Atestia captures a structured record: vendor model identity, the SHA-256 hash of the input, latency, response hash, decision context (e.g. loan_id, customer_id), and the agent's reasoning chain.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">No raw payload is captured. Only hashes plus structured metadata. This is the privacy property your InfoSec team will care about.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">02</span><div class="flex-1"><p class="font-semibold text-base mb-1">Attest</p><p class="text-sm text-stone-600">Hash chain. Customer-held KMS. 7-year retention. Tamper-evident.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">Each lineage record is sealed with a hash that incorporates the previous record's hash. The chain is signed with a key your KMS controls. If an internal user or external attacker modifies a record, the chain breaks. The break is detectable in seconds.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">7-year retention is the default. Customer-held CMK is supported in Enterprise. Storage is your S3 bucket plus your Snowflake warehouse — Atestia stores nothing customer-side for long-term retention.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">03</span><div class="flex-1"><p class="font-semibold text-base mb-1">Produce</p><p class="text-sm text-stone-600">OCC 2013-29, SR 26-2, BCBS 239, ECOA Reg B. On demand.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">Five generators. Given a vendor model identifier and a date range, each generator materializes the regulator-ready packet — JSON for downstream tooling and PDF for the examiner. The OCC 2013-29 generator produces the 47-field packet across 7 sections. The SR 26-2 generator produces the 5-artifact attestation pack.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">First packet: 4 hours from API call to PDF in your hand at Tier-1 SLA. The bottleneck is your MRM analyst's sign-off, not Atestia's compute.</p>
+        </div>
+      </details>
+    </div>
+
+    <a href="#scene-4" class="next-link mt-12">Show me an actual example. <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 4 — TUESDAY AT 3PM -->
+<section id="scene-4" class="scene py-24 border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 04</span><span class="rule"></span><span>Tuesday at 3:00 pm · a real example</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">One commercial loan. One agent. One vendor model. 453 milliseconds.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">Here is exactly what happens, end to end, when a credit officer at your bank asks the loan-screening agent a question about a $1.2M commercial real estate application. Atestia is already installed.</p>
+
+    <div class="diagram mb-12">
+      <img src="diagrams/04-tuesday-at-3pm.png" alt="Editorial sequence diagram showing a Tuesday 3pm timeline with three rows: Agent at top showing evaluate(loan_id=42), Atestia Capture in middle with timestamped boxes, Vendor Model at bottom as cloud silhouette" onerror="this.parentElement.innerHTML='<div class=&quot;p-16 text-center text-stone-400 font-mono text-sm&quot;>Sequence diagram generating…</div>'" />
+      <div class="diagram-caption">Scene 04 · one invocation, end to end</div>
+    </div>
+
+    <div class="space-y-3 mb-10">
+      <details class="disclose" open>
+        <summary><span class="num">T+0ms</span><div class="flex-1"><p class="font-semibold text-base mb-1">Officer asks the agent a question</p><p class="text-sm text-stone-600">"Is the borrower's debt-service coverage above our threshold given the rent roll?"</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed">The agent runtime (Bedrock AgentCore) receives the request. Before invoking the vendor LLM, the agent calls the registered Atestia MCP tool to start a new lineage record.</p>
+          <pre class="code mt-3"><span class="c">// agent runtime calls Atestia first</span>
+<span class="k">await</span> tier4.credit.evaluate({
+  customer_id: <span class="s">"CUST-8821"</span>,
+  decision_context: <span class="s">"DSC threshold review"</span>,
+  vendor_model: <span class="s">"anthropic.claude-3-5-sonnet"</span>
+})</pre>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">T+2ms</span><div class="flex-1"><p class="font-semibold text-base mb-1">Atestia captures the invocation record</p><p class="text-sm text-stone-600">SHA-256 of input. Vendor identity. Timestamp. Decision context.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">The record is created in SQLite WAL. The raw prompt is NOT captured — only the hash. This protects PII and customer-confidential information while keeping the record cryptographically tied to the actual input.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">A correlation ID is returned to the agent runtime so the response can be tied back to the same lineage record.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">T+2ms → T+450ms</span><div class="flex-1"><p class="font-semibold text-base mb-1">The vendor model executes</p><p class="text-sm text-stone-600">Standard LLM call. No interception. No latency cost to Atestia.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed">Atestia is not a proxy. It does not sit in the request path. The vendor LLM call runs at full speed. Atestia adds approximately 2 milliseconds at the start (record creation) and 3 milliseconds at the end (record sealing). This matters for high-throughput agentic deployments — Atestia is not the bottleneck.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">T+451ms</span><div class="flex-1"><p class="font-semibold text-base mb-1">Reasoning chain captured</p><p class="text-sm text-stone-600">Agent's thinking flow recorded for ECOA Reg B defensibility.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed">If the agent used multi-step reasoning (chain-of-thought, tool calls, intermediate state), Atestia records the thinking trace. This is mandatory for ECOA Reg B adverse-action defensibility — for a denied loan, you must be able to reconstruct the chain that led to the denial.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">T+453ms</span><div class="flex-1"><p class="font-semibold text-base mb-1">Record sealed. Hash chain advanced.</p><p class="text-sm text-stone-600">Examiner-queryable. Immutable. Tied to your KMS key.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">The lineage record is sealed with a hash that incorporates the previous record's hash. The seal is signed with a key held in your KMS. The record is now queryable by your examiner team using vendor model ID, customer ID, date range, or decision context.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">Total time added to the agent's response: ~5 milliseconds. The credit officer doesn't notice. Your MRM team does.</p>
+        </div>
+      </details>
+    </div>
+
+    <a href="#scene-5" class="next-link mt-8">How do I actually install this? <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 5 — INSTALL -->
+<section id="scene-5" class="scene py-24 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 05</span><span class="rule"></span><span>How to install</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">npm install. Sixty minutes for the sandbox.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">The open-source reference implementation is on npm under MPL-2.0. Your engineering team can install it in your sandbox this afternoon. The production-grade version with customer-held KMS, named indemnification, and 24/7 support is a contract — but the architecture is provable today.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-10 items-start">
+      <div>
+        <p class="text-xs text-accent font-semibold uppercase tracking-widest mb-3">Step 1 — Install</p>
+        <pre class="code"><span class="c"># takes about 60 seconds</span>
+<span class="k">npm install</span> @atestia/tier4-mcp-server
+<span class="k">npx</span> tier4-mcp-server</pre>
+      </div>
+      <div>
+        <p class="text-xs text-accent font-semibold uppercase tracking-widest mb-3">Step 2 — Register with your agent runtime</p>
+        <pre class="code"><span class="c">// example: Claude Desktop / MCP config</span>
+{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"atestia"</span>: {
+      <span class="s">"command"</span>: <span class="s">"npx"</span>,
+      <span class="s">"args"</span>: [<span class="s">"@atestia/tier4-mcp-server"</span>]
+    }
+  }
+}</pre>
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <details class="disclose">
+        <summary><span class="num">→</span><div class="flex-1"><p class="font-semibold text-base mb-1">For AWS Bedrock AgentCore</p><p class="text-sm text-stone-600">Add Atestia as a tool in your agent definition. Atestia's tools auto-register.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <pre class="code"><span class="c"># agent.yaml</span>
+tools:
+  - mcp_server: <span class="s">"@atestia/tier4-mcp-server"</span>
+    auto_register: <span class="s">true</span></pre>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">→</span><div class="flex-1"><p class="font-semibold text-base mb-1">For LangChain (TypeScript or Python)</p><p class="text-sm text-stone-600">Atestia's tools register as LangChain Tools via the MCP adapter.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <pre class="code"><span class="c"># Python</span>
+<span class="k">from</span> langchain_mcp <span class="k">import</span> MCPToolKit
+toolkit = MCPToolKit(server=<span class="s">"@atestia/tier4-mcp-server"</span>)
+tools = toolkit.get_tools()  <span class="c"># 10 Atestia tools registered</span></pre>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">→</span><div class="flex-1"><p class="font-semibold text-base mb-1">For your own internal agent runtime</p><p class="text-sm text-stone-600">Implement the MCP stdio client interface. The spec is public.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed">If your bank has built its own agent runtime, you implement the standard Anthropic Model Context Protocol stdio client interface and Atestia is a drop-in tool provider. The Tier-4 specification at <a href="../tier4/spec.html" class="text-accent underline">tier4.org/spec</a> documents the MCP wire protocol Atestia speaks.</p>
+        </div>
+      </details>
+    </div>
+
+    <a href="#scene-6" class="next-link mt-12">What does an examiner packet actually look like? <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 6 — THE PACKET -->
+<section id="scene-6" class="scene py-24 border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 06</span><span class="rule"></span><span>The examiner packet</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">47 fields. 7 sections. One PDF.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">When the examiner asks for OCC 2013-29 evidence for vendor model X over the past quarter, your MRM analyst opens the Atestia Compliance Hub, selects the model, picks the date range, clicks Generate. Four hours later the PDF is in their hand for sign-off. Here is what's in it.</p>
+
+    <div class="diagram mb-12">
+      <img src="diagrams/05-examiner-packet.png" alt="Three printed pages arranged like an open dossier showing OCC 2013-29 packet, SR 26-2 attestation pack, and BCBS 239 lineage with cyan accents and examiner-ready stamps" onerror="this.parentElement.innerHTML='<div class=&quot;p-16 text-center text-stone-400 font-mono text-sm&quot;>Packet diagram generating…</div>'" />
+      <div class="diagram-caption">Scene 06 · the materialized packet</div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 items-start mb-10">
+      <details class="disclose">
+        <summary><span class="num">01</span><div class="flex-1"><p class="font-semibold text-base mb-1">OCC 2013-29 packet</p><p class="text-sm text-stone-600">47 fields across 7 sections. 4-hour SLA.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <ul class="text-sm text-stone-700 leading-relaxed space-y-1.5">
+            <li>1. Vendor identification and contact</li>
+            <li>2. Model purpose and intended use</li>
+            <li>3. Materiality assessment</li>
+            <li>4. Validation history and results</li>
+            <li>5. Performance monitoring metrics</li>
+            <li>6. Ongoing review evidence</li>
+            <li>7. Termination plan and contingencies</li>
+          </ul>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary><span class="num">02</span><div class="flex-1"><p class="font-semibold text-base mb-1">SR 26-2 attestation pack</p><p class="text-sm text-stone-600">5-artifact bundle. Materialized quarterly.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <ul class="text-sm text-stone-700 leading-relaxed space-y-1.5">
+            <li>· Model card v1.0 specification</li>
+            <li>· OCC vendor model questionnaire</li>
+            <li>· Lineage trail sample (1000 invocations)</li>
+            <li>· Monitoring specification with thresholds</li>
+            <li>· SOC 2 control matrix mapping</li>
+          </ul>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary><span class="num">03</span><div class="flex-1"><p class="font-semibold text-base mb-1">BCBS 239 lineage</p><p class="text-sm text-stone-600">Column-level provenance. Y-14A/Y-14Q ready.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed">For every column in your risk-data aggregation report that traces back to an agentic AI invocation, BCBS 239 lineage shows the exact vendor model, prompt hash, and reasoning chain that contributed. Maps to all 14 BCBS 239 principles.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="bg-paper border border-stone-200 rounded-lg p-6">
+      <p class="text-xs text-accent font-semibold uppercase tracking-widest mb-3">What the examiner gets</p>
+      <p class="text-stone-700 leading-relaxed">A single PDF with each section signed by your MRM team lead, a SHA-256 hash on the final page that ties the PDF to the underlying lineage records, and a machine-readable JSON appendix the examiner's team can ingest into their own systems. The packet is reproducible — generate it again next Tuesday and the same bytes come out.</p>
+    </div>
+
+    <a href="#scene-7" class="next-link mt-12">What's the catch? <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 7 — THE CATCH -->
+<section id="scene-7" class="scene py-24 border-b border-stone-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 07</span><span class="rule"></span><span>The honest concerns</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">The four things that will come up in procurement.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">Your CISO will read this section first. The answers are honest, not marketing.</p>
+
+    <div class="space-y-3">
+      <details class="disclose" open>
+        <summary><span class="num">!</span><div class="flex-1"><p class="font-semibold text-base mb-1">SOC 2 status — what's actually true today</p><p class="text-sm text-stone-600">In progress, not held. Timeline is contractually committed.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">Atestia is in pre-audit for SOC 2 Type 1, targeting Q1 2027. Type 2 (six-month observation period) targets Q3 2027. The interim control matrix is documented under Vanta and is available to your CISO under NDA today.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">For Tier-1 enterprise customers, the Master Services Agreement includes specific timeline commitments for SOC 2 Type 1 and Type 2 with contractual remedies if those dates slip. Read the MSA template before procurement starts.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">!</span><div class="flex-1"><p class="font-semibold text-base mb-1">Does customer data ever leave my bank?</p><p class="text-sm text-stone-600">Not for Enterprise. Hashes only for the shared multi-tenant tier.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">For Enterprise tier (Tier-1 banks), Atestia deploys inside your VPC. Your KMS keys. Your S3 buckets. Your Snowflake warehouse. Atestia operates the application layer but the storage and key custody stay with you. Atestia cannot read your lineage records — they're encrypted with your CMK.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">For Regional Tier-2 and Community tiers, Atestia's hosted infrastructure runs in AWS US-East-1. Even in this case, Atestia captures SHA-256 hashes of vendor model inputs — never raw payload. Your customer PII never reaches Atestia infrastructure.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">!</span><div class="flex-1"><p class="font-semibold text-base mb-1">What if Atestia goes out of business?</p><p class="text-sm text-stone-600">Open-source reference is MPL-2.0. The spec is CC-BY-4.0. You own your data.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">The reference implementation is open source under Mozilla Public License 2.0. The Tier-4 specification is governed by an industry working group as a CC-BY-4.0 document — Atestia is the founding sponsor but not the owner. Your lineage records are in your S3 bucket in a documented open schema. Your packets are PDFs.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">If Atestia ceases operations, your engineering team can continue running the reference implementation, your historical records remain queryable, and a competing vendor implementing the Tier-4 spec can drop in. The data-portability and exit-rights are built into the architecture.</p>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">!</span><div class="flex-1"><p class="font-semibold text-base mb-1">Will the examiner actually accept this format?</p><p class="text-sm text-stone-600">The Tier-4 specification is being ratified through a Delaware 501(c)(6) working group with bank seats.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">There is no precedent for "examiner-accepted" because no examination cycle has happened yet — the first SR 26-2 cycle begins Q1 2027. But the OCC 2013-29 packet format Atestia generates matches the long-established field schema that bank examiners have used for traditional model risk packets since 2013.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">The novel layer (SR 26-2 attestation, runtime lineage capture) is being ratified through the Tier-4 Compliance Working Group, an industry body with seats for Tier-1 banks, audit firms, and regulator-adjacent observers. The first 10 Charter Member banks are authoring the format together. If your bank wants a seat at that table, talk to us about Charter Member status.</p>
+        </div>
+      </details>
+    </div>
+
+    <a href="#scene-8" class="next-link mt-12">What does it cost? <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 8 — PRICING -->
+<section id="scene-8" class="scene py-24 border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 08</span><span class="rule"></span><span>Pricing for your bank tier</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">For a $40B regional bank, $250K to $500K annual.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">Pricing scales with vendor model count, packet volume, and support SLA tier. For your bank size and posture, this is what the conversation looks like.</p>
+
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+      <div class="stat"><p class="num">$300K</p><p class="lbl">Median annual · $30-50B AUM</p></div>
+      <div class="stat"><p class="num">7-day</p><p class="lbl">Packet turnaround</p></div>
+      <div class="stat"><p class="num">12</p><p class="lbl">OCC 2013-29 packets / yr</p></div>
+      <div class="stat"><p class="num">99.9%</p><p class="lbl">Uptime SLA</p></div>
+    </div>
+
+    <div class="diagram mb-12">
+      <img src="diagrams/06-pilot-timeline.png" alt="Editorial Gantt timeline showing 120-day pilot: Days 1-30 Discovery, Days 31-90 Integration, Days 91-120 Validation, Day 121+ Production" onerror="this.parentElement.innerHTML='<div class=&quot;p-16 text-center text-stone-400 font-mono text-sm&quot;>Timeline diagram generating…</div>'" />
+      <div class="diagram-caption">Scene 08 · signature to examiner-ready</div>
+    </div>
+
+    <div class="timeline mb-10">
+      <div class="tp"><div class="d">DAY 1-30</div><div class="l">Discovery</div></div>
+      <div class="tp"><div class="d">DAY 31-90</div><div class="l">Integration</div></div>
+      <div class="tp"><div class="d">DAY 91-120</div><div class="l">Validation</div></div>
+      <div class="tp"><div class="d">DAY 121+</div><div class="l">Production</div></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 items-start">
+      <details class="disclose" open>
+        <summary><span class="num">$</span><div class="flex-1"><p class="font-semibold text-base mb-1">3-month Pilot</p><p class="text-sm text-stone-600">$150K. Credits 100% toward Year-1 production.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <ul class="text-sm text-stone-700 leading-relaxed space-y-2">
+            <li>· Atestia deployed in your sandbox environment</li>
+            <li>· Up to 3 vendor models instrumented</li>
+            <li>· 1 OCC 2013-29 packet generated for your MRM team review</li>
+            <li>· Customer KMS integration scoped</li>
+            <li>· Joint readiness review with CRO at month 3</li>
+            <li>· Decision point at end of month 3: convert to Year-1 production, or no further obligation</li>
+          </ul>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary><span class="num">$</span><div class="flex-1"><p class="font-semibold text-base mb-1">Year-1 Production</p><p class="text-sm text-stone-600">$250K – $500K depending on volume + SLA tier.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <ul class="text-sm text-stone-700 leading-relaxed space-y-2">
+            <li>· Full production deployment</li>
+            <li>· 7-year SR 26-2-compliant retention</li>
+            <li>· Up to 12 OCC 2013-29 packets per year</li>
+            <li>· 2 SR 26-2 attestation packs per year</li>
+            <li>· BCBS 239 lineage included</li>
+            <li>· Named Customer Success Manager</li>
+            <li>· Business-hours support with 1-hour Sev 1 response</li>
+            <li>· Pilot fees credit toward Year-1</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <a href="#scene-9" class="next-link mt-12">OK, what's the next step? <span>↓</span></a>
+  </div>
+</section>
+
+<!-- SCENE 9 — WHAT'S NEXT -->
+<section id="scene-9" class="scene py-24">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="scene-num"><span class="dot"></span><span>Scene 09</span><span class="rule"></span><span>What's next</span></div>
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">You write the email to the CRO.</h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-12 max-w-3xl">It's 11:30 am. You've finished the walk-through. You open your email to draft the answer to the CRO's question. You pick one of three paths.</p>
+
+    <div class="space-y-4">
+      <details class="disclose">
+        <summary><span class="num">A</span><div class="flex-1"><p class="font-semibold text-base mb-1">Try the open-source reference this afternoon</p><p class="text-sm text-stone-600">Your engineering team installs it in the sandbox. Free. No commitment.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-4">If you want hands-on verification before any commercial conversation, install <code class="font-mono bg-stone-100 px-1.5 py-0.5 rounded text-xs">@atestia/tier4-mcp-server</code> from npm. The full reference implementation is MPL-2.0 licensed. Your engineers can wire it into a sandbox agent and generate a sample packet within an afternoon.</p>
+          <a href="https://github.com/Atestia/tier4-mcp-server" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded-lg hover:bg-accent transition">View on GitHub →</a>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">B</span><div class="flex-1"><p class="font-semibold text-base mb-1">Book a 45-minute scoped call with our Solutions Engineering team</p><p class="text-sm text-stone-600">Walk through your three deployments in detail. Get a written scope.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-4">Bring the three deployments you mentioned to the CRO (commercial credit, treasury, wealth). Our SE walks through the Atestia integration for each, identifies the gap between today's state and examiner-ready, and writes you a scoped 90-day plan. No deck — your problem, on a whiteboard.</p>
+          <a href="../contact.html" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded-lg hover:bg-accent transition">Book the call →</a>
+        </div>
+      </details>
+
+      <details class="disclose">
+        <summary><span class="num">C</span><div class="flex-1"><p class="font-semibold text-base mb-1">Send this page to your CISO and CRO</p><p class="text-sm text-stone-600">Let them walk through it before the Tuesday meeting.</p></div><span class="chev">▼</span></summary>
+        <div class="body">
+          <p class="text-sm text-stone-700 leading-relaxed mb-4">If you want your CISO and CRO to share the context before your meeting, this page is your prep brief. They walk through scenes 03, 07, and 08 (architecture, honest concerns, pricing) in 8 minutes and arrive prepared. You skip the explainer slides and go straight to the decision.</p>
+          <button onclick="navigator.clipboard?.writeText(window.location.href);this.textContent='URL copied'" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded-lg hover:bg-accent transition">Copy page URL →</button>
+        </div>
+      </details>
+    </div>
+
+    <div class="mt-16 pt-10 border-t border-stone-200">
+      <p class="text-sm text-stone-500 italic">This walkthrough is provided as-is. The persona is composite. The scenario is realistic. The product is real and shipping. The npm package, the open source, the spec, the working group — all live. Try it and prove it yourself.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="bg-ink text-stone-300 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <p class="font-bold text-white text-lg mb-3">Atestia</p>
+        <p class="text-sm text-stone-400">The runtime evidence layer for regulated AI.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Product</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="../platform.html" class="hover:text-white">Platform</a></li>
+          <li><a href="../pricing.html" class="hover:text-white">Pricing</a></li>
+          <li><a href="../solutions/banks.html" class="hover:text-white">Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Open standard</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="../tier4/index.html" class="hover:text-white">Tier-4 spec</a></li>
+          <li><a href="../tier4/charter.html" class="hover:text-white">Working Group</a></li>
+          <li><a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-white">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3 font-semibold">Company</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="../company/about.html" class="hover:text-white">About</a></li>
+          <li><a href="../company/careers.html" class="hover:text-white">Careers</a></li>
+          <li><a href="../contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-stone-700 text-xs text-stone-500 flex flex-wrap justify-between gap-4">
+      <p>Atestia is a product of FuteurCredX Inc. © 2026</p>
+      <p>Tier-4 spec licensed CC-BY-4.0 · Reference impl licensed MPL-2.0</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Fade-in on scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in-view"); });
+}, { rootMargin: "-10% 0px -10% 0px" });
+document.querySelectorAll(".scene").forEach(s => io.observe(s));
+
+// Navigator: highlight active dot based on visible scene
+const dots = document.querySelectorAll(".nav-dot");
+const navIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      dots.forEach(d => d.classList.toggle("active", d.getAttribute("href") === "#" + id));
+    }
+  });
+}, { rootMargin: "-40% 0px -40% 0px" });
+document.querySelectorAll(".scene").forEach(s => navIO.observe(s));
+</script>
+</body>
+</html>
