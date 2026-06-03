@@ -55,7 +55,9 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
 @keyframes reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 
 /* code block */
-.code{background:#1c1917;color:#cffafe;border-radius:10px;padding:18px 22px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;overflow-x:auto}
+.code{background:#1c1917;color:#cffafe;border-radius:10px;padding:18px 22px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;overflow-x:auto;max-width:100%;min-width:0;white-space:pre-wrap;word-break:break-word}
+@media(min-width:640px){.code{white-space:pre;word-break:normal}}
+.grid > *{min-width:0}
 .code .c{color:#78716c}
 .code .k{color:#67e8f9}
 .code .s{color:#a7f3d0}
