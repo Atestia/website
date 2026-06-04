@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Service Level Agreement — Atestia</title>
+<meta name="description" content="Atestia Service Level Agreement. Target SLA applicable from Atestia Platform Enterprise GA (Q4 2026). Service credits, severity definitions, exclusions." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}.font-mono{font-family:'JetBrains Mono',monospace}</style>
+</head>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../platform.html" class="hover:text-accent">Platform</a>
+<a href="../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../demo/index.html" class="hover:text-accent">Demo</a>
+<a href="../trust/index.html" class="hover:text-accent">Trust</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-3xl mx-auto px-6">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Legal · Service Level Agreement</p>
+<h1 class="font-serif text-5xl leading-tight mb-6">Service Level Agreement (SLA)</h1>
+<p class="text-stone-500 text-sm font-mono mb-6">Document version 1.0 · Effective on Atestia Platform Enterprise GA (target Q4 2026)</p>
+
+<div class="bg-amber-50 border-l-4 border-amber-600 p-5 mb-8 rounded">
+<p class="text-sm text-amber-900 leading-relaxed"><strong>Pre-GA status.</strong> Atestia Platform Enterprise is in development as of June 2026. The SLA targets below are commitments that will be effective at Platform Enterprise GA. Until GA, this document represents Atestia's published service-level intent; specific commitments are written into the Enterprise Master Services Agreement (MSA) at contract execution.</p>
+</div>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">1. Service definition</h2>
+<p class="text-stone-700 mb-4">"Service" means the production hosted Atestia Platform Enterprise multi-tenant or single-tenant API, accessible via the production endpoints documented in the Enterprise MSA. Self-serve tiers (Free, Starter, Pro, Scale) are governed by the Terms of Service and are not subject to this SLA.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">2. Uptime commitment</h2>
+<p class="text-stone-700 mb-4">Target uptime by tier:</p>
+<div class="overflow-x-auto bg-white border border-stone-200 rounded-lg mb-4">
+<table class="w-full text-sm">
+<thead class="bg-stone-100"><tr><th class="text-left px-4 py-3 font-semibold">Tier</th><th class="text-left px-4 py-3 font-semibold">Monthly Uptime Target</th><th class="text-left px-4 py-3 font-semibold">RPO</th><th class="text-left px-4 py-3 font-semibold">RTO</th></tr></thead>
+<tbody class="divide-y divide-stone-200">
+<tr><td class="px-4 py-3 font-semibold">Tier-1 Enterprise</td><td class="px-4 py-3">99.95%</td><td class="px-4 py-3">15 minutes</td><td class="px-4 py-3">1 hour</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Regional Enterprise</td><td class="px-4 py-3">99.9%</td><td class="px-4 py-3">15 minutes</td><td class="px-4 py-3">2 hours</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Community Enterprise</td><td class="px-4 py-3">99.5%</td><td class="px-4 py-3">1 hour</td><td class="px-4 py-3">4 hours</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">3. Severity definitions</h2>
+<ul class="list-disc pl-6 space-y-2 text-stone-700 mb-4">
+<li><strong>Severity 1 (Critical).</strong> Production service unavailable; complete loss of Customer Data access; security incident materially affecting Customer Data.</li>
+<li><strong>Severity 2 (High).</strong> Production service materially degraded; non-critical features unavailable; performance below SLA but service available.</li>
+<li><strong>Severity 3 (Medium).</strong> Minor functional issue with workaround available; non-blocking bug.</li>
+<li><strong>Severity 4 (Low).</strong> Cosmetic issue; documentation gap; feature request.</li>
+</ul>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">4. Response + resolution targets</h2>
+<div class="overflow-x-auto bg-white border border-stone-200 rounded-lg mb-4">
+<table class="w-full text-sm">
+<thead class="bg-stone-100"><tr><th class="text-left px-4 py-3 font-semibold">Severity</th><th class="text-left px-4 py-3 font-semibold">Response Time</th><th class="text-left px-4 py-3 font-semibold">Resolution Target</th></tr></thead>
+<tbody class="divide-y divide-stone-200">
+<tr><td class="px-4 py-3">Sev 1</td><td class="px-4 py-3">30 minutes</td><td class="px-4 py-3">4 hours</td></tr>
+<tr><td class="px-4 py-3">Sev 2</td><td class="px-4 py-3">2 hours</td><td class="px-4 py-3">24 hours</td></tr>
+<tr><td class="px-4 py-3">Sev 3</td><td class="px-4 py-3">8 business hours</td><td class="px-4 py-3">5 business days</td></tr>
+<tr><td class="px-4 py-3">Sev 4</td><td class="px-4 py-3">1 business day</td><td class="px-4 py-3">Best effort</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">5. Service credits</h2>
+<p class="text-stone-700 mb-4">For each calendar month in which Atestia fails to meet the uptime target for an Enterprise tier, the customer is entitled to service credits per the following schedule:</p>
+<div class="overflow-x-auto bg-white border border-stone-200 rounded-lg mb-4">
+<table class="w-full text-sm">
+<thead class="bg-stone-100"><tr><th class="text-left px-4 py-3 font-semibold">Uptime achieved</th><th class="text-left px-4 py-3 font-semibold">Credit (% of monthly fees)</th></tr></thead>
+<tbody class="divide-y divide-stone-200">
+<tr><td class="px-4 py-3">≥ target uptime</td><td class="px-4 py-3">0%</td></tr>
+<tr><td class="px-4 py-3">target − 0.1% to target</td><td class="px-4 py-3">5%</td></tr>
+<tr><td class="px-4 py-3">target − 0.5% to target − 0.1%</td><td class="px-4 py-3">15%</td></tr>
+<tr><td class="px-4 py-3">target − 1.0% to target − 0.5%</td><td class="px-4 py-3">30%</td></tr>
+<tr><td class="px-4 py-3">below target − 1.0%</td><td class="px-4 py-3">50% (maximum)</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-stone-700 mb-4 text-sm">Maximum total monthly credit: 50% of monthly fees. Credits are applied to the customer's next invoice and require a written claim within 30 days of the affected month-end.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">6. SLA exclusions</h2>
+<p class="text-stone-700 mb-4">Downtime caused by the following is excluded from uptime calculations:</p>
+<ul class="list-disc pl-6 space-y-1 text-stone-700 mb-4">
+<li>Scheduled maintenance windows (announced ≥ 5 business days in advance).</li>
+<li>Force majeure events.</li>
+<li>Customer-side actions (e.g., customer revoking KMS keys, customer-side credential issues).</li>
+<li>Issues with sub-processors operating within their own SLAs but causing dependent service interruption (we work to coordinate but are not financially liable beyond pass-through credit).</li>
+<li>Beta features explicitly labeled "Beta" or "Preview".</li>
+</ul>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">7. Termination for chronic breach</h2>
+<p class="text-stone-700 mb-4">If Atestia fails to meet uptime targets for 3 consecutive months or any 4 months within a 12-month period, the customer may terminate the Enterprise MSA for material breach with 30-day notice and receive a pro-rated refund of prepaid fees for the unused portion of the contract term.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">8. Incident communication</h2>
+<p class="text-stone-700 mb-4">During Sev 1 and Sev 2 incidents, Atestia provides hourly status updates to the customer's designated incident contact. Post-incident, Atestia publishes a Root Cause Analysis (RCA) within 5 business days for Sev 1 incidents and within 10 business days for Sev 2 incidents.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">9. Relationship to other documents</h2>
+<p class="text-stone-700 mb-4">This SLA is incorporated into the Enterprise Master Services Agreement at contract execution. In case of conflict, the MSA controls. The <a href="../trust/subprocessors.html" class="text-accent underline">canonical sub-processor list</a>, <a href="privacy.html" class="text-accent underline">Privacy Policy</a>, and <a href="terms.html" class="text-accent underline">Terms of Service</a> are referenced rather than restated.</p>
+
+<h2 class="font-serif text-2xl mt-12 mb-4">10. Contact</h2>
+<p class="text-stone-700 mb-4">Questions about this SLA: <a href="mailto:legal@atestia.ai" class="text-accent underline">legal@atestia.ai</a></p>
+
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is a product of FuteurCredX Inc., a Delaware corporation · <a href="mailto:legal@atestia.ai" class="underline hover:text-accent">legal@atestia.ai</a> · <a href="mailto:security@atestia.ai" class="underline hover:text-accent">security@atestia.ai</a> · © 2026</p>
+</div>
+</footer>
+
+<script src="../assets/shared.js" defer></script>
+</body>
+</html>

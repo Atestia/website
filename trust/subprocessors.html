@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Sub-processors — Atestia</title>
+<meta name="description" content="Canonical list of Atestia sub-processors. Updated 2026-06-04. Subscribe for change notifications." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#1c1917",paper:"#fafaf9",accent:"#0e7490"}}}}</script>
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}.font-mono{font-family:'JetBrains Mono',monospace}</style>
+</head>
+<body>
+
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../platform.html" class="hover:text-accent">Platform</a>
+<a href="../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../demo/index.html" class="hover:text-accent">Demo</a>
+<a href="index.html" class="text-accent font-semibold">Trust</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<section class="border-b border-stone-200 py-16">
+<div class="max-w-5xl mx-auto px-6">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Trust Center · Sub-processors</p>
+<h1 class="font-serif text-5xl md:text-6xl leading-tight mb-6">Sub-processors</h1>
+<p class="text-xl text-stone-700 max-w-3xl mb-4">Canonical list of vendors Atestia uses to deliver the Service. This page is the binding source of truth referenced by our Privacy Policy, Terms of Service, Trust Center, SIG Lite responses, and CAIQ v4.0.3 responses.</p>
+<p class="text-sm text-stone-500 font-mono">Last updated: 2026-06-04 · Version: 1.0</p>
+</div>
+</section>
+
+<section class="py-16 bg-white border-b border-stone-200">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="font-serif text-3xl mb-6">Current sub-processors</h2>
+<p class="text-stone-700 mb-8">We maintain a minimal sub-processor footprint. All sub-processors are bound by DPAs (Data Processing Agreements). EU/UK transfers are governed by SCCs (Standard Contractual Clauses) where applicable. We provide 30-day advance notice for any sub-processor addition or material change.</p>
+
+<div class="overflow-x-auto bg-white border border-stone-200 rounded-lg">
+<table class="w-full text-sm">
+<thead class="bg-stone-100">
+<tr>
+<th class="text-left px-4 py-3 font-semibold">Sub-processor</th>
+<th class="text-left px-4 py-3 font-semibold">Purpose</th>
+<th class="text-left px-4 py-3 font-semibold">Location</th>
+<th class="text-left px-4 py-3 font-semibold">Customer Data</th>
+<th class="text-left px-4 py-3 font-semibold">Since</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-stone-200">
+<tr><td class="px-4 py-3 font-semibold">AWS</td><td class="px-4 py-3">Cloud infrastructure (compute + storage)</td><td class="px-4 py-3">US-East-1 (primary)</td><td class="px-4 py-3 text-emerald-700">Yes (encrypted)</td><td class="px-4 py-3 font-mono text-xs">2026-06</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Cloudflare</td><td class="px-4 py-3">DNS, WAF, edge cache</td><td class="px-4 py-3">Global</td><td class="px-4 py-3">No (HTTP metadata only)</td><td class="px-4 py-3 font-mono text-xs">2026-06</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Stripe</td><td class="px-4 py-3">Subscription billing</td><td class="px-4 py-3">US</td><td class="px-4 py-3 text-amber-600">Billing info only</td><td class="px-4 py-3 font-mono text-xs">2026-06</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Vercel</td><td class="px-4 py-3">Marketing site hosting</td><td class="px-4 py-3">Global edge</td><td class="px-4 py-3">No</td><td class="px-4 py-3 font-mono text-xs">2026-06</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Vanta</td><td class="px-4 py-3">SOC 2 control automation + compliance evidence</td><td class="px-4 py-3">US</td><td class="px-4 py-3">Audit evidence only</td><td class="px-4 py-3 font-mono text-xs">2026-06</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Sentry</td><td class="px-4 py-3">Error tracking (PII scrubbed at source)</td><td class="px-4 py-3">US</td><td class="px-4 py-3">No</td><td class="px-4 py-3 font-mono text-xs">2026-06</td></tr>
+<tr><td class="px-4 py-3 font-semibold">Postmark</td><td class="px-4 py-3">Transactional email</td><td class="px-4 py-3">US</td><td class="px-4 py-3">Email addresses only</td><td class="px-4 py-3 font-mono text-xs">2026-06</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="text-xs text-stone-500 mt-4 italic">"Since" indicates the month the sub-processor was first engaged in our production stack.</p>
+</div>
+</section>
+
+<section class="py-16 border-b border-stone-200">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="font-serif text-3xl mb-6">Change notifications</h2>
+<p class="text-stone-700 mb-4">When we add a sub-processor, change a sub-processor's role, or change a sub-processor's location of customer data processing, we notify customers at least 30 days in advance by email and by updating this page. Customers may object to a new sub-processor within 30 days of notice as their contractual right.</p>
+<p class="text-stone-700 mb-4">To receive sub-processor change notifications by email, send a request to <a href="mailto:legal@atestia.ai" class="text-accent underline">legal@atestia.ai</a>. We maintain a mailing list of customer legal/privacy contacts for this purpose.</p>
+</div>
+</section>
+
+<section class="py-16 bg-white border-b border-stone-200">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="font-serif text-3xl mb-6">Planned additions</h2>
+<p class="text-stone-700 mb-6">The following sub-processors are scoped for engagement upon Atestia Platform Enterprise GA (target Q4 2026). Customers will receive 30-day notice ahead of activation.</p>
+<div class="bg-stone-50 border border-stone-200 rounded-lg p-6">
+<ul class="space-y-2 text-sm text-stone-700">
+<li>· <strong>Datadog</strong> — observability + APM telemetry (scope: aggregated metrics, no customer data)</li>
+<li>· <strong>Better Stack / Instatus</strong> — third-party status page hosting (no customer data)</li>
+<li>· <strong>Mandiant / CrowdStrike or Kroll</strong> — incident response retainer (engaged only during a confirmed Sev 1 incident, customer notification triggers engagement)</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="py-16 border-b border-stone-200">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="font-serif text-3xl mb-6">Reconciliation note</h2>
+<p class="text-stone-700 mb-4">This page reconciles the sub-processor lists previously appearing in Privacy Policy v1, Trust Center landing v1, SIG Lite responses v1.0, and CAIQ v4.0.3 responses v1.0. As of Document Version 1.0 (2026-06-04), all four documents reference this page as the canonical source. Earlier inconsistencies (e.g., "Vanta") are resolved in favor of the named vendor in the table above.</p>
+</div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+<div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
+<p>Atestia is a product of FuteurCredX Inc., a Delaware corporation · <a href="mailto:legal@atestia.ai" class="underline hover:text-accent">legal@atestia.ai</a> · <a href="mailto:security@atestia.ai" class="underline hover:text-accent">security@atestia.ai</a> · © 2026</p>
+</div>
+</footer>
+
+<script src="../assets/shared.js" defer></script>
+</body>
+</html>
