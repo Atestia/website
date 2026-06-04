@@ -1,0 +1,13 @@
+{
+  "name": "atestia-website",
+  "version": "1.0.0",
+  "description": "Atestia marketing site",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i src/styles.css -o assets/tailwind.css --minify",
+    "watch:css": "tailwindcss -c tailwind.config.js -i src/styles.css -o assets/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
