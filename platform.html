@@ -72,7 +72,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
       <div class="border border-stone-200 rounded p-6">
         <p class="text-xs text-purple-700 font-semibold mb-2">PACKET GENERATOR</p>
         <p class="font-mono text-sm text-accent mb-2">tier4.packet.occ-2013-29</p>
-        <p class="text-sm text-stone-700">Generate the OCC 2013-29 vendor questionnaire (47 fields, 7 sections). Examination evidence ready.</p>
+        <p class="text-sm text-stone-700">Generate the 47-field vendor questionnaire packet aligned with the lifecycle described in OCC 2013-29 (rescinded 2023) and its successor, the 2023 Interagency Third-Party Risk Management Guidance. Examination evidence ready.</p>
       </div>
       <div class="border border-stone-200 rounded p-6">
         <p class="text-xs text-purple-700 font-semibold mb-2">PACKET GENERATOR</p>
@@ -144,23 +144,23 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
 
     <div class="arch-wrap max-w-5xl mx-auto">
 
-      <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold mb-3">Layer 1 · Agent platforms</p>
+      <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold mb-3">Layer 1 · Agent platforms (MCP-compatible)</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 items-start">
         <details class="arch-node">
           <summary><span class="icon">B</span><span class="font-semibold text-sm">Bedrock</span><span class="chev">▼</span></summary>
-          <div class="body"><strong>AWS Bedrock AgentCore</strong> — Native MCP support. Used by BNY Mellon Eliza, JPMorgan Index AI, Goldman Athena Commercial. Adds Atestia as a tool in any agent definition.</div>
+          <div class="body"><strong>AWS Bedrock AgentCore</strong> — Native MCP support per the Anthropic Model Context Protocol specification. Add Atestia as a tool in any agent definition; lineage records are emitted at invocation time.</div>
         </details>
         <details class="arch-node">
           <summary><span class="icon">C</span><span class="font-semibold text-sm">Claude Desktop</span><span class="chev">▼</span></summary>
-          <div class="body"><strong>Anthropic Claude Desktop + MCP</strong> — Drop into <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">claude_desktop_config.json</code>. Used by 70+ MRM analyst teams for ad-hoc compliance queries.</div>
+          <div class="body"><strong>Anthropic Claude Desktop + MCP</strong> — Drop into <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">claude_desktop_config.json</code>. Intended for MRM analysts to query lineage records and request packets directly from their AI assistant.</div>
         </details>
         <details class="arch-node">
           <summary><span class="icon">L</span><span class="font-semibold text-sm">LangChain</span><span class="chev">▼</span></summary>
-          <div class="body"><strong>LangChain TS + Python</strong> — Atestia tools register automatically as LangChain Tools. Used by Capital One, M&amp;T, Regions for custom underwriting agents.</div>
+          <div class="body"><strong>LangChain TS + Python</strong> — Atestia's MCP tools register automatically as LangChain Tools via the official langchain-mcp adapter. Compatible with custom agent runtimes built on LangChain.</div>
         </details>
         <details class="arch-node">
           <summary><span class="icon">$</span><span class="font-semibold text-sm">Cursor</span><span class="chev">▼</span></summary>
-          <div class="body"><strong>Cursor IDE</strong> — For developer-facing AI tools that touch regulated data. Used by Atestia-customer engineering teams to keep dev-time AI use within governance scope.</div>
+          <div class="body"><strong>Cursor IDE</strong> — For developer-facing AI tools that touch regulated data. Lineage records cover dev-time vendor model invocations so they remain within the governance perimeter.</div>
         </details>
       </div>
 

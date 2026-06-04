@@ -29,7 +29,7 @@
 <h1 class="font-serif text-4xl md:text-5xl leading-tight mb-6">Why SR 26-2 changes everything for bank AI.</h1>
 <p class="text-stone-500 text-sm mb-12">Sean Kuesia · Published 2026-06-02 · Last updated 2026-06-02</p>
 
-<p>On April 17, 2026, the Federal Reserve, the OCC, and the FDIC jointly issued SR 26-2 — the revised interagency statement on model risk management. It superseded SR 11-7 for the vendor-model scope. It made one decision that has not yet been processed by most bank MRM teams: it deliberately excluded generative AI and agentic AI from definitional model scope, with a footnote explaining the classes are "novel and rapidly evolving."</p>
+<p>On April 17, 2026, the Federal Reserve, the OCC, and the FDIC jointly issued SR 26-2 — the revised interagency statement on model risk management. The guidance is principles-based, applies to banking organizations with over $30 billion in total assets, and is explicitly non-enforceable. (The guidance itself states: "non-compliance with this guidance will not result in supervisory criticism against a banking organization.") It made one decision that has not yet been processed by most bank MRM teams: <strong>footnote 3 deliberately excludes generative AI and agentic AI from definitional model scope</strong>, explaining the classes are "novel and rapidly evolving" and "not within the scope of this guidance," while still requiring that "a banking organization's risk management and governance practices should guide the determination of appropriate governance and controls for any tools, processes, or systems not covered."</p>
 
 <p>Then, in the same document, it preserved the bank's accountability for every vendor model their agents invoke.</p>
 
@@ -47,9 +47,9 @@
 
 <p>This is the accountability clause. Banks remain on the hook even when the model they invoke was built and trained by Anthropic, OpenAI, AWS, Google, or any other vendor. The bank's MRM team is responsible for understanding, validating, monitoring, and documenting every vendor model that participates in a bank decision.</p>
 
-<blockquote>"Common advice often treats SOC 2 reports or vendor attestations as sufficient coverage; they are not."</blockquote>
+<p>Section VII of SR 26-2 (pages 10-11) addresses vendor and third-party products specifically, requiring banks to "develop an understanding of the vendor model, including its conceptual soundness, design, development data, and performance" and to "conduct ongoing monitoring and outcome analysis to assess whether vendor models are accurate, remain fit for purpose, and continue to be reliable."</p>
 
-<p>This is the technical clarification. The pattern banks have used since 2013 — accept a SOC 2 Type 2 report from the vendor and check the box — is now explicitly insufficient under the revised guidance.</p>
+<p>This is the technical clarification. A SOC 2 Type 2 report from the vendor — which covers vendor operational controls but not the bank's understanding of the model's conceptual soundness and performance — does not by itself satisfy Section VII. Examiners reading Section VII against today's banking AI deployment patterns will look for evidence of conceptual-soundness understanding and ongoing performance monitoring; SOC 2 alone is silent on both.</p>
 
 <h2>Read the three sentences together</h2>
 
@@ -58,7 +58,7 @@
 <ul>
 <li>Banks are accountable for vendor models their agents invoke.</li>
 <li>The accountability extends to GenAI and agentic AI, even though those classes are formally out of scope for the supervisory framework that creates the accountability.</li>
-<li>The traditional vendor attestation evidence pattern is explicitly insufficient.</li>
+<li>The traditional SOC 2 + vendor questionnaire pattern is insufficient to satisfy Section VII's vendor-model-understanding requirement.</li>
 </ul>
 
 <p>So the bank's MRM team is responsible for producing evidence that the joint guidance does not specify how to produce. That is the gap.</p>
@@ -91,7 +91,7 @@
 
 <h2>What the next 18 months look like</h2>
 
-<p>The first examination cycle under SR 26-2 will fall in 2027 for banks whose annual cycle runs in Q1-Q2. Most Tier-1 US banks fall in that window. Between now and then, three things will happen:</p>
+<p>SR 26-2 specifies no implementation deadline, transition period, or "first examination cycle" date — the guidance is principles-based and effective on issuance. Examiners will pick up the revised principles into the standard supervisory cycle, which for $30B+ banks is continuous. Between now and the next examination touchpoint, three things will happen:</p>
 
 <ul>
 <li>The regulators will issue a follow-on Request for Information specifically on AI vendor models. The RFI will create the basis for the next interagency statement, which will likely be enforceable.</li>
@@ -122,7 +122,7 @@
 
 <footer class="border-t border-stone-200 bg-white">
 <div class="max-w-7xl mx-auto px-6 py-12 text-xs text-stone-500">
-<p>Atestia is operated by FuteurCredX Inc. © 2026.</p>
+<p>Atestia is a product of FuteurCredX Inc., a Delaware corporation · <a href="mailto:legal@atestia.ai" class="underline hover:text-accent">legal@atestia.ai</a> · <a href="mailto:security@atestia.ai" class="underline hover:text-accent">security@atestia.ai</a> · © 2026</p>
 </div>
 </footer>
 <script src="../../assets/shared.js" defer></script>

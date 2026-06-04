@@ -62,9 +62,9 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
   <div class="max-w-5xl mx-auto px-6">
     <h2 class="font-serif text-3xl mb-6">Why this exists</h2>
     <div class="space-y-4 text-stone-700 leading-relaxed">
-      <p>SR 26-2 was issued by the Federal Reserve, OCC, and FDIC on April 17, 2026. Paragraph II.B explicitly carves out generative AI and agentic AI from definitional model scope. Paragraph III.A holds institutions accountable for every vendor model their agents call under "existing model risk management principles."</p>
-      <p>The first SR 26-2 examination cycle is Q1 2027. At Citi Arc, JPMorgan Chase Index AI, Goldman Athena Commercial, BNY Mellon Eliza, and similar agentic banking platforms, vendor models are invoked at rates of millions per day. Manual reconstruction of vendor evidence at examination time is not operationally feasible at that cardinality.</p>
-      <p>Tier-4 provides the technical specification for capturing this evidence at invocation time, in a format common across vendors and institutions, machine-readable for downstream tooling, and examiner-defensible for regulatory review.</p>
+      <p>SR 26-2 was issued by the Federal Reserve, OCC, and FDIC on April 17, 2026. Footnote 3 (page 3) explicitly carves generative AI and agentic AI out of the guidance's scope, while the same paragraph requires that "a banking organization's risk management and governance practices should guide the determination of appropriate governance and controls for any tools, processes, or systems not covered." Section VII (pages 10-11) preserves the bank's accountability for understanding, validating, and monitoring every vendor model their agents invoke.</p>
+      <p>Across publicly disclosed bank agentic AI deployments, vendor models are invoked at rates of millions per day. Manual reconstruction of vendor evidence at examination time is not operationally feasible at that cardinality.</p>
+      <p>Tier-4 provides the technical specification for capturing this evidence at invocation time, in a format common across vendors and institutions, machine-readable for downstream tooling, and examiner-defensible for regulatory review — anchored on the regulatory citations that DO apply to the use case: SR 26-2 §VII (vendor model understanding), the 2023 Interagency TPRM Guidance, BCBS 239 Principles 1-11 (bank-facing), ECOA Reg B §1002.9 + CFPB Circular 2022-03 / 2023-03 (AI-driven adverse action), and EU AI Act Article 50 + Annex III(5)(b).</p>
     </div>
   </div>
 </section>
@@ -91,7 +91,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
       <div class="border border-stone-200 rounded-lg p-5 bg-white">
         <p class="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Section 7</p>
         <p class="font-semibold mb-1">BCBS 239 aggregation reference</p>
-        <p class="text-sm text-stone-600">Explicit mapping to all 14 BCBS 239 principles across the four sections (governance, aggregation, reporting, supervisory review).</p>
+        <p class="text-sm text-stone-600">Mapping to the 11 bank-facing BCBS 239 principles (governance, data architecture, aggregation, reporting). Principles 12-14 govern supervisors and are out of scope for any vendor.</p>
       </div>
       <div class="border border-stone-200 rounded-lg p-5 bg-white">
         <p class="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Section 8</p>
@@ -171,7 +171,7 @@ npx tier4-mcp-server</code></pre>
       </div>
     </div>
     <div class="pt-8 border-t border-stone-700 text-xs text-stone-500 flex flex-wrap justify-between gap-4">
-      <p>Atestia is a product of FuteurCredX Inc. © 2026</p>
+      <p>Atestia is a product of FuteurCredX Inc., a Delaware corporation · legal@atestia.ai · security@atestia.ai · © 2026</p>
       <p>Tier-4 spec licensed CC-BY-4.0 · Reference impl licensed MPL-2.0</p>
     </div>
   </div>
